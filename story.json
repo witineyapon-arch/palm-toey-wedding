@@ -1,0 +1,65 @@
+{
+ "version": 1,
+ "slides": [
+  {
+   "src": "photos/tree-run.jpg",
+   "title": "How we met",
+   "text": "เราสองคนรู้จักกันจากคำแนะนำของพี่สาวและพี่ชายที่น่ารักคู่หนึ่ง",
+   "alt": "Palm and Toey run hand in hand beneath a great rain tree"
+  },
+  {
+   "src": "photos/hallway.jpg",
+   "title": "The first hello",
+   "text": "ข้อความแรกที่เต้ยทักมา “สวัสดีครับ”",
+   "alt": "Palm and Toey laughing together in a hotel corridor"
+  },
+  {
+   "src": "photos/bridge-highfive.jpg",
+   "title": "Every day after",
+   "text": "จากคำทักทายธรรมดาในวันนั้น กลายเป็นเรื่องราวที่เราเลือกเขียนต่อไปด้วยกันทุกวัน",
+   "alt": "Palm and Toey high-five on a footbridge"
+  },
+  {
+   "src": "photos/lake-dip.jpg",
+   "title": "Growing together",
+   "text": "เติบโตไปด้วยกันทุกฤดูกาล นับตั้งแต่วันนี้และตลอดไป",
+   "alt": "Palm leans back in Toey's arms beside a lake"
+  },
+  {
+   "src": "photos/garden-walk.jpg",
+   "title": "Hand in hand",
+   "text": "จับมือกันเดินไปข้างหน้า ทีละก้าว",
+   "alt": "Palm and Toey walk hand in hand across a lawn"
+  },
+  {
+   "src": "photos/laughing-trees.jpg",
+   "title": "Our laughter",
+   "text": "เสียงหัวเราะที่เราแบ่งปันกันทุกวัน",
+   "alt": "Palm and Toey laughing under the trees"
+  },
+  {
+   "src": "photos/bridge-glance.jpg",
+   "title": "Always you",
+   "text": "หันกลับมามองทีไร ก็ยังเป็นเธอเสมอ",
+   "alt": "Palm glances back, arm in arm with Toey"
+  },
+  {
+   "src": "photos/bridge-lift.jpg",
+   "title": "Ready for forever",
+   "text": "และวันนี้ เราพร้อมแล้วสำหรับก้าวต่อไปด้วยกัน",
+   "alt": "Toey lifts Palm on a footbridge"
+  },
+  {
+   "src": "",
+   "title": "Chapter nine",
+   "text": "",
+   "alt": ""
+  },
+  {
+   "src": "",
+   "title": "Chapter ten",
+   "text": "",
+   "alt": ""
+  }
+ ]
+}
