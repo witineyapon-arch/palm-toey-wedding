@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<script>/* keep relative paths working when opened as /wedding-gallery (no trailing slash) */
+(function(p){if(!/\/$/.test(p)&&!/\.[a-z0-9]+$/i.test(p))location.replace(p+'/'+location.search+location.hash);})(location.pathname);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fcf8f3">
+<title>Wedding Gallery · Palm &amp; Toey · 12.12.2026</title>
+<meta name="description" content="แชร์รูปงานแต่ง PALM & TOEY 12.12.2026 · หุ่นไร่กา พิษณุโลก — สแกน อัปโหลด และดาวน์โหลดรูปได้ทันที ไม่ต้องสมัครสมาชิก">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PALM & TOEY · Wedding Gallery">
+<meta property="og:description" content="มาช่วยกันเก็บช่วงเวลาดี ๆ ในวันพิเศษของเราไว้ด้วยกันนะ">
+<meta property="og:image" content="../og-cover.jpg">
+<link rel="preconnect" href="https://ebbnmgngfufrdjkkmhnx.supabase.co" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500&family=Allura&family=Young+Serif&family=Prompt:wght@300;400&display=swap">
+<link rel="stylesheet" href="assets/gallery.css">
+</head>
+<body>
+
+<header class="wg-top" id="top">
+  <div class="wrap">
+    <a class="mono" href="#" aria-label="Wedding Gallery home">PALM<i>&amp;</i>TOEY</a>
+    <div class="top-actions">
+      <a class="top-link" href="../" aria-label="กลับไปหน้าการ์ดเชิญ">Invitation</a>
+      <button class="top-link" type="button" id="shareTop" aria-label="แชร์ลิงก์เว็บไซต์">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Share
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= HOME ================= -->
+  <section class="view wrap" id="vHome" aria-label="Wedding Gallery">
+    <div class="hero">
+      <p class="label">Wedding Gallery</p>
+      <h1 class="hero-names">PALM<span class="amp">&amp;</span>TOEY</h1>
+      <p class="hero-day">Our Wedding Day</p>
+      <p class="hero-date">12.12.2026</p>
+      <p class="hero-venue">หุ่นไร่กา · จังหวัดพิษณุโลก</p>
+      <div class="divider" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.7 1.3 5.3 3.2 1.6-1.9 3.1-3.2 5.3-3.2 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+      <p class="hero-quote">“Every picture tells a story.<br>Let’s capture our beautiful memories together.”</p>
+      <p class="hero-thai">ทุกภาพถ่ายคือความทรงจำ
+มาช่วยกันเก็บช่วงเวลาดี ๆ
+ในวันพิเศษของเราไว้ด้วยกันนะ</p>
+      <div class="notice" id="homeNotice" hidden></div>
+      <div class="hero-ctas">
+        <a class="btn rose" href="#upload" id="ctaUpload">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <span>Upload your photos<small>อัปโหลดรูปจากโทรศัพท์</small></span>
+        </a>
+        <a class="btn ghost" href="#gallery">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="7.5" height="9" /><rect x="13.5" y="3" width="7.5" height="5.5"/><rect x="3" y="15" width="7.5" height="6"/><rect x="13.5" y="11.5" width="7.5" height="9.5"/></svg>
+          <span>View all photos<small>ดูรูปภาพทั้งหมด</small></span>
+        </a>
+      </div>
+      <p class="hero-count" id="homeCount" hidden><b id="homeCountN">0</b> shared memories</p>
+    </div>
+  </section>
+
+  <!-- ================= UPLOAD ================= -->
+  <section class="view wrap" id="vUpload" aria-label="Upload photos" hidden>
+    <div class="sec-head">
+      <p class="label">Share the love</p>
+      <h1>UPLOAD</h1>
+      <span class="script">your photos</span>
+      <p class="th">เลือกรูปจากอัลบั้มในโทรศัพท์ได้หลายรูปพร้อมกัน</p>
+    </div>
+    <div class="up">
+      <div class="closed-box" id="upClosed" hidden></div>
+      <div id="upOpen">
+        <div class="notice" id="upNotice" hidden style="margin:0 0 18px;max-width:none"></div>
+        <label class="drop" id="drop">
+          <input type="file" id="fileInput" accept="image/*,.heic,.heif" multiple>
+          <span class="drop-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="15" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 9"/></svg></span>
+          <b>Choose photos</b>
+          <span>แตะเพื่อเลือกรูปจาก Gallery</span>
+          <small>JPG · PNG · WEBP · HEIC — สูงสุดครั้งละ <span id="maxFiles">30</span> รูป</small>
+        </label>
+
+        <div id="pickedWrap" hidden>
+          <div class="picked-head">
+            <p class="label">Selected <b id="pickedN">0</b></p>
+            <button class="linkbtn" type="button" id="clearAll">ล้างทั้งหมด</button>
+          </div>
+          <div class="previews" id="previews"></div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="nameInput">Your name <span class="th" style="letter-spacing:0;text-transform:none">(ชื่อเล่น · ไม่บังคับ)</span></label>
+          <input type="text" id="nameInput" maxlength="40" autocomplete="nickname" enterkeyhint="done" placeholder="เช่น มิ้นท์ เพื่อนเจ้าสาว">
+          <p class="hint">ชื่อนี้จะแสดงใต้รูปที่คุณแชร์</p>
+        </div>
+        <p class="err-msg" id="upErr" hidden></p>
+      </div>
+    </div>
+    <div class="up-bar" id="upBar">
+      <div class="up-bar-in">
+        <div class="prog" id="prog" hidden>
+          <div class="prog-row"><span id="progText">กำลังเตรียมรูป…</span><b id="progPct">0%</b></div>
+          <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+        </div>
+        <button class="btn rose" type="button" id="uploadBtn" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+          <span id="uploadBtnText">Upload photos</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="view wrap" id="vGallery" aria-label="Shared memories" hidden>
+    <div class="sec-head">
+      <p class="label">Wedding Gallery</p>
+      <h1>SHARED MEMORIES</h1>
+      <p>“All the beautiful moments,
+captured by the people we love.”</p>
+    </div>
+    <div class="gal-bar"><span><b id="galCount">–</b> photos</span><span class="th" style="letter-spacing:0;text-transform:none">ล่าสุดอยู่ด้านบน</span></div>
+    <div class="masonry" id="masonry" aria-live="polite"></div>
+    <div class="empty" id="galEmpty" hidden><span class="script">Be the first</span>ยังไม่มีรูปภาพ มาเป็นคนแรกที่แชร์ความทรงจำกันนะ</div>
+    <div class="gal-foot" id="galFoot">
+      <div class="spinner" id="galSpin"></div>
+      <button class="btn ghost small" type="button" id="loadMore" hidden>Load more</button>
+      <span id="galEnd" hidden>ครบทุกภาพแล้ว · ขอบคุณที่ร่วมเก็บความทรงจำ</span>
+      <span id="galErr" hidden></span>
+      <div id="sentinel" style="height:1px;width:100%"></div>
+    </div>
+    <a class="btn rose fab" href="#upload" id="galFab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add your photos
+    </a>
+  </section>
+</main>
+
+<footer class="foot" id="foot">PALM <i>&amp;</i> TOEY · 12.12.2026</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lb-top">
+    <span class="lb-n" id="lbN"></span>
+    <button class="icbtn" type="button" id="lbClose" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lbStage">
+    <button class="icbtn lb-nav lb-prev" type="button" id="lbPrev" aria-label="รูปก่อนหน้า"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img id="lbImg" alt="">
+    <div class="spinner" id="lbSpin" hidden></div>
+    <button class="icbtn lb-nav lb-next" type="button" id="lbNext" aria-label="รูปถัดไป"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-bot">
+    <p class="lb-meta" id="lbMeta"></p>
+    <button class="lb-act primary" type="button" id="lbDl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>Download</button>
+    <button class="lb-act" type="button" id="lbShare"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Share site</button>
+  </div>
+</div>
+
+<!-- upload result -->
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-card" role="alertdialog" aria-labelledby="sheetTitle">
+    <p class="big">Thank you</p>
+    <h3 id="sheetTitle">UPLOAD COMPLETE</h3>
+    <p id="sheetText"></p>
+    <div class="btns">
+      <a class="btn rose" href="#gallery" id="sheetGallery">View all photos</a>
+      <button class="btn ghost" type="button" id="sheetMore">Upload more</button>
+      <button class="btn gold small" type="button" id="sheetRetry" hidden>ลองอัปโหลดรูปที่ไม่สำเร็จอีกครั้ง</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/supabase.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

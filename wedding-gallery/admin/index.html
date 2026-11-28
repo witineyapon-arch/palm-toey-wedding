@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<script>(function(p){if(!/\/$/.test(p)&&!/\.[a-z0-9]+$/i.test(p))location.replace(p+'/'+location.search+location.hash);})(location.pathname);</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#fcf8f3">
+<title>Admin · Wedding Gallery · Palm &amp; Toey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;300;400;500&family=Allura&family=Young+Serif&family=Prompt:wght@300;400&display=swap">
+<link rel="stylesheet" href="../assets/gallery.css">
+<style>
+.ad{padding-bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+.login{max-width:400px;margin:clamp(30px,10vh,90px) auto 0;background:var(--cream);border:1px solid var(--line);padding:34px 26px}
+.login h1{margin:6px 0 0;font-family:var(--f-serif);font-weight:400;font-size:1.6rem;letter-spacing:.14em}
+.login .field input{font-family:var(--f-sans)}
+.login .btn{width:100%;margin-top:26px}
+.ad-head{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;padding:clamp(26px,5vw,44px) 0 18px}
+.ad-head h1{margin:6px 0 0;font-family:var(--f-serif);font-weight:400;font-size:clamp(1.5rem,6vw,2.3rem);letter-spacing:.12em;line-height:1.1}
+.ad-head .who{font-family:var(--f-thai);font-size:.82rem;color:var(--ink-soft)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:720px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{background:var(--cream);border:1px solid var(--line);padding:16px 16px 14px}
+.stat b{display:block;font-family:var(--f-sans);font-weight:300;font-size:clamp(1.6rem,6vw,2.3rem);line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat span{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+.stat small{display:block;font-family:var(--f-thai);font-size:.74rem;color:var(--ink-soft)}
+.stat.accent b{color:var(--rose-d)}
+.cards{display:grid;gap:14px;margin-top:14px}
+@media(min-width:900px){.cards{grid-template-columns:1.1fr .9fr}}
+.card{background:var(--cream);border:1px solid var(--line);padding:22px 20px}
+.card h2{margin:0 0 4px;font-family:var(--f-serif);font-weight:400;font-size:1.1rem;letter-spacing:.14em}
+.card > p{margin:0 0 16px;font-family:var(--f-thai);font-size:.82rem;color:var(--ink-soft)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid var(--line);background:var(--ivory);cursor:pointer}
+.switch .t{font-family:var(--f-thai);font-size:.95rem}
+.switch .t small{display:block;font-size:.76rem;color:var(--ink-soft)}
+.switch input{appearance:none;-webkit-appearance:none;width:54px;height:30px;border-radius:30px;background:var(--beige-d);position:relative;cursor:pointer;flex:none;transition:background .25s;margin:0}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .25s var(--ease)}
+.switch input:checked{background:#7d9a63}
+.switch input:checked::after{transform:translateX(24px)}
+.ta{margin-top:16px}
+.ta label{display:block}
+.ta textarea{width:100%;min-height:76px;margin-top:6px;padding:10px 12px;border:1px solid var(--line);background:#fff;font-family:var(--f-thai);font-size:.92rem;resize:vertical;border-radius:0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.qr-wrap{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+@media(max-width:520px){.qr-wrap{grid-template-columns:1fr;justify-items:center;text-align:center}}
+#qrCanvas{width:180px;height:180px;background:#fff;border:1px solid var(--line);padding:8px;image-rendering:pixelated}
+.url{font-family:var(--f-sans);font-size:.82rem;word-break:break-all;background:var(--ivory);border:1px solid var(--line);padding:8px 10px;margin:0 0 10px}
+.warn{font-family:var(--f-thai);font-size:.8rem;color:#9a4c55;margin:0 0 10px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:30px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--line);background:var(--cream)}
+.seg button{border:0;background:none;padding:10px 14px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;color:var(--ink-soft)}
+.seg button.on{background:#fbeeec;color:var(--rose-d)}
+.search{min-height:42px;padding:8px 12px;border:1px solid var(--line);background:#fff;font-family:var(--f-thai);font-size:.9rem;min-width:0;flex:1 1 160px;max-width:260px}
+.grid-ad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(min-width:620px){.grid-ad{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:960px){.grid-ad{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.ph-card{position:relative;background:var(--cream);border:1px solid var(--line);display:flex;flex-direction:column}
+.ph-card.sel{outline:2px solid var(--rose-d);outline-offset:-2px}
+.ph-card.is-hidden .ph-img img{opacity:.35;filter:grayscale(1)}
+.ph-img{position:relative;aspect-ratio:1;background:var(--beige);overflow:hidden;cursor:zoom-in;border:0;padding:0;display:block;width:100%}
+.ph-img img{width:100%;height:100%;object-fit:cover}
+.ph-chk{position:absolute;top:6px;left:6px;z-index:2;width:26px;height:26px;accent-color:var(--rose-d);cursor:pointer}
+.badge{position:absolute;top:8px;right:8px;z-index:2;background:var(--rose-d);color:#fff;font-size:.56rem;letter-spacing:.2em;padding:3px 7px;text-transform:uppercase}
+.ph-info{padding:8px 10px 4px;font-family:var(--f-thai);font-size:.76rem;line-height:1.45}
+.ph-info b{font-weight:400;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-info span{color:var(--ink-soft);font-size:.7rem}
+.ph-act{display:flex;border-top:1px solid var(--line);margin-top:auto}
+.ph-act button,.ph-act a{flex:1;display:grid;place-items:center;height:40px;border:0;background:none;cursor:pointer;color:var(--ink-soft);text-decoration:none}
+.ph-act button+button,.ph-act a+button,.ph-act button+a{border-left:1px solid var(--line)}
+.ph-act button:hover,.ph-act a:hover{background:var(--ivory);color:var(--ink)}
+.ph-act .del:hover{color:#9a4c55;background:#fbf3f2}
+.ph-act svg{width:17px;height:17px}
+.bulk{position:sticky;bottom:0;z-index:40;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));margin-top:16px;background:var(--cream);color:var(--ink);border:1px solid var(--gold-l);box-shadow:0 -10px 30px -20px rgba(90,60,58,.5);font-family:var(--f-thai);font-size:.86rem}
+.bulk .btn{min-height:40px;padding:8px 14px;font-size:.62rem;border-color:var(--gold);background:transparent;color:var(--gold-d)}
+.bulk .btn.danger{background:#c98a8f;border-color:#c98a8f;color:#fff}
+.pager{display:flex;justify-content:center;gap:10px;align-items:center;margin:20px 0;font-family:var(--f-thai);font-size:.85rem;color:var(--ink-soft)}
+.dlprog{font-family:var(--f-thai);font-size:.82rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<header class="wg-top">
+  <div class="wrap">
+    <a class="mono" href="../">PALM<i>&amp;</i>TOEY</a>
+    <div class="top-actions">
+      <a class="top-link" href="../" target="_blank" rel="noopener">Open gallery</a>
+      <button class="top-link" type="button" id="logout" hidden>Log out</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap ad">
+  <!-- login -->
+  <section class="login view" id="vLogin" hidden>
+    <p class="label">Wedding Gallery</p>
+    <h1>ADMIN</h1>
+    <p class="th" style="margin:6px 0 0;font-size:.85rem;color:var(--ink-soft)">สำหรับเจ้าของงานเท่านั้น</p>
+    <form id="loginForm" autocomplete="on">
+      <div class="field"><label class="label" for="em">Email</label><input type="email" id="em" autocomplete="username" required></div>
+      <div class="field"><label class="label" for="pw">Password</label><input type="password" id="pw" autocomplete="current-password" required></div>
+      <p class="err-msg" id="loginErr" hidden></p>
+      <button class="btn" type="submit" id="loginBtn">Sign in</button>
+    </form>
+  </section>
+
+  <!-- dashboard -->
+  <section class="view" id="vDash" hidden>
+    <div class="ad-head">
+      <div><p class="label">Wedding Gallery</p><h1>DASHBOARD</h1></div>
+      <div class="row"><span class="who" id="who"></span><button class="btn ghost small" type="button" id="refresh">Refresh</button></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat accent"><span>Photos</span><b id="sTotal">–</b><small>รูปทั้งหมด</small></div>
+      <div class="stat"><span>Uploaders</span><b id="sUp">–</b><small>คนที่ใส่ชื่อ</small></div>
+      <div class="stat"><span>Today</span><b id="sToday">–</b><small>อัปโหลดวันนี้ · <span id="sHour">–</span> ใน 1 ชม.</small></div>
+      <div class="stat"><span>Storage</span><b id="sBytes">–</b><small><span id="sHidden">0</span> รูปที่ซ่อนอยู่</small></div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h2>UPLOAD SETTINGS</h2>
+        <p>เปิด/ปิดการรับรูป และข้อความที่แขกจะเห็นในหน้า Gallery</p>
+        <label class="switch"><span class="t">รับรูปภาพจากแขก<small id="swState">–</small></span><input type="checkbox" id="swOpen"></label>
+        <div class="ta"><label class="label" for="noticeMsg">Notice <span class="th" style="letter-spacing:0;text-transform:none">· ข้อความแจ้งเตือนเมื่อเปิดรับรูป (เว้นว่างได้)</span></label><textarea id="noticeMsg" maxlength="500" placeholder="เช่น ขอบคุณทุกคนที่มาร่วมงาน แชร์รูปสวย ๆ กันได้เลยนะ"></textarea></div>
+        <div class="ta"><label class="label" for="closedMsg">Closed message <span class="th" style="letter-spacing:0;text-transform:none">· ข้อความเมื่อปิดรับรูป</span></label><textarea id="closedMsg" maxlength="500"></textarea></div>
+        <div class="row" style="margin-top:14px"><button class="btn small" type="button" id="saveSet">Save settings</button><span class="dlprog" id="setMsg"></span></div>
+      </div>
+      <div class="card">
+        <h2>QR CODE</h2>
+        <p>ให้แขกสแกนเพื่อเปิดหน้า Wedding Gallery ทันที</p>
+        <div class="qr-wrap">
+          <canvas id="qrCanvas" width="180" height="180" aria-label="QR code"></canvas>
+          <div>
+            <p class="url" id="qrUrl"></p>
+            <p class="warn" id="qrWarn" hidden></p>
+            <div class="row">
+              <button class="btn small rose" type="button" id="qrCard">Download card PNG</button>
+              <button class="btn small ghost" type="button" id="qrPng">QR only PNG</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tools">
+      <div class="seg" role="tablist" id="filter">
+        <button type="button" data-f="all" class="on">All</button>
+        <button type="button" data-f="approved">Visible</button>
+        <button type="button" data-f="hidden">Hidden</button>
+      </div>
+      <input class="search" type="search" id="search" placeholder="ค้นหาชื่อผู้อัปโหลด">
+      <div class="row">
+        <button class="btn small ghost" type="button" id="selPage">Select page</button>
+        <button class="btn small gold" type="button" id="zipAll">Download all (ZIP)</button>
+      </div>
+    </div>
+    <p class="dlprog" id="zipMsg" hidden></p>
+    <div class="grid-ad" id="grid"></div>
+    <div class="empty" id="adEmpty" hidden>ยังไม่มีรูปภาพ</div>
+    <div class="pager"><button class="btn small ghost" type="button" id="prev">‹ Prev</button><span id="pageInfo"></span><button class="btn small ghost" type="button" id="next">Next ›</button></div>
+    <div class="bulk" id="bulk" hidden>
+      <span>เลือก <b id="selN">0</b> รูป</span>
+      <div class="row">
+        <button class="btn" type="button" id="bClear">Clear</button>
+        <button class="btn" type="button" id="bZip">ZIP</button>
+        <button class="btn" type="button" id="bHide">Hide/Show</button>
+        <button class="btn danger" type="button" id="bDel">Delete</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="vDenied" hidden>
+    <div class="login" style="text-align:center">
+      <p class="label">Access denied</p>
+      <h1 style="font-size:1.3rem">NOT AN ADMIN</h1>
+      <p class="th" style="color:var(--ink-soft);font-size:.88rem">บัญชี <b id="deniedEmail"></b> ยังไม่มีสิทธิ์ Admin<br>ให้เพิ่มอีเมลนี้ในตาราง <code>wedding_admins</code> ของ Supabase</p>
+      <button class="btn ghost" type="button" id="deniedOut" style="width:100%;margin-top:20px">Log out</button>
+    </div>
+  </section>
+</main>
+
+<!-- simple viewer -->
+<div class="lb" id="lb" hidden>
+  <div class="lb-top"><span class="lb-n" id="lbN"></span><button class="icbtn" type="button" id="lbClose" aria-label="ปิด"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div>
+  <div class="lb-bot"><p class="lb-meta" id="lbMeta"></p></div>
+</div>
+
+<script src="../vendor/supabase.js"></script>
+<script src="../vendor/qrcode.js"></script>
+<script src="../vendor/jszip.min.js"></script>
+<script src="../assets/config.js"></script>
+<script src="../assets/common.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
