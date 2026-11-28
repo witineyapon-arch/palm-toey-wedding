@@ -290,6 +290,53 @@ h2.pgsec{font-family:var(--serif-th);font-size:1.05rem;letter-spacing:0;text-tra
 h2.pgsec::before{content:"✿ ";color:var(--champ)}
 .expact{display:flex;flex-wrap:wrap;gap:8px}
 dialog.big .sheet>*{flex-shrink:0}
+/* === Wedding Progress Dashboard === */
+.cd{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+.cd b{font-family:var(--display);font-size:2rem;font-weight:600;color:var(--rose-ink);line-height:1}
+.cd span{font-size:.68rem;letter-spacing:.28em;color:var(--muted)}
+.ovw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ov{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow);min-width:0}
+.ov span{font-size:.62rem;letter-spacing:.14em;color:var(--muted)}
+.ov b{font-family:var(--display);font-size:1.9rem;font-weight:600;line-height:1.05}
+.ov small{font-size:.72rem;color:var(--muted)}
+.ov.hl{background:linear-gradient(160deg,var(--blush),var(--surface))}
+.ov.hl b{color:var(--rose-ink)}
+.ovbar{display:block;height:5px;border-radius:99px;background:var(--surface);overflow:hidden;margin-top:4px}
+.ovbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--champ));border-radius:99px}
+.dcards{display:flex;flex-direction:column;gap:10px}
+h2.dtitle{font-family:var(--display);font-size:1.3rem;letter-spacing:.06em;text-transform:none;color:var(--fg);font-weight:600}
+h2.dtitle::before{content:none}
+.dgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dcard{font:inherit;color:inherit;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);min-width:0}
+.dcard:hover{border-color:var(--petal)}
+.dcard.wide{grid-column:1/-1}
+.dtop{display:flex;align-items:center;gap:10px;min-width:0}
+.dic{flex:none;width:38px;height:38px;border-radius:50%;background:var(--blush);display:grid;place-items:center}
+.dic svg{width:20px;height:20px;fill:none;stroke:var(--rose-ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dnm{display:flex;flex-direction:column;min-width:0;flex:1}
+.dnm small{font-size:.6rem;letter-spacing:.16em;color:var(--champ)}
+.dnm b{font-family:var(--serif-th);font-weight:600;font-size:.98rem;line-height:1.3;overflow-wrap:anywhere}
+.dpct{font-family:var(--display);font-size:1.7rem;font-weight:600;color:var(--fg);line-height:1}
+.dpct em{font-style:normal;font-size:.9rem;color:var(--muted);margin-left:1px}
+.dbar{display:block;height:6px;border-radius:99px;background:var(--blush);overflow:hidden}
+.dbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--champ))}
+@media (prefers-reduced-motion:no-preference){.dbar i,.ovbar i{transition:width .5s ease}}
+.dst{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.dst span{display:flex;flex-direction:column}
+.dst small{font-size:.55rem;letter-spacing:.1em;color:var(--muted)}
+.dst b{font-size:1rem;font-weight:600}
+.tph{display:flex;flex-direction:column;gap:6px}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.tp{position:relative}.tp .thumb{width:64px;height:64px}
+.tp .x{position:absolute;top:-8px;right:-8px;background:var(--surface);border:1px solid var(--line);border-radius:50%;width:22px;height:22px;font-size:.7rem;padding:0;line-height:1}
+@media (max-width:560px){.ovw{grid-template-columns:repeat(2,minmax(0,1fr))}.ov b{font-size:1.6rem}.dcard{padding:12px}.dpct{font-size:1.4rem}.dic{width:32px;height:32px}.dic svg{width:17px;height:17px}
+  .dcard:not(.wide) .dtop{display:grid;grid-template-columns:auto 1fr;gap:8px}
+  .dcard:not(.wide) .dnm{grid-column:1/-1;order:3}.dcard:not(.wide) .dpct{justify-self:end}
+  .dcard:not(.wide) .dst{grid-template-columns:1fr;gap:2px}
+  .dcard:not(.wide) .dst span{flex-direction:row;justify-content:space-between;align-items:baseline}
+  .dcard:not(.wide) .dst b{font-size:.9rem}}
+.wrap{gap:18px}
+
 .expact .pdfbtn{align-self:auto}
 dialog.big .tk{background:var(--surface);border:1px solid var(--line)}
 dialog.big .cksec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
@@ -321,27 +368,19 @@ dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
     <svg class="logo wn" viewBox="339 110 1745 455" role="img" aria-label="โลโก้ WN"><path style="fill:var(--fg)" d="M375.8 551.4C362.9 547.3 354.1 536.5 352.0 522.4C350.2 509.7 351.4 483.8 354.1 477.2C354.6 475.9 355.9 471.5 357.0 467.3C358.9 460.4 365.2 443.4 371.4 428.4C374.6 420.8 391.0 388.6 395.8 380.5C421.2 337.8 459.4 285.2 477.3 268.2C482.5 263.3 483.2 263.0 488.0 263.0C490.8 263.0 494.0 263.4 495.0 264.0C497.7 265.4 501.0 271.3 501.0 274.6C501.0 278.5 501.1 278.3 472.4 317.0C428.1 376.4 393.3 436.8 380.0 477.1C377.2 485.5 375.1 503.3 376.0 511.5C377.7 528.9 386.1 533.0 409.9 528.1C415.6 526.9 421.4 525.3 422.9 524.6C424.3 523.8 427.5 522.7 430.0 522.1C432.5 521.4 437.9 519.6 442.0 518.0C465.0 509.2 473.8 505.6 476.5 504.0C478.1 503.0 480.6 501.9 482.0 501.5C484.4 500.7 510.8 488.3 520.0 483.5C549.1 468.5 570.4 457.0 598.0 441.2C604.3 437.6 614.6 431.8 620.9 428.3C627.2 424.8 636.2 419.7 640.9 416.8C645.6 414.0 652.0 410.3 655.0 408.5C658.0 406.8 666.5 401.8 673.7 397.4C681.0 393.1 689.4 388.2 692.2 386.6C699.7 382.5 726.4 366.9 733.0 362.8C736.0 360.9 744.1 356.1 751.0 352.0C757.9 348.0 766.2 343.0 769.5 341.0C772.8 339.0 778.6 335.5 782.5 333.3C786.4 331.1 792.6 327.4 796.5 325.2C872.4 281.5 886.1 275.3 895.8 280.4C900.5 282.9 904.1 287.5 904.7 291.8C905.6 298.4 903.3 302.7 875.6 346.4C870.0 355.2 865.2 363.2 864.8 364.2C864.4 365.3 863.0 367.5 861.6 369.3C858.8 373.2 842.4 403.5 839.4 410.5C838.2 413.2 835.9 418.6 834.2 422.5C826.8 439.8 824.6 449.3 824.5 464.5C824.5 478.1 824.6 478.7 827.4 483.7C834.3 496.2 846.0 500.2 863.3 496.1C868.2 494.9 872.9 494.0 873.9 494.0C875.6 494.0 890.5 488.4 897.5 485.0C899.7 484.0 904.9 481.7 909.0 479.9C917.1 476.5 949.3 460.3 960.0 454.4C963.6 452.4 972.5 447.3 979.8 443.1C987.1 438.9 998.3 432.6 1004.6 429.0C1010.9 425.4 1020.4 419.8 1025.8 416.4C1031.1 413.1 1040.0 407.6 1045.5 404.3C1064.9 392.6 1088.7 377.6 1108.5 364.5C1119.5 357.2 1131.7 349.2 1135.5 346.6C1139.3 344.1 1154.3 334.0 1168.7 324.3C1201.8 301.9 1227.3 285.9 1239.7 279.7C1255.1 271.9 1268.9 273.2 1272.0 282.6C1274.2 289.1 1272.6 294.2 1260.4 318.9C1237.3 365.9 1233.0 375.4 1227.5 391.5C1211.1 440.0 1216.7 472.0 1243.4 483.0C1251.4 486.2 1251.4 486.2 1265.4 485.7C1282.6 485.2 1301.4 480.7 1326.0 471.3C1329.6 469.9 1334.3 468.1 1336.5 467.3C1341.1 465.7 1357.5 458.8 1363.5 455.9C1365.7 454.9 1375.4 450.4 1385.0 445.9C1394.6 441.5 1403.0 437.4 1403.5 437.0C1404.0 436.6 1410.1 433.4 1417.0 430.0C1427.7 424.6 1439.9 418.1 1459.0 407.3C1467.8 402.3 1503.5 381.9 1507.0 379.8C1508.9 378.7 1518.2 373.2 1527.5 367.7C1536.8 362.2 1546.3 356.5 1548.5 355.0C1550.7 353.5 1553.8 351.7 1555.5 350.8C1557.2 350.0 1564.6 345.6 1572.0 341.0C1579.4 336.4 1588.4 331.0 1592.0 329.0C1595.6 327.0 1605.7 320.9 1614.5 315.5C1633.0 304.1 1649.3 294.5 1660.1 288.4C1664.3 286.1 1672.2 281.5 1677.6 278.4C1736.6 244.0 1812.5 205.1 1860.5 184.5C1862.2 183.8 1867.5 181.4 1872.5 179.2C1877.5 177.0 1882.6 174.9 1884.0 174.5C1885.4 174.1 1887.0 173.4 1887.5 173.0C1888.9 171.9 1906.7 164.6 1917.0 160.8C1921.7 159.1 1926.0 157.3 1926.6 156.8C1927.3 156.3 1931.5 154.6 1936.1 153.0C1940.7 151.4 1949.7 148.2 1956.0 145.9C1966.9 142.0 1971.0 140.7 1992.5 134.6C1997.5 133.2 2004.5 131.1 2008.2 130.0C2029.0 123.6 2060.5 120.1 2067.0 123.5C2075.4 127.9 2074.2 140.6 2065.0 144.2C2063.6 144.7 2056.2 145.8 2048.5 146.6C2040.8 147.4 2032.4 148.7 2029.8 149.5C2027.3 150.3 2022.1 151.4 2018.3 152.0C2010.1 153.2 2000.9 155.5 1997.2 157.4C1995.7 158.1 1992.7 159.1 1990.5 159.4C1985.7 160.3 1963.6 167.5 1960.0 169.4C1958.6 170.1 1956.2 171.0 1954.5 171.4C1951.0 172.2 1940.7 176.2 1936.5 178.4C1934.8 179.3 1932.9 180.0 1932.1 180.0C1931.4 180.0 1927.4 181.6 1923.3 183.5C1919.2 185.4 1915.3 187.0 1914.7 187.0C1914.0 187.0 1912.2 187.7 1910.5 188.6C1908.8 189.5 1903.9 191.7 1899.5 193.5C1891.0 197.0 1877.9 203.1 1856.5 213.5C1849.3 217.0 1841.2 220.9 1838.5 222.2C1835.8 223.6 1832.6 225.1 1831.5 225.7C1830.4 226.3 1826.3 228.4 1822.5 230.3C1808.5 237.3 1775.6 254.6 1761.5 262.5C1758.8 264.1 1748.6 269.6 1739.0 274.8C1729.4 280.0 1720.8 284.8 1720.0 285.5C1719.2 286.2 1716.7 287.5 1714.5 288.4C1712.3 289.4 1709.6 290.9 1708.5 291.9C1707.4 292.9 1704.2 294.9 1701.5 296.2C1695.6 299.0 1664.1 317.2 1659.0 320.6C1657.1 321.9 1655.2 323.0 1654.7 323.0C1653.8 323.0 1634.8 334.2 1625.6 340.2C1622.3 342.3 1619.3 344.0 1618.8 344.0C1618.3 344.0 1616.0 345.3 1613.7 346.8C1611.4 348.4 1605.9 351.6 1601.5 354.0C1597.1 356.3 1591.9 359.3 1590.0 360.5C1588.1 361.7 1580.9 366.0 1574.0 370.0C1567.1 374.0 1559.7 378.5 1557.5 379.9C1555.3 381.3 1552.7 382.8 1551.7 383.2C1550.7 383.7 1544.4 387.3 1537.7 391.4C1524.8 399.2 1513.1 405.8 1499.7 412.8C1495.2 415.1 1487.7 419.2 1483.0 421.9C1470.9 428.8 1450.1 439.6 1424.0 452.6C1389.0 470.0 1376.0 475.9 1354.5 484.4C1328.8 494.6 1306.4 501.6 1285.5 506.0C1278.2 507.6 1248.9 508.3 1239.2 507.1C1211.6 504.0 1190.7 482.8 1187.9 455.0C1186.3 438.8 1187.6 423.7 1192.2 406.5C1194.4 398.2 1197.0 389.7 1198.0 387.5C1199.0 385.2 1202.0 378.5 1204.5 372.5C1208.7 362.5 1212.2 355.7 1225.7 330.5C1230.2 322.0 1230.9 319.0 1228.5 319.0C1227.7 319.0 1217.2 325.4 1205.2 333.1C1193.3 340.9 1182.2 348.0 1180.6 348.9C1179.1 349.8 1173.2 353.4 1167.6 357.0C1162.1 360.6 1153.9 365.7 1149.5 368.4C1140.6 373.7 1127.0 382.1 1119.6 387.0C1116.9 388.8 1099.4 399.6 1080.6 411.2C1061.9 422.8 1044.2 433.7 1041.5 435.5C1038.8 437.2 1031.5 441.5 1025.5 445.0C1019.5 448.4 1009.0 454.6 1002.4 458.6C995.7 462.7 989.1 466.4 987.7 466.9C986.3 467.5 983.4 469.0 981.3 470.3C974.2 474.8 940.2 491.9 925.3 498.6C909.1 505.9 901.2 508.8 887.5 512.7C882.5 514.1 876.2 515.9 873.5 516.8C870.2 517.8 863.2 518.5 853.0 518.8C838.1 519.2 837.1 519.1 829.5 516.5C804.3 507.8 793.5 486.2 796.9 451.0C799.9 419.7 814.1 385.1 841.6 342.0C851.0 327.2 853.7 322.4 852.8 321.5C851.9 320.6 842.3 324.8 834.2 329.9C829.6 332.7 825.5 335.0 825.0 335.0C824.6 335.0 821.6 336.7 818.4 338.9C812.2 342.9 788.2 357.5 776.9 364.1C773.3 366.1 765.4 370.9 759.4 374.6C753.4 378.3 746.7 382.3 744.5 383.5C742.3 384.7 736.7 388.1 732.0 391.0C727.3 393.9 721.8 397.2 719.8 398.4C717.7 399.6 712.1 403.0 707.3 406.1C702.4 409.2 692.9 415.0 686.0 419.0C679.1 423.1 669.2 429.0 663.9 432.2C658.5 435.4 653.4 438.3 652.4 438.7C651.3 439.1 647.6 441.2 644.0 443.5C640.4 445.8 634.4 449.3 630.5 451.5C620.6 456.9 599.0 468.9 589.4 474.3C573.4 483.3 499.1 521.0 497.5 521.0C497.1 521.0 490.7 523.7 483.2 527.1C475.7 530.4 467.5 533.8 465.0 534.5C462.5 535.3 454.0 538.2 446.0 541.0C438.0 543.8 429.5 546.5 427.0 546.9C424.5 547.4 416.0 549.2 408.0 550.9C390.5 554.6 385.8 554.7 375.8 551.4Z"/></svg>
     <p class="eyebrow">WEDDING WN</p>
     <h1 id="title" class="couple">PALM <span>&amp;</span> TOEY</h1>
-    <p class="wdate">12 . 12 . 2026</p>
-    <div class="sub">
-      <span id="countdown">ยังไม่ได้ตั้งวันงาน</span>
-    </div>
+    <p class="wdate">12 DECEMBER 2026</p>
+    <div class="cd" aria-live="polite"><b class="num" id="cdDays">–</b><span id="cdLabel">DAYS TO GO</span></div>
+    <span id="countdown" hidden>ยังไม่ได้ตั้งวันงาน</span>
   </header>
 
-  <section class="ckdash" aria-labelledby="ckTitle">
-    <div class="ckhead"><div><p class="eyebrow sm">WEDDING PLANNER &amp; CHECKLIST</p><h2 class="cktitle" id="ckTitle">ความพร้อมงานแต่ง</h2></div><button type="button" class="btn sm ghost" id="ckOpenAll">เปิด Checklist</button></div>
-    <div class="ckmain">
-      <div class="ckring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="rt"/><circle cx="60" cy="60" r="52" class="rv" id="ckRing" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><div><b class="num" id="ckPct">0%</b><span>Overall Progress</span></div></div>
-      <div class="ckstats">
-        <div><span>Total Checklist</span><b class="num" id="ckTotal">0</b></div>
-        <div><span>Completed</span><b class="num" id="ckDone" style="color:var(--ok)">0</b></div>
-        <div><span>In Progress</span><b class="num" id="ckProg" style="color:var(--gold)">0</b></div>
-        <div><span>Pending</span><b class="num" id="ckPend" style="color:var(--rose-ink)">0</b></div>
-      </div>
-    </div>
-    <div class="ckbar" aria-hidden="true"><i class="d" id="ckBarD"></i><i class="p" id="ckBarP"></i></div>
-    <div class="ckcats" id="ckCats"><div class="empty">กำลังโหลด Checklist…</div></div>
-    <div class="ckup"><h3>Upcoming Tasks</h3><div id="ckUp" class="ledger"></div></div>
+  <section class="ovw" aria-label="Overall summary">
+    <div class="ov"><span>TOTAL TASKS</span><b class="num" id="ovTotal">0</b><small>งานทั้งหมด</small></div>
+    <div class="ov"><span>COMPLETED</span><b class="num" id="ovDone" style="color:var(--ok)">0</b><small>ทำเสร็จแล้ว</small></div>
+    <div class="ov"><span>REMAINING</span><b class="num" id="ovLeft" style="color:var(--rose-ink)">0</b><small>คงเหลือ</small></div>
+    <div class="ov hl"><span>OVERALL PROGRESS</span><b class="num" id="ovPct">0%</b><i class="ovbar"><i id="ovBar"></i></i></div>
   </section>
+
+  <section class="dcards" aria-label="Category dashboard"><h2 class="dtitle">Wedding Progress</h2><div id="dashCards" class="dgrid"><div class="empty">กำลังโหลด…</div></div></section>
 
 
   <button class="linkish" id="editCfg" type="button" style="align-self:center">⚙ ตั้งค่าวันงานและงบ</button>
@@ -464,33 +503,36 @@ dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
   <div class="actions"><button type="button" class="btn danger" id="gDel" hidden>ลบ</button><div class="r"><button type="button" class="btn" data-close="gDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
 </form></dialog>
 <dialog id="ckDlg" class="big"><div class="sheet">
-  <div class="dh pg"><button type="button" class="back" data-close="ckDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>Wedding Checklist</h3></div></div>
-  <div class="seg" id="ckCatSeg" role="tablist"></div>
+  <div class="dh pg"><button type="button" class="back" data-close="ckDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3 id="ckPgTitle">Wedding Checklist</h3></div></div>
+  <div class="rowhead"><div class="seg" id="ckCatSeg" role="tablist"></div></div>
+  <button type="button" class="btn sm ghost" id="ckAddCatTop" style="align-self:flex-start">+ เพิ่มหัวข้อ</button>
   <div class="rowhead"><div class="seg" id="ckStSeg" role="tablist"><button type="button" class="on" data-st="all">ทั้งหมด</button><button type="button" data-st="pending">Pending</button><button type="button" data-st="progress">In Progress</button><button type="button" data-st="done">Completed</button></div></div>
   <div id="ckBody" class="ckbody"></div>
-  <button type="button" class="linkish" id="ckAddCat" style="align-self:flex-start">+ เพิ่มหมวดงาน</button>
+  <button type="button" class="linkish" id="ckAddCat" style="align-self:flex-start">+ เพิ่มหัวข้อ</button>
 </div></dialog>
 
 <dialog id="tkDlg"><form class="sheet" id="tkForm">
   <div class="dh"><h3 id="tkTitle">เพิ่มงาน</h3><button type="button" class="x" data-close="tkDlg" aria-label="ปิด">✕</button></div>
   <label>ชื่องาน<input id="tName" required placeholder="เช่น ตรวจสอบไมโครโฟน"></label>
   <div class="grid2">
-    <label>หมวด<select id="tCat"></select></label>
+    <label>หัวข้อ<select id="tCat"></select></label>
     <label>สถานะ<select id="tStatus"><option value="pending">Pending · ยังไม่เริ่ม</option><option value="progress">In Progress · กำลังทำ</option><option value="done">Completed · เสร็จแล้ว</option></select></label>
     <label>กำหนดเสร็จ<input id="tDue" type="date"></label>
     <label>ผู้รับผิดชอบ<select id="tOwner"><option value="">— ไม่ระบุ —</option><option>Organizer</option><option>เจ้าบ่าว</option><option>เจ้าสาว</option><option>บ่าวสาว</option></select></label>
   </div>
   <label>หมายเหตุ<textarea id="tNote" placeholder="รายละเอียด หรือสิ่งที่ต้องแจ้ง Organizer"></textarea></label>
+  <div class="tph"><span class="note">รูปภาพ</span><div id="tPhotos" class="thumbs"></div><button type="button" class="btn sm" id="tAddPhoto">＋ เพิ่มรูปภาพ</button><input type="file" id="tPhotoFile" accept="image/*" multiple hidden></div>
   <div class="actions"><button type="button" class="btn danger" id="tDel" hidden>ลบงาน</button><div class="r"><button type="button" class="btn" data-close="tkDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
 </form></dialog>
 
 <dialog id="catDlg"><form class="sheet" id="catForm">
-  <div class="dh"><h3 id="catTitle">เพิ่มหมวดงาน</h3><button type="button" class="x" data-close="catDlg" aria-label="ปิด">✕</button></div>
-  <div class="grid2"><label>ลำดับ<input id="kCode" placeholder="เช่น 04"></label><label>ชื่อหมวด (อังกฤษ)<input id="kName" required placeholder="เช่น CEREMONY"></label></div>
+  <div class="dh"><h3 id="catTitle">เพิ่มหัวข้อ</h3><button type="button" class="x" data-close="catDlg" aria-label="ปิด">✕</button></div>
+  <div class="grid2"><label>ลำดับ<input id="kCode" placeholder="เช่น 04"></label><label>ชื่อหัวข้อ<input id="kName" required placeholder="เช่น CEREMONY หรือ พิธีการ"></label></div>
+  <label>อยู่ในการ์ด<select id="kCard"><option value="organizer">ออแกไนซ์</option><option value="band">วงดนตรี</option><option value="food">อาหารและเครื่องดื่ม</option><option value="diy">เตรียมเอง</option></select></label>
   <label>คำอธิบาย (ไทย)<input id="kTh" placeholder="เช่น ตรวจสอบพิธีการ"></label>
-  <div class="actions"><button type="button" class="btn danger" id="kDel" hidden>ลบหมวด</button><div class="r"><button type="button" class="btn" data-close="catDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+  <div class="actions"><button type="button" class="btn danger" id="kDel" hidden>ลบหัวข้อ</button><div class="r"><button type="button" class="btn" data-close="catDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
 </form></dialog>
-<dialog id="viewDlg"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h3>สลิปการจ่าย</h3><button type="button" class="x" id="viewClose" aria-label="ปิด">✕</button></div><img id="viewImg" alt="สลิปการจ่ายเงิน" style="width:100%;border-radius:10px"></div></dialog>
+<dialog id="viewDlg"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h3 id="viewTitle">รูปภาพ</h3><button type="button" class="x" id="viewClose" aria-label="ปิด">✕</button></div><img id="viewImg" alt="สลิปการจ่ายเงิน" style="width:100%;border-radius:10px"></div></dialog>
 <div class="toast" id="toast" hidden></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -779,40 +821,44 @@ const ST={pending:["Pending","○"],progress:["In Progress","◐"],done:["Comple
 const NEXT={pending:"progress",progress:"done",done:"pending"};
 const catName=c=>c?`${c.code?c.code+". ":""}${c.name}`:"ไม่มีหมวด";
 function daysTo(d){return Math.round((new Date(d+"T00:00:00")-new Date(today()+"T00:00:00"))/864e5)}
+const CARDS=[{id:"money",name:"รายรับรายจ่าย",en:"FINANCE",icon:"wallet"},{id:"organizer",name:"ออแกไนซ์",en:"ORGANIZER",icon:"flower"},{id:"band",name:"วงดนตรี",en:"MUSIC",icon:"music"},{id:"food",name:"อาหารและเครื่องดื่ม",en:"FOOD & DRINK",icon:"utensils"},{id:"diy",name:"เตรียมเอง",en:"DIY",icon:"clipboard"}];
+const ICONS={wallet:'<path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18v3"/><path d="M4 7.5V17a2 2 0 0 0 2 2h13a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1H6.5A2.5 2.5 0 0 1 4 7.5Z"/><circle cx="16" cy="13.5" r="1.2"/>',flower:'<circle cx="12" cy="10" r="2.2"/><path d="M12 7.8C12 5 13.6 3.5 15 3.8c1.5.3 1.6 2.6-.6 4.6M14.2 10c2.8 0 4.3 1.6 4 3-.3 1.5-2.6 1.6-4.6-.6M12 12.2c0 2.8-1.6 4.3-3 4-1.5-.3-1.6-2.6.6-4.6M9.8 10C7 10 5.5 8.4 5.8 7c.3-1.5 2.6-1.6 4.6.6"/><path d="M12 16.5V21M12 19c-1.5-1.6-3-2-4.5-1.8"/>',music:'<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',utensils:'<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 21V3c-2 1.5-3 4-3 7v3h3"/>',clipboard:'<rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 11l1.5 1.5 3-3M8.5 16.5h7"/>'};
+let ckCard=null;
+function cardOf(c){if(c.card&&CARDS.some(x=>x.id===c.card))return c.card;const t=[c.name,c.th,c.code].join(" ").toUpperCase();
+  if(/ออแกไนซ์|ORGAN/.test(t))return"organizer";if(/อาหาร|เครื่องดื่ม|FOOD|DRINK|BUFFET|CATER/.test(t))return"food";if(/ดนตรี|MUSIC|BAND|SOUND|เสียง|เพลง/.test(t))return"band";return"diy"}
+function cardStats(id){
+  if(id==="money"){const live=items.filter(i=>i.booking!=="cancel");return{t:live.length,d:live.filter(i=>(+i.total||0)>0&&sum(i.payments)>=(+i.total||0)).length}}
+  const ids=ckCats.filter(c=>cardOf(c)===id).map(c=>c.id),ts=tasks.filter(t=>ids.includes(t.cat));return{t:ts.length,d:ts.filter(t=>t.status==="done").length}}
+const pctOf=(d,t)=>t?Math.round(d/t*100):0;
 function renderDash(){
-  const n=tasks.length,d=tasks.filter(t=>t.status==="done").length,p=tasks.filter(t=>t.status==="progress").length,pe=n-d-p;
-  const pct=n?Math.round(d/n*100):0;
-  $("ckTotal").textContent=n;$("ckDone").textContent=d;$("ckProg").textContent=p;$("ckPend").textContent=pe;$("ckPct").textContent=pct+"%";
-  $("ckRing").setAttribute("stroke-dashoffset",(326.7*(1-pct/100)).toFixed(1));
-  $("ckBarD").style.width=(n?d/n*100:0)+"%";$("ckBarP").style.width=(n?p/n*100:0)+"%";
-  $("dockCk").textContent=n?`พร้อมแล้ว ${pct}%`:"ความพร้อม";
-  const C=$("ckCats");
-  if(!ckCats.length){C.innerHTML=`<div class="empty" style="grid-column:1/-1">ยังไม่มีหมวดงาน กด “เปิด Checklist” เพื่อเริ่ม</div>`}
-  else C.innerHTML=ckCats.map(c=>{const ts=tasks.filter(t=>t.cat===c.id),dn=ts.filter(t=>t.status==="done").length;
-    return `<button type="button" class="ckcat" data-cat="${esc(c.id)}"><span class="cc">${esc(c.code||"")}</span><b>${esc(c.name)}</b><small>${esc(c.th||"")}</small>
-    <span class="mini"><i style="width:${ts.length?dn/ts.length*100:0}%"></i></span><span class="cn"><span>เสร็จ <b>${dn}</b></span><span>ยังไม่เสร็จ <b>${ts.length-dn}</b></span></span></button>`}).join("");
-  C.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>openCk(b.dataset.cat));
-  const up=tasks.filter(t=>t.status!=="done"&&t.due).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,5);
-  const U=$("ckUp");
-  U.innerHTML=up.length?up.map(t=>{const k=daysTo(t.due),c=ckCats.find(x=>x.id===t.cat);
-    const lab=k<0?`เลยกำหนด ${-k} วัน`:k===0?"วันนี้":`อีก ${k} วัน`;
-    return `<button type="button" class="lr" data-tk="${esc(t.id)}"><span class="ic ${k<0?"out":"g"}">${ST[t.status][1]}</span><span class="tx"><b>${esc(t.title)}</b><small>${esc(catName(c))}${t.owner?" · "+esc(t.owner):""}</small></span><span class="am" style="color:${k<0?"var(--bad)":k<=3?"var(--gold)":"var(--muted)"}">${thDate(t.due)}<small>${lab}</small></span></button>`}).join("")
-   :`<div class="empty">ยังไม่มีงานที่ตั้งกำหนดวัน<br>ใส่ “กำหนดเสร็จ” ในงานแต่ละรายการ แล้วงานที่ใกล้ถึงจะขึ้นที่นี่</div>`;
-  U.querySelectorAll("[data-tk]").forEach(b=>b.onclick=()=>openTk(tasks.find(t=>t.id===b.dataset.tk)));
+  if(!$("dashCards"))return;
+  let T=0,D=0;const st=CARDS.map(c=>{const x=cardStats(c.id);T+=x.t;D+=x.d;return x});
+  const P=pctOf(D,T);$("ovTotal").textContent=T;$("ovDone").textContent=D;$("ovLeft").textContent=T-D;$("ovPct").textContent=P+"%";$("ovBar").style.width=P+"%";
+  const ckT=tasks.length,ckD=tasks.filter(t=>t.status==="done").length;$("dockCk").textContent=ckT?`พร้อมแล้ว ${pctOf(ckD,ckT)}%`:"ความพร้อม";
+  if(cfg&&cfg.date){const k=daysTo(cfg.date);$("cdDays").textContent=k>0?k:k===0?"TODAY":"♡";$("cdLabel").textContent=k>0?"DAYS TO GO":k===0?"WEDDING DAY":"JUST MARRIED"}
+  $("dashCards").innerHTML=CARDS.map((c,i)=>{const x=st[i],p=pctOf(x.d,x.t);
+    return `<button type="button" class="dcard${i===0?" wide":""}" data-card="${c.id}">
+      <span class="dtop"><span class="dic"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[c.icon]}</svg></span><span class="dnm"><small>${String(i+1).padStart(2,"0")} · ${c.en}</small><b>${c.name}</b></span><span class="dpct num">${p}<em>%</em></span></span>
+      <span class="dbar"><i style="width:${p}%"></i></span>
+      <span class="dst"><span><small>TOTAL</small><b class="num">${x.t}</b></span><span><small>COMPLETED</small><b class="num">${x.d}</b></span><span><small>REMAINING</small><b class="num">${x.t-x.d}</b></span></span></button>`}).join("");
+  $("dashCards").querySelectorAll("[data-card]").forEach(b=>b.onclick=()=>b.dataset.card==="money"?$("openMoney").click():openCard(b.dataset.card));
 }
+function openCard(id){ckCard=id;ckCat="all";const c=CARDS.find(x=>x.id===id);$("ckPgTitle").textContent=c?c.name:"Wedding Checklist";renderCk();if(!$("ckDlg").open)$("ckDlg").showModal()}
+const visCats=()=>ckCard?ckCats.filter(c=>cardOf(c)===ckCard):ckCats;
 function renderCk(){
   const S=$("ckCatSeg");
-  S.innerHTML=`<button type="button" data-c="all" class="${ckCat==="all"?"on":""}">ทุกหมวด</button>`+ckCats.map(c=>`<button type="button" data-c="${esc(c.id)}" class="${ckCat===c.id?"on":""}">${esc(c.code||"")} ${esc(c.name)}</button>`).join("");
+  const VC=visCats();if(ckCat!=="all"&&!VC.some(c=>c.id===ckCat))ckCat="all";
+  S.innerHTML=`<button type="button" data-c="all" class="${ckCat==="all"?"on":""}">ทุกหัวข้อ</button>`+VC.map(c=>`<button type="button" data-c="${esc(c.id)}" class="${ckCat===c.id?"on":""}">${esc(c.code||"")} ${esc(c.name)}</button>`).join("");
   S.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{ckCat=b.dataset.c;renderCk()});
   document.querySelectorAll("[data-st]").forEach(b=>b.classList.toggle("on",b.dataset.st===ckSt));
-  const cats=ckCat==="all"?ckCats:ckCats.filter(c=>c.id===ckCat);
+  const cats=ckCat==="all"?VC:VC.filter(c=>c.id===ckCat);
   const B=$("ckBody");
-  if(!cats.length){B.innerHTML=`<div class="empty">ยังไม่มีหมวดงาน กด “+ เพิ่มหมวดงาน”</div>`;return}
+  if(!cats.length){B.innerHTML=`<div class="empty">ยังไม่มีหัวข้อในหมวดนี้<br>กด “+ เพิ่มหัวข้อ” เพื่อเริ่มสร้างรายการงาน</div>`;return}
   B.innerHTML=cats.map(c=>{const all=tasks.filter(t=>t.cat===c.id),ts=all.filter(t=>ckSt==="all"||t.status===ckSt),dn=all.filter(t=>t.status==="done").length;
-    return `<section class="cksec"><div class="sh"><h4><em>${esc(c.code||"")}</em>${esc(c.name)}</h4><small>เสร็จ ${dn}/${all.length}${canWrite?` · <button type="button" class="linkish" data-ec="${esc(c.id)}">แก้หมวด</button>`:""}</small></div>
+    return `<section class="cksec"><div class="sh"><h4><em>${esc(c.code||"")}</em>${esc(c.name)}</h4><small>เสร็จ ${dn}/${all.length}${canWrite?` · <button type="button" class="linkish" data-ec="${esc(c.id)}">แก้หัวข้อ</button>`:""}</small></div>
     ${c.th?`<div class="th">${esc(c.th)}</div>`:""}
     ${ts.length?ts.map(t=>`<div class="tk ${t.status}"><button type="button" class="tg ${t.status}" data-cy="${esc(t.id)}" aria-label="สถานะ ${ST[t.status][0]} แตะเพื่อเปลี่ยน" ${canWrite?"":"disabled"}>${t.status==="done"?"✓":t.status==="progress"?"◐":""}</button>
-      <button type="button" class="tx" data-tk="${esc(t.id)}"><b>${esc(t.title)}</b>${(t.due||t.owner||t.note||t.status==="progress")?`<small>${[t.status==="progress"?"กำลังทำ":"",t.due?"กำหนด "+thDate(t.due):"",t.owner||"",t.note||""].filter(Boolean).map(esc).join(" · ")}</small>`:""}</button></div>`).join("")
+      <button type="button" class="tx" data-tk="${esc(t.id)}"><b>${esc(t.title)}</b>${(t.due||t.owner||t.note||t.status==="progress"||(t.photos||[]).length)?`<small>${[t.status==="progress"?"กำลังทำ":"",t.due?"กำหนด "+thDate(t.due):"",t.owner||"",(t.photos||[]).length?"📷 "+t.photos.length:"",t.note||""].filter(Boolean).map(esc).join(" · ")}</small>`:""}</button></div>`).join("")
       :`<div class="note">${all.length?"ไม่มีงานในสถานะนี้":"ยังไม่มีงานในหมวดนี้"}</div>`}
     ${canWrite?`<button type="button" class="linkish add" data-addc="${esc(c.id)}">+ เพิ่มงานในหมวดนี้</button>`:""}
     <label class="cknote">หมายเหตุ<textarea data-note="${esc(c.id)}" placeholder="บันทึกเพิ่มเติมของหมวดนี้" ${canWrite?"":"disabled"}>${esc(c.note||"")}</textarea></label></section>`}).join("");
@@ -826,38 +872,53 @@ function renderCk(){
 async function cycle(id){const t=tasks.find(x=>x.id===id);if(!t||!db)return;const {id:_,...rest}=t;
   try{await db.collection("tasks").doc(id).set({...rest,status:NEXT[t.status||"pending"],updatedAt:new Date().toISOString(),updatedBy:me||""})}catch(e){toast("บันทึกไม่สำเร็จ")}}
 document.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{ckSt=b.dataset.st;renderCk()});
-function openCk(cat){ckCat=cat||"all";renderCk();if(!$("ckDlg").open)$("ckDlg").showModal()}
-$("openCk").onclick=()=>openCk("all");$("ckOpenAll").onclick=()=>openCk("all");
+function openCk(cat){ckCard=null;$("ckPgTitle").textContent="Wedding Checklist";ckCat=cat||"all";renderCk();if(!$("ckDlg").open)$("ckDlg").showModal()}
+$("openCk").onclick=()=>openCk("all");
 function openTk(t,cat){editTk=t||null;$("tkTitle").textContent=t?"แก้ไขงาน":"เพิ่มงาน";
-  $("tCat").innerHTML=ckCats.map(c=>`<option value="${esc(c.id)}">${esc(catName(c))}</option>`).join("");
-  $("tName").value=t?.title||"";$("tCat").value=t?.cat||cat||(ckCat!=="all"?ckCat:(ckCats[0]?.id||""));$("tStatus").value=t?.status||"pending";
+  const TC=ckCard?visCats():ckCats;const TCx=t&&!TC.some(c=>c.id===t.cat)?[...TC,...ckCats.filter(c=>c.id===t.cat)]:TC;
+  $("tCat").innerHTML=TCx.map(c=>`<option value="${esc(c.id)}">${esc(catName(c))}</option>`).join("");tPhotos=[...(t?.photos||[])];renderTPhotos();
+  $("tName").value=t?.title||"";$("tCat").value=t?.cat||cat||(ckCat!=="all"?ckCat:(TCx[0]?.id||""));if(!TCx.length){toast("เพิ่มหัวข้อก่อน แล้วค่อยเพิ่มงาน");openCat(null);return}$("tStatus").value=t?.status||"pending";
   $("tDue").value=t?.due||"";$("tOwner").value=t?.owner||"";$("tNote").value=t?.note||"";
   $("tDel").hidden=!t;$("tDel").dataset.armed="";$("tDel").textContent="ลบงาน";
   [...$("tkForm").elements].forEach(e=>{if(!e.dataset.close&&e.className!=="x")e.disabled=!canWrite});$("tkDlg").showModal()}
 $("tkForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
   const cat=$("tCat").value,ord=editTk?.order??(Math.max(0,...tasks.filter(t=>t.cat===cat).map(t=>+t.order||0))+1);
-  const body={title:$("tName").value.trim(),cat,status:$("tStatus").value,due:$("tDue").value,owner:$("tOwner").value,note:$("tNote").value.trim(),order:ord,
+  const body={title:$("tName").value.trim(),cat,status:$("tStatus").value,due:$("tDue").value,owner:$("tOwner").value,note:$("tNote").value.trim(),photos:tPhotos,order:ord,
     createdAt:editTk?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString(),updatedBy:me||""};
   try{await (editTk?db.collection("tasks").doc(editTk.id):db.collection("tasks").doc()).set(body);$("tkDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง")}};
 $("tDel").onclick=async()=>{const b=$("tDel");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
   try{await db.collection("tasks").doc(editTk.id).delete();$("tkDlg").close();toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
-function openCat(c){editCat=c||null;$("catTitle").textContent=c?"แก้ไขหมวดงาน":"เพิ่มหมวดงาน";
+function openCat(c){editCat=c||null;$("catTitle").textContent=c?"แก้ไขหัวข้อ":"เพิ่มหัวข้อ";$("kCard").value=c?cardOf(c):(ckCard||"diy");
   $("kCode").value=c?.code||String(ckCats.length+1).padStart(2,"0");$("kName").value=c?.name||"";$("kTh").value=c?.th||"";
-  $("kDel").hidden=!c;$("kDel").dataset.armed="";$("kDel").textContent="ลบหมวด";$("catDlg").showModal()}
-$("ckAddCat").onclick=()=>openCat(null);
+  $("kDel").hidden=!c;$("kDel").dataset.armed="";$("kDel").textContent="ลบหัวข้อ";$("catDlg").showModal()}
+$("ckAddCat").onclick=$("ckAddCatTop").onclick=()=>openCat(null);
 $("catForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
-  const body={code:$("kCode").value.trim(),name:$("kName").value.trim().toUpperCase(),th:$("kTh").value.trim(),note:editCat?.note||"",order:editCat?.order??(Math.max(0,...ckCats.map(c=>+c.order||0))+1)};
+  const body={code:$("kCode").value.trim(),name:$("kName").value.trim().toUpperCase(),th:$("kTh").value.trim(),card:$("kCard").value,note:editCat?.note||"",order:editCat?.order??(Math.max(0,...ckCats.map(c=>+c.order||0))+1)};
   try{await (editCat?db.collection("ckcats").doc(editCat.id):db.collection("ckcats").doc()).set(body);$("catDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ")}};
 $("kDel").onclick=async()=>{const b=$("kDel");const n=tasks.filter(t=>t.cat===editCat.id).length;
-  if(n){toast(`หมวดนี้ยังมี ${n} งาน ย้ายหรือลบงานก่อน`);return}
+  if(n){toast(`หัวข้อนี้ยังมี ${n} งาน ย้ายหรือลบงานก่อน`);return}
   if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
   try{await db.collection("ckcats").doc(editCat.id).delete();$("catDlg").close();if(ckCat===editCat.id)ckCat="all";toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
 $("ckAddCat").hidden=false;
-claude.use("db").then(d=>{if(!d){$("ckCats").innerHTML=`<div class="empty" style="grid-column:1/-1">เปิดข้อมูลไม่ได้ในหน้าจอนี้</div>`;return}
+claude.use("db").then(d=>{if(!d){$("dashCards").innerHTML=`<div class="empty">เปิดข้อมูลไม่ได้ในหน้าจอนี้</div>`;return}
   const rr=()=>{renderDash();if($("ckDlg").open)renderCk()};
   d.collection("ckcats").onSnapshot(s=>{ckCats=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
   d.collection("tasks").onSnapshot(s=>{tasks=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
 });
+
+
+// ----- task photos -----
+let tPhotos=[];
+function renderTPhotos(){const P=$("tPhotos");
+  P.innerHTML=tPhotos.map((id,i)=>`<span class="tp"><img class="thumb" data-blob="${esc(id)}" src="${blobUrl(id)}" alt="รูปภาพงาน"><button type="button" class="x" data-rmp="${i}" aria-label="ลบรูปนี้">✕</button></span>`).join("");
+  P.querySelectorAll("[data-rmp]").forEach(b=>b.onclick=()=>{tPhotos.splice(+b.dataset.rmp,1);renderTPhotos()});
+  P.querySelectorAll("img").forEach(im=>im.onclick=()=>{$("viewTitle").textContent="รูปภาพ";$("viewImg").src=im.src;$("viewDlg").showModal()});
+  $("tAddPhoto").hidden=!(assets&&canWrite)}
+$("tAddPhoto").onclick=()=>$("tPhotoFile").click();
+$("tPhotoFile").onchange=async()=>{const fs=[...$("tPhotoFile").files];$("tPhotoFile").value="";if(!fs.length||!assets)return;toast("กำลังอัปโหลดรูป…");
+  for(const f of fs){try{const b=await shrink(f);const r=await assets.upload(b);tPhotos.push(r.id);renderTPhotos()}catch(e){toast("อัปโหลดรูปไม่สำเร็จ")}}
+  toast("เพิ่มรูปแล้ว กด “บันทึก” เพื่อเก็บ")};
+{const _r3=render;render=function(){_r3();renderDash()};}
 
 // ===== Pages: open big dialogs as full screens, phone back button returns home =====
 (function(){const BIG=["ckDlg","moneyDlg","guestDlg"];
@@ -867,7 +928,10 @@ claude.use("db").then(d=>{if(!d){$("ckCats").innerHTML=`<div class="empty" style
     d.addEventListener("close",()=>{document.documentElement.style.overflow="";
       if(d.dataset.silent){delete d.dataset.silent;return}
       if(history.state&&history.state.pg===id)history.back()})});
-  addEventListener("popstate",()=>{BIG.forEach(id=>{const d=document.getElementById(id);if(d.open&&!(history.state&&history.state.pg===id)){d.dataset.silent="1";d.close()}})});
+  const SMALL=["dlg","tkDlg","catDlg","incDlg","gDlg","viewDlg","cfgDlg"];
+  addEventListener("popstate",()=>{const sm=SMALL.map(id=>document.getElementById(id)).filter(d=>d&&d.open);
+    if(sm.length){sm.forEach(d=>d.close());const big=BIG.find(id=>document.getElementById(id).open);if(big)history.pushState({pg:big},"");return}
+    BIG.forEach(id=>{const d=document.getElementById(id);if(d.open&&!(history.state&&history.state.pg===id)){d.dataset.silent="1";d.close()}})});
 })();
 </script>
 
