@@ -273,6 +273,25 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
 #gate[data-state="loading"] form,#gate[data-state="denied"] form{display:none}
 #gate:not([data-state="denied"]) .denied{display:none}
 </style>
+<style>
+/* Full-screen pages for Checklist / รายรับรายจ่าย / รายชื่อแขก */
+dialog.big{position:fixed;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;margin:0;border-radius:0;background:var(--bg);box-shadow:none}
+dialog.big::backdrop{background:var(--bg)}
+dialog.big .sheet{height:100%;box-sizing:border-box;overflow:auto;max-width:760px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--bg)}
+dialog.big .dh.pg{position:sticky;top:0;z-index:3;justify-content:flex-start;gap:12px;background:var(--bg);padding:calc(12px + env(safe-area-inset-top,0px)) 0 12px;margin:0;border-bottom:1px solid var(--line)}
+dialog.big .dh.pg h3{font-family:var(--serif-th);font-size:1.3rem;font-weight:600;margin:0}
+dialog.big .dh.pg .eyebrow{margin:0}
+.back{font:inherit;font-size:.95rem;font-weight:500;color:var(--rose-ink);background:var(--surface);border:1px solid var(--petal);border-radius:99px;padding:7px 14px 7px 10px;cursor:pointer;white-space:nowrap;flex:none}
+.back:hover{background:var(--blush)}
+dialog.big .ledger .lr{background:var(--surface)}
+dialog.big .ms{background:var(--surface);border:1px solid var(--line)}
+dialog.big .ms.wide{background:var(--blush)}
+dialog.big .tk{background:var(--surface);border:1px solid var(--line)}
+dialog.big .cksec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
+@media (prefers-reduced-motion:no-preference){dialog.big[open]{animation:pgIn .22s ease-out}}
+@keyframes pgIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+</style>
 <script src="supabase.js"></script>
 <script src="shim.js"></script>
 <script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
@@ -387,7 +406,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
   </form>
 </dialog>
 <dialog id="moneyDlg" class="big"><div class="sheet">
-  <div class="dh"><h3>รายรับรายจ่าย</h3><button type="button" class="x" data-close="moneyDlg" aria-label="ปิด">✕</button></div>
+  <div class="dh pg"><button type="button" class="back" data-close="moneyDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>รายรับรายจ่าย</h3></div></div>
   <div class="mstats">
     <div class="ms"><span>รายรับรวม</span><b class="num" id="mIn" style="color:var(--ok)">฿0</b><small id="mInNote"></small></div>
     <div class="ms"><span>จ่ายออกไปแล้ว</span><b class="num" id="mOut" style="color:var(--bad)">฿0</b><small id="mOutNote"></small></div>
@@ -407,7 +426,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
 </form></dialog>
 
 <dialog id="guestDlg" class="big"><div class="sheet">
-  <div class="dh"><h3>รายชื่อแขกร่วมงาน</h3><button type="button" class="x" data-close="guestDlg" aria-label="ปิด">✕</button></div>
+  <div class="dh pg"><button type="button" class="back" data-close="guestDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>รายชื่อแขกร่วมงาน</h3></div></div>
   <div class="mstats g4">
     <div class="ms"><span>รายชื่อ</span><b class="num" id="gNames">0</b></div>
     <div class="ms"><span>ยืนยันมา (คน)</span><b class="num" id="gYes" style="color:var(--ok)">0</b></div>
@@ -437,7 +456,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
   <div class="actions"><button type="button" class="btn danger" id="gDel" hidden>ลบ</button><div class="r"><button type="button" class="btn" data-close="gDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
 </form></dialog>
 <dialog id="ckDlg" class="big"><div class="sheet">
-  <div class="dh"><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>Wedding Checklist</h3></div><button type="button" class="x" data-close="ckDlg" aria-label="ปิด">✕</button></div>
+  <div class="dh pg"><button type="button" class="back" data-close="ckDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>Wedding Checklist</h3></div></div>
   <div class="seg" id="ckCatSeg" role="tablist"></div>
   <div class="rowhead"><div class="seg" id="ckStSeg" role="tablist"><button type="button" class="on" data-st="all">ทั้งหมด</button><button type="button" data-st="pending">Pending</button><button type="button" data-st="progress">In Progress</button><button type="button" data-st="done">Completed</button></div></div>
   <div id="ckBody" class="ckbody"></div>
@@ -831,6 +850,17 @@ claude.use("db").then(d=>{if(!d){$("ckCats").innerHTML=`<div class="empty" style
   d.collection("ckcats").onSnapshot(s=>{ckCats=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
   d.collection("tasks").onSnapshot(s=>{tasks=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
 });
+
+// ===== Pages: open big dialogs as full screens, phone back button returns home =====
+(function(){const BIG=["ckDlg","moneyDlg","guestDlg"];
+  BIG.forEach(id=>{const d=document.getElementById(id);const orig=d.showModal.bind(d);
+    d.showModal=()=>{BIG.forEach(o=>{const x=document.getElementById(o);if(o!==id&&x.open){x.dataset.silent="1";x.close()}});
+      orig();d.querySelector(".sheet").scrollTop=0;history.pushState({pg:id},"");document.documentElement.style.overflow="hidden"};
+    d.addEventListener("close",()=>{document.documentElement.style.overflow="";
+      if(d.dataset.silent){delete d.dataset.silent;return}
+      if(history.state&&history.state.pg===id)history.back()})});
+  addEventListener("popstate",()=>{BIG.forEach(id=>{const d=document.getElementById(id);if(d.open&&!(history.state&&history.state.pg===id)){d.dataset.silent="1";d.close()}})});
+})();
 </script>
 
 
