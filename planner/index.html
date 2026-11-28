@@ -1,0 +1,793 @@
+<title>Wedding WN</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chonburi&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+Thai:wght@500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+<style>
+/* Layout: one column ledger — summary band, then expense rows grouped by category; edit in a bottom sheet */
+:root{
+  --bg:#f5f7f3; --surface:#ffffff; --fg:#1d2a22; --muted:#5f6e64; --line:#dde4dc;
+  --accent:#2f6b4f; --accent-ink:#ffffff; --gold:#c98a12; --gold-soft:#fbf0d9;
+  --ok:#2e7d4f; --ok-soft:#e3f2e8; --warn:#a86b00; --warn-soft:#fdf1d6; --bad:#b3372e; --bad-soft:#fbe5e2;
+  --neutral-soft:#eceff0;
+  --petal:#f2a9b9; --petal-2:#f8cfa9; --bloom:#f2c46b; --leaf:#9cc8a8; --blush:#fdf0f2;
+  --pattern:url("data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath d="M30 40 q6 -9 14 0 q-8 9 -14 0z" fill="%23e7e4d8" transform="rotate%28-30 30 40%29"/%3E%3Cpath d="M118 112 q6 -9 14 0 q-8 9 -14 0z" fill="%23e7e4d8" transform="rotate%28150 118 112%29"/%3E%3Cpath d="M96 20 q6 -9 14 0 q-8 9 -14 0z" fill="%23e7e4d8" transform="rotate%2840 96 20%29"/%3E%3Cpath d="M20 130 q6 -9 14 0 q-8 9 -14 0z" fill="%23e7e4d8" transform="rotate%28200 20 130%29"/%3E%3Cellipse cx="32.2" cy="31.1" rx="5.2" ry="3.9" transform="rotate%2810 32.2 31.1%29" fill="%23efdedd"/%3E%3Cellipse cx="26.9" cy="36.2" rx="5.2" ry="3.9" transform="rotate%2882 26.9 36.2%29" fill="%23efdedd"/%3E%3Cellipse cx="20.3" cy="32.8" rx="5.2" ry="3.9" transform="rotate%28154 20.3 32.8%29" fill="%23efdedd"/%3E%3Cellipse cx="21.6" cy="25.5" rx="5.2" ry="3.9" transform="rotate%28226 21.6 25.5%29" fill="%23efdedd"/%3E%3Cellipse cx="29.0" cy="24.4" rx="5.2" ry="3.9" transform="rotate%28298 29.0 24.4%29" fill="%23efdedd"/%3E%3Ccircle cx="26" cy="30" r="3.1" fill="%23e3cfac"/%3E%3Cellipse cx="117.5" cy="108.6" rx="6.0" ry="4.4" transform="rotate%2840 117.5 108.6%29" fill="%23f2e6d6"/%3E%3Cellipse cx="109.3" cy="110.7" rx="6.0" ry="4.4" transform="rotate%28112 109.3 110.7%29" fill="%23f2e6d6"/%3E%3Cellipse cx="104.8" cy="103.5" rx="6.0" ry="4.4" transform="rotate%28184 104.8 103.5%29" fill="%23f2e6d6"/%3E%3Cellipse cx="110.3" cy="97.0" rx="6.0" ry="4.4" transform="rotate%28256 110.3 97.0%29" fill="%23f2e6d6"/%3E%3Cellipse cx="118.1" cy="100.2" rx="6.0" ry="4.4" transform="rotate%28328 118.1 100.2%29" fill="%23f2e6d6"/%3E%3Ccircle cx="112" cy="104" r="3.6" fill="%23e3cfac"/%3E%3Cellipse cx="136.5" cy="30.0" rx="3.8" ry="2.8" transform="rotate%280 136.5 30.0%29" fill="%23f2e6d6"/%3E%3Cellipse cx="133.4" cy="34.3" rx="3.8" ry="2.8" transform="rotate%2872 133.4 34.3%29" fill="%23f2e6d6"/%3E%3Cellipse cx="128.4" cy="32.6" rx="3.8" ry="2.8" transform="rotate%28144 128.4 32.6%29" fill="%23f2e6d6"/%3E%3Cellipse cx="128.4" cy="27.4" rx="3.8" ry="2.8" transform="rotate%28216 128.4 27.4%29" fill="%23f2e6d6"/%3E%3Cellipse cx="133.4" cy="25.7" rx="3.8" ry="2.8" transform="rotate%28288 133.4 25.7%29" fill="%23f2e6d6"/%3E%3Ccircle cx="132" cy="30" r="2.2" fill="%23e3cfac"/%3E%3Cellipse cx="50.2" cy="125.5" rx="3.8" ry="2.8" transform="rotate%2820 50.2 125.5%29" fill="%23efdedd"/%3E%3Cellipse cx="45.8" cy="128.5" rx="3.8" ry="2.8" transform="rotate%2892 45.8 128.5%29" fill="%23efdedd"/%3E%3Cellipse cx="41.7" cy="125.2" rx="3.8" ry="2.8" transform="rotate%28164 41.7 125.2%29" fill="%23efdedd"/%3E%3Cellipse cx="43.5" cy="120.3" rx="3.8" ry="2.8" transform="rotate%28236 43.5 120.3%29" fill="%23efdedd"/%3E%3Cellipse cx="48.8" cy="120.5" rx="3.8" ry="2.8" transform="rotate%28308 48.8 120.5%29" fill="%23efdedd"/%3E%3Ccircle cx="46" cy="124" r="2.2" fill="%23e3cfac"/%3E%3Ccircle cx="80" cy="60" r="2" fill="%23efe2e0"/%3E%3Ccircle cx="70" cy="140" r="2" fill="%23efe2e0"/%3E%3Ccircle cx="150" cy="70" r="2" fill="%23efe2e0"/%3E%3Ccircle cx="10" cy="90" r="2" fill="%23efe2e0"/%3E%3C/svg%3E");
+  --display:"Chonburi","IBM Plex Sans Thai",serif;
+  --body:"IBM Plex Sans Thai","Noto Sans Thai",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121a15; --surface:#1a241e; --fg:#e7eee8; --muted:#9aab9f; --line:#2b3830;
+  --accent:#6fbf95; --accent-ink:#0f1a14; --gold:#e5b24a; --gold-soft:#33291a;
+  --ok:#7fd3a0; --ok-soft:#1d3527; --warn:#f0c062; --warn-soft:#3a2f17; --bad:#f08a80; --bad-soft:#3d1f1c;
+  --neutral-soft:#26302a; --petal:#c9788b; --petal-2:#c99a72; --bloom:#d9ad55; --leaf:#4f7d5f; --blush:#2a1f23; --pattern:url("data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath d="M30 40 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28-30 30 40%29"/%3E%3Cpath d="M118 112 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28150 118 112%29"/%3E%3Cpath d="M96 20 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%2840 96 20%29"/%3E%3Cpath d="M20 130 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28200 20 130%29"/%3E%3Cellipse cx="32.2" cy="31.1" rx="5.2" ry="3.9" transform="rotate%2810 32.2 31.1%29" fill="%233f2a31"/%3E%3Cellipse cx="26.9" cy="36.2" rx="5.2" ry="3.9" transform="rotate%2882 26.9 36.2%29" fill="%233f2a31"/%3E%3Cellipse cx="20.3" cy="32.8" rx="5.2" ry="3.9" transform="rotate%28154 20.3 32.8%29" fill="%233f2a31"/%3E%3Cellipse cx="21.6" cy="25.5" rx="5.2" ry="3.9" transform="rotate%28226 21.6 25.5%29" fill="%233f2a31"/%3E%3Cellipse cx="29.0" cy="24.4" rx="5.2" ry="3.9" transform="rotate%28298 29.0 24.4%29" fill="%233f2a31"/%3E%3Ccircle cx="26" cy="30" r="3.1" fill="%235c4a26"/%3E%3Cellipse cx="117.5" cy="108.6" rx="6.0" ry="4.4" transform="rotate%2840 117.5 108.6%29" fill="%233d3127"/%3E%3Cellipse cx="109.3" cy="110.7" rx="6.0" ry="4.4" transform="rotate%28112 109.3 110.7%29" fill="%233d3127"/%3E%3Cellipse cx="104.8" cy="103.5" rx="6.0" ry="4.4" transform="rotate%28184 104.8 103.5%29" fill="%233d3127"/%3E%3Cellipse cx="110.3" cy="97.0" rx="6.0" ry="4.4" transform="rotate%28256 110.3 97.0%29" fill="%233d3127"/%3E%3Cellipse cx="118.1" cy="100.2" rx="6.0" ry="4.4" transform="rotate%28328 118.1 100.2%29" fill="%233d3127"/%3E%3Ccircle cx="112" cy="104" r="3.6" fill="%235c4a26"/%3E%3Cellipse cx="136.5" cy="30.0" rx="3.8" ry="2.8" transform="rotate%280 136.5 30.0%29" fill="%233d3127"/%3E%3Cellipse cx="133.4" cy="34.3" rx="3.8" ry="2.8" transform="rotate%2872 133.4 34.3%29" fill="%233d3127"/%3E%3Cellipse cx="128.4" cy="32.6" rx="3.8" ry="2.8" transform="rotate%28144 128.4 32.6%29" fill="%233d3127"/%3E%3Cellipse cx="128.4" cy="27.4" rx="3.8" ry="2.8" transform="rotate%28216 128.4 27.4%29" fill="%233d3127"/%3E%3Cellipse cx="133.4" cy="25.7" rx="3.8" ry="2.8" transform="rotate%28288 133.4 25.7%29" fill="%233d3127"/%3E%3Ccircle cx="132" cy="30" r="2.2" fill="%235c4a26"/%3E%3Cellipse cx="50.2" cy="125.5" rx="3.8" ry="2.8" transform="rotate%2820 50.2 125.5%29" fill="%233f2a31"/%3E%3Cellipse cx="45.8" cy="128.5" rx="3.8" ry="2.8" transform="rotate%2892 45.8 128.5%29" fill="%233f2a31"/%3E%3Cellipse cx="41.7" cy="125.2" rx="3.8" ry="2.8" transform="rotate%28164 41.7 125.2%29" fill="%233f2a31"/%3E%3Cellipse cx="43.5" cy="120.3" rx="3.8" ry="2.8" transform="rotate%28236 43.5 120.3%29" fill="%233f2a31"/%3E%3Cellipse cx="48.8" cy="120.5" rx="3.8" ry="2.8" transform="rotate%28308 48.8 120.5%29" fill="%233f2a31"/%3E%3Ccircle cx="46" cy="124" r="2.2" fill="%235c4a26"/%3E%3Ccircle cx="80" cy="60" r="2" fill="%23352a2e"/%3E%3Ccircle cx="70" cy="140" r="2" fill="%23352a2e"/%3E%3Ccircle cx="150" cy="70" r="2" fill="%23352a2e"/%3E%3Ccircle cx="10" cy="90" r="2" fill="%23352a2e"/%3E%3C/svg%3E"); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121a15; --surface:#1a241e; --fg:#e7eee8; --muted:#9aab9f; --line:#2b3830;
+  --accent:#6fbf95; --accent-ink:#0f1a14; --gold:#e5b24a; --gold-soft:#33291a;
+  --ok:#7fd3a0; --ok-soft:#1d3527; --warn:#f0c062; --warn-soft:#3a2f17; --bad:#f08a80; --bad-soft:#3d1f1c;
+  --neutral-soft:#26302a; --petal:#c9788b; --petal-2:#c99a72; --bloom:#d9ad55; --leaf:#4f7d5f; --blush:#2a1f23; --pattern:url("data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"%3E%3Cpath d="M30 40 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28-30 30 40%29"/%3E%3Cpath d="M118 112 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28150 118 112%29"/%3E%3Cpath d="M96 20 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%2840 96 20%29"/%3E%3Cpath d="M20 130 q6 -9 14 0 q-8 9 -14 0z" fill="%23302b26" transform="rotate%28200 20 130%29"/%3E%3Cellipse cx="32.2" cy="31.1" rx="5.2" ry="3.9" transform="rotate%2810 32.2 31.1%29" fill="%233f2a31"/%3E%3Cellipse cx="26.9" cy="36.2" rx="5.2" ry="3.9" transform="rotate%2882 26.9 36.2%29" fill="%233f2a31"/%3E%3Cellipse cx="20.3" cy="32.8" rx="5.2" ry="3.9" transform="rotate%28154 20.3 32.8%29" fill="%233f2a31"/%3E%3Cellipse cx="21.6" cy="25.5" rx="5.2" ry="3.9" transform="rotate%28226 21.6 25.5%29" fill="%233f2a31"/%3E%3Cellipse cx="29.0" cy="24.4" rx="5.2" ry="3.9" transform="rotate%28298 29.0 24.4%29" fill="%233f2a31"/%3E%3Ccircle cx="26" cy="30" r="3.1" fill="%235c4a26"/%3E%3Cellipse cx="117.5" cy="108.6" rx="6.0" ry="4.4" transform="rotate%2840 117.5 108.6%29" fill="%233d3127"/%3E%3Cellipse cx="109.3" cy="110.7" rx="6.0" ry="4.4" transform="rotate%28112 109.3 110.7%29" fill="%233d3127"/%3E%3Cellipse cx="104.8" cy="103.5" rx="6.0" ry="4.4" transform="rotate%28184 104.8 103.5%29" fill="%233d3127"/%3E%3Cellipse cx="110.3" cy="97.0" rx="6.0" ry="4.4" transform="rotate%28256 110.3 97.0%29" fill="%233d3127"/%3E%3Cellipse cx="118.1" cy="100.2" rx="6.0" ry="4.4" transform="rotate%28328 118.1 100.2%29" fill="%233d3127"/%3E%3Ccircle cx="112" cy="104" r="3.6" fill="%235c4a26"/%3E%3Cellipse cx="136.5" cy="30.0" rx="3.8" ry="2.8" transform="rotate%280 136.5 30.0%29" fill="%233d3127"/%3E%3Cellipse cx="133.4" cy="34.3" rx="3.8" ry="2.8" transform="rotate%2872 133.4 34.3%29" fill="%233d3127"/%3E%3Cellipse cx="128.4" cy="32.6" rx="3.8" ry="2.8" transform="rotate%28144 128.4 32.6%29" fill="%233d3127"/%3E%3Cellipse cx="128.4" cy="27.4" rx="3.8" ry="2.8" transform="rotate%28216 128.4 27.4%29" fill="%233d3127"/%3E%3Cellipse cx="133.4" cy="25.7" rx="3.8" ry="2.8" transform="rotate%28288 133.4 25.7%29" fill="%233d3127"/%3E%3Ccircle cx="132" cy="30" r="2.2" fill="%235c4a26"/%3E%3Cellipse cx="50.2" cy="125.5" rx="3.8" ry="2.8" transform="rotate%2820 50.2 125.5%29" fill="%233f2a31"/%3E%3Cellipse cx="45.8" cy="128.5" rx="3.8" ry="2.8" transform="rotate%2892 45.8 128.5%29" fill="%233f2a31"/%3E%3Cellipse cx="41.7" cy="125.2" rx="3.8" ry="2.8" transform="rotate%28164 41.7 125.2%29" fill="%233f2a31"/%3E%3Cellipse cx="43.5" cy="120.3" rx="3.8" ry="2.8" transform="rotate%28236 43.5 120.3%29" fill="%233f2a31"/%3E%3Cellipse cx="48.8" cy="120.5" rx="3.8" ry="2.8" transform="rotate%28308 48.8 120.5%29" fill="%233f2a31"/%3E%3Ccircle cx="46" cy="124" r="2.2" fill="%235c4a26"/%3E%3Ccircle cx="80" cy="60" r="2" fill="%23352a2e"/%3E%3Ccircle cx="70" cy="140" r="2" fill="%23352a2e"/%3E%3Ccircle cx="150" cy="70" r="2" fill="%23352a2e"/%3E%3Ccircle cx="10" cy="90" r="2" fill="%23352a2e"/%3E%3C/svg%3E"); color-scheme:dark}
+body{background-color:var(--bg);background-image:var(--pattern);background-size:160px 160px;color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding-block:20px 170px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+h1{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1.25;margin:0;text-wrap:balance}
+h2{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0;font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+header{display:flex;flex-direction:column;gap:6px}
+.sub{color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.linkish{background:none;border:0;padding:0;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.summary{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat b{font-size:1.2rem;font-weight:600}
+.stat span{font-size:.8rem;color:var(--muted)}
+.bar{height:10px;border-radius:99px;background:var(--neutral-soft);overflow:hidden;display:flex}
+.bar i{display:block;height:100%}
+.bar .p{background:var(--accent)} .bar .r{background:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--muted)}
+.legend em{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.alert{background:var(--bad-soft);color:var(--bad);border-radius:10px;padding:10px 12px;font-size:.9rem}
+.group{display:flex;flex-direction:column;gap:8px}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ghead small{color:var(--muted)}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.row:hover{border-color:var(--accent)}
+.row:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row .t{font-weight:600;min-width:0;overflow-wrap:anywhere}
+.row .v{color:var(--muted);font-size:.85rem;overflow-wrap:anywhere}
+.row .amt{text-align:right;font-weight:600}
+.row .amt small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;grid-column:1/-1}
+.chip{font-size:.75rem;padding:2px 9px;border-radius:99px;font-weight:500;white-space:nowrap}
+.c-none{background:var(--neutral-soft);color:var(--muted)}
+.c-pend{background:var(--warn-soft);color:var(--warn)}
+.c-ok{background:var(--ok-soft);color:var(--ok)}
+.c-bad{background:var(--bad-soft);color:var(--bad)}
+.c-gold{background:var(--gold-soft);color:var(--gold)}
+.mini{grid-column:1/-1;height:5px;border-radius:99px;background:var(--neutral-soft);overflow:hidden}
+.mini i{display:block;height:100%;background:var(--accent)}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fbtn[data-f="searching"] b{color:var(--bad)}
+.fbtn{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:1px;min-width:0}
+.fbtn span{font-size:.8rem;color:var(--muted)}
+.fbtn b{font-size:1.05rem}
+.fbtn small{font-size:.78rem;color:var(--muted)}
+.fbtn[data-f="owe"] b{color:var(--gold)} .fbtn[data-f="done"] b{color:var(--ok)}
+.fbtn.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--bg)}
+.slipnew{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.thumb{width:44px;height:44px;border-radius:7px;object-fit:cover;border:1px solid var(--line);cursor:pointer;flex:none;background:var(--neutral-soft)}
+.pdf{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:7px;border:1px solid var(--line);font-size:.7rem;font-weight:600;color:var(--bad);text-decoration:none;flex:none}
+.pay .side{display:flex;align-items:center;gap:6px;flex:none}
+header{align-items:center;text-align:center}
+.sub{justify-content:center}
+.logo{width:min(260px,70%);height:auto;display:block;margin-block:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.garland{width:min(300px,100%);height:auto;display:block}
+.summary{position:relative;overflow:hidden;border-color:var(--petal-2)}
+.summary>*:not(.corner){position:relative}
+.corner{position:absolute;top:-6px;right:-6px;width:90px;height:auto;opacity:.9;pointer-events:none}
+.stats{padding-right:56px}
+@media (max-width:560px){.stats{padding-right:0}.corner{width:70px;opacity:.55}}
+h2::before{content:"✿ ";color:var(--petal)}
+.row:hover{border-color:var(--petal);background:var(--blush)}
+.fbtn.on{border-color:var(--petal);box-shadow:inset 0 0 0 1px var(--petal);background:var(--blush)}
+.fab{background:var(--petal);color:#3a1d24}
+.fab::before{content:"✿ "}
+.pdfbtn{align-self:flex-start;display:inline-flex;gap:6px;align-items:center;border-color:var(--petal);background:var(--surface)}
+.pdfbtn:disabled{opacity:.6;cursor:progress}
+#rpt{position:fixed;left:-10000px;top:0;width:794px;background:#ffffff;color:#1d2a22;font-family:"IBM Plex Sans Thai","Noto Sans Thai",sans-serif;font-size:13px;line-height:1.5;padding:40px 44px;box-sizing:border-box}
+#rpt h1{font-family:"Chonburi","IBM Plex Sans Thai",serif;font-weight:400;font-size:26px;margin:0;color:#1d2a22}
+#rpt .r-sub{color:#5f6e64;margin:2px 0 18px}
+#rpt .r-band{height:6px;border-radius:3px;background:linear-gradient(90deg,#f2a9b9,#f8cfa9,#9cc8a8);margin-bottom:18px}
+#rpt .r-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+#rpt .r-stat{border:1px solid #e6dfe0;border-radius:8px;padding:8px 10px}
+#rpt .r-stat span{display:block;color:#5f6e64;font-size:11px}
+#rpt .r-stat b{font-size:17px;font-weight:600}
+#rpt .r-note{font-size:12px;margin-bottom:16px}
+#rpt .r-counts{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#5f6e64;margin-bottom:18px}
+#rpt h2{font-size:14px;margin:18px 0 8px;color:#1d2a22;letter-spacing:0;text-transform:none}
+#rpt h2::before{content:"✿ ";color:#e98aa0}
+#rpt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+#rpt th{text-align:left;font-size:11px;font-weight:600;color:#5f6e64;border-bottom:1.5px solid #1d2a22;padding:6px 6px}
+#rpt td{border-bottom:1px solid #ece6e7;padding:7px 6px;vertical-align:top}
+#rpt td.n,#rpt th.n{text-align:right;white-space:nowrap}
+#rpt td small{display:block;color:#7a857e;font-size:11px}
+#rpt tfoot td{font-weight:600;border-bottom:0;border-top:1.5px solid #1d2a22}
+#rpt .st{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;background:#eef0ee;white-space:nowrap}
+#rpt .st.ok{background:#e3f2e8;color:#2e7d4f} #rpt .st.bad{background:#fbe5e2;color:#b3372e} #rpt .st.pend{background:#fdf1d6;color:#a86b00}
+#rpt .r-foot{margin-top:22px;font-size:11px;color:#7a857e}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:5;display:grid;grid-template-columns:1fr 1fr;gap:10px;background:var(--surface);border-top:1px solid var(--petal-2);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));box-shadow:0 -4px 16px rgb(0 0 0 / .06)}
+.dockbtn{font:inherit;color:var(--fg);background:var(--blush);border:1px solid var(--petal-2);border-radius:14px;padding:9px 12px;display:flex;gap:10px;align-items:center;text-align:left;cursor:pointer;min-width:0}
+.dockbtn:hover{border-color:var(--petal)}
+.dockbtn .di{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--petal);color:#3a1d24;font-weight:700}
+.dockbtn span:last-child{display:flex;flex-direction:column;min-width:0}
+.dockbtn b{font-size:.95rem;font-weight:600}
+.dockbtn small{font-size:.75rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+dialog.big{width:min(640px,calc(100vw - 16px));height:min(88vh,860px)}
+dialog.big .sheet{height:100%;box-sizing:border-box;overflow:auto}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mstats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mstats.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.ms{background:var(--bg);border-radius:10px;padding:9px 11px;display:flex;flex-direction:column;min-width:0}
+.ms.wide{grid-column:1/-1;background:var(--blush);border:1px solid var(--petal-2)}
+.ms span{font-size:.75rem;color:var(--muted)}
+.ms b{font-size:1.15rem;font-weight:600}
+.ms small{font-size:.75rem;color:var(--muted)}
+.rowhead{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.rowhead input{flex:1;min-width:0}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:4px 12px;cursor:pointer}
+.seg button.on{background:var(--petal);border-color:var(--petal);color:#3a1d24}
+.ledger{display:flex;flex-direction:column;gap:6px}
+.lr{box-sizing:border-box;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--bg);border:1px solid transparent;border-radius:10px;padding:8px 10px;font:inherit;color:inherit;text-align:left;width:100%}
+button.lr{cursor:pointer} button.lr:hover{border-color:var(--petal)}
+.lr .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.lr .ic.in{background:var(--ok-soft);color:var(--ok)} .lr .ic.out{background:var(--bad-soft);color:var(--bad)} .lr .ic.g{background:var(--blush);color:var(--petal)}
+.lr .tx{min-width:0} .lr .tx b{display:block;font-weight:500;overflow-wrap:anywhere} .lr .tx small{color:var(--muted);font-size:.78rem}
+.lr .am{font-weight:600;text-align:right;white-space:nowrap}
+.lr .am small{display:block;font-weight:400;font-size:.75rem;color:var(--muted)}
+.lday{font-size:.75rem;color:var(--muted);margin-top:6px}
+@media (max-width:560px){.mstats.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.dockbtn{padding:8px 10px;gap:8px}.dockbtn .di{width:30px;height:30px}}
+[hidden]{display:none!important}
+.seg{justify-content:flex-start}
+.seg.sub button{font-size:.78rem;padding:3px 10px;background:var(--bg)}
+.seg.sub button.on{background:var(--blush);border-color:var(--petal);color:var(--fg)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:24px;text-align:center;color:var(--muted)}
+.fab{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--accent);color:var(--accent-ink);border:0;border-radius:99px;padding:13px 20px;font:inherit;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgb(0 0 0 / .18)}
+.note{font-size:.82rem;color:var(--muted)}
+dialog{border:0;padding:0;background:var(--surface);color:var(--fg);border-radius:16px;width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 40px)}
+dialog::backdrop{background:rgb(0 0 0 / .4)}
+.sheet{padding:18px;display:flex;flex-direction:column;gap:14px}
+.sheet h3{margin:0;font-size:1.1rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:var(--muted);min-width:0}
+input,select,textarea{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:9px 10px;width:100%;box-sizing:border-box}
+textarea{min-height:60px;resize:vertical}
+.pays{display:flex;flex-direction:column;gap:6px}
+.pay{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--bg);border-radius:9px;padding:8px 10px;font-size:.9rem}
+.pay div{min-width:0;overflow-wrap:anywhere}
+.payadd{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
+.btn{font:inherit;border-radius:9px;padding:9px 16px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;font-weight:500}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn.sm{padding:6px 10px;font-size:.85rem}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+.actions .r{display:flex;gap:8px;margin-left:auto}
+.x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1.1rem;padding:2px 6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(80px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:9px;font-size:.9rem}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.payadd{grid-template-columns:1fr 1fr}.payadd .btn{grid-column:1/-1}}
+@media (prefers-reduced-motion:no-preference){.row{transition:border-color .15s}}
+
+/* === Theme: Modern Editorial Luxury × Romantic Minimal === */
+:root{--bg:#FAF8F5;--surface:#FFFFFF;--fg:#383431;--muted:#8A7F79;--line:#EDE4E0;--accent:#C99A9A;--accent-ink:#383431;--gold:#A98652;--gold-soft:#F5EDE1;
+  --ok:#5E8A6C;--ok-soft:#E7F0E9;--neutral-soft:#F1ECE8;--petal:#C99A9A;--petal-2:#E9D8CB;--bloom:#C5A477;--leaf:#C9CDB9;--blush:#F4E9E8;
+  --champ:#C5A477;--rose-ink:#A56F6F;--shadow:0 1px 2px rgb(56 52 49 / .04),0 10px 28px rgb(56 52 49 / .06);
+  --display:"Cormorant Garamond","Noto Serif Thai",Georgia,serif;--serif-th:"Noto Serif Thai","Cormorant Garamond",serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1E1A18;--surface:#28221F;--fg:#F2ECE7;--muted:#A99E97;--line:#3B332F;--accent:#D4A9A9;--accent-ink:#2A2120;
+  --gold:#D9BD91;--gold-soft:#3A3024;--ok:#8DC09D;--ok-soft:#243329;--neutral-soft:#342D2A;--petal:#C99A9A;--petal-2:#5A4B41;--bloom:#C5A477;--leaf:#5D6352;--blush:#35292A;--champ:#C5A477;--rose-ink:#E3BABA;--shadow:0 1px 2px rgb(0 0 0 / .25),0 10px 28px rgb(0 0 0 / .25)}}
+:root[data-theme="dark"]{--bg:#1E1A18;--surface:#28221F;--fg:#F2ECE7;--muted:#A99E97;--line:#3B332F;--accent:#D4A9A9;--accent-ink:#2A2120;
+  --gold:#D9BD91;--gold-soft:#3A3024;--ok:#8DC09D;--ok-soft:#243329;--neutral-soft:#342D2A;--petal:#C99A9A;--petal-2:#5A4B41;--bloom:#C5A477;--leaf:#5D6352;--blush:#35292A;--champ:#C5A477;--rose-ink:#E3BABA;--shadow:0 1px 2px rgb(0 0 0 / .25),0 10px 28px rgb(0 0 0 / .25)}
+header{gap:4px;padding-block:6px 4px}
+.logo.wn{width:min(150px,42%);margin-block:6px 2px}
+.eyebrow{margin:0;font-family:var(--body);font-size:.72rem;letter-spacing:.32em;color:var(--rose-ink);font-weight:500}
+.eyebrow.sm{font-size:.64rem;letter-spacing:.22em}
+h1.couple{font-family:var(--display);font-weight:500;font-size:clamp(2.1rem,8vw,3rem);letter-spacing:.08em;line-height:1.1;color:var(--fg)}
+h1.couple span{font-style:italic;color:var(--champ);font-weight:500}
+.wdate{margin:0;font-family:var(--display);font-size:1.15rem;letter-spacing:.3em;color:var(--gold)}
+.sub{font-size:.85rem}
+.summary,.ckdash{box-shadow:var(--shadow);border-radius:18px}
+h2::before{color:var(--champ)}
+.ckdash{background:var(--surface);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:16px;position:relative}
+.ckhead{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+h2.cktitle{font-family:var(--serif-th);font-size:1.25rem;letter-spacing:0;text-transform:none;color:var(--fg);font-weight:600;margin-top:2px}
+h2.cktitle::before{content:none}
+.btn.ghost{border-color:var(--petal);color:var(--rose-ink);background:transparent;white-space:nowrap}
+.ckmain{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.ckring{position:relative;width:118px;height:118px;flex:none}
+.ckring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ckring .rt{fill:none;stroke:var(--blush);stroke-width:9}
+.ckring .rv{fill:none;stroke:var(--accent);stroke-width:9;stroke-linecap:round}
+@media (prefers-reduced-motion:no-preference){.ckring .rv{transition:stroke-dashoffset .6s ease}}
+.ckring>div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ckring b{font-family:var(--display);font-size:2rem;font-weight:600;line-height:1}
+.ckring span{font-size:.62rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.ckstats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ckstats>div{background:var(--bg);border-radius:12px;padding:8px 12px;display:flex;flex-direction:column;min-width:0}
+.ckstats span{font-size:.68rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.ckstats b{font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1.15}
+.ckbar{height:8px;border-radius:99px;background:var(--blush);overflow:hidden;display:flex}
+.ckbar i{display:block;height:100%}
+.ckbar .d{background:var(--accent)} .ckbar .p{background:var(--champ);opacity:.75}
+.ckcats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.ckcat{font:inherit;color:inherit;text-align:left;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:11px 12px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.ckcat:hover{border-color:var(--petal)}
+.ckcat .cc{font-family:var(--display);font-size:.95rem;color:var(--champ);letter-spacing:.1em}
+.ckcat b{font-size:.85rem;letter-spacing:.04em;font-weight:600;overflow-wrap:anywhere}
+.ckcat small{font-size:.75rem;color:var(--muted)}
+.ckcat .mini{height:4px;border-radius:99px;background:var(--blush);overflow:hidden}
+.ckcat .mini i{display:block;height:100%;background:var(--accent)}
+.ckcat .cn{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted)}
+.ckcat .cn b{font-size:.75rem;color:var(--fg)}
+.ckup h3{margin:0 0 6px;font-family:var(--display);font-size:1.2rem;font-weight:600;letter-spacing:.04em}
+.ckbody{display:flex;flex-direction:column;gap:18px}
+.cksec{display:flex;flex-direction:column;gap:6px}
+.cksec .sh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.cksec .sh h4{margin:0;font-family:var(--display);font-size:1.1rem;font-weight:600;letter-spacing:.06em}
+.cksec .sh h4 em{font-style:normal;color:var(--champ);margin-right:6px}
+.cksec .sh small{color:var(--muted);font-size:.78rem;white-space:nowrap}
+.cksec .th{font-size:.8rem;color:var(--muted);margin-top:-2px}
+.tk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;background:var(--bg);border-radius:10px;padding:8px 10px}
+.tk .tg{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--petal);background:var(--surface);display:grid;place-items:center;cursor:pointer;font-size:.8rem;color:var(--accent-ink);padding:0}
+.tk .tg.progress{border-color:var(--champ);background:var(--gold-soft);color:var(--gold)}
+.tk .tg.done{background:var(--accent);border-color:var(--accent)}
+.tk .tx{font:inherit;color:inherit;text-align:left;background:none;border:0;padding:2px 0;cursor:pointer;min-width:0}
+.tk .tx b{display:block;font-weight:500;overflow-wrap:anywhere}
+.tk.done .tx b{text-decoration:line-through;text-decoration-color:var(--petal);color:var(--muted)}
+.tk .tx small{display:block;color:var(--muted);font-size:.76rem}
+.cknote{display:flex;flex-direction:column;gap:4px}
+.cknote textarea{min-height:44px;font-size:.88rem;background:var(--surface)}
+.cksec .add{align-self:flex-start;font-size:.85rem}
+.dock{grid-template-columns:repeat(3,minmax(0,1fr))}
+.dockbtn .di{background:var(--blush);color:var(--rose-ink)}
+@media (max-width:560px){.ckmain{grid-template-columns:1fr;justify-items:center}.ckstats{width:100%}.ckcats{grid-template-columns:1fr 1fr}
+ .dockbtn{flex-direction:column;gap:2px;text-align:center;padding:6px 4px}.dockbtn span:last-child{align-items:center}.dockbtn .di{width:26px;height:26px;font-size:.8rem}.dockbtn b{font-size:.8rem}.dockbtn small{font-size:.68rem;max-width:100%}}
+</style>
+
+<div class="wrap">
+  <header>
+    <svg class="garland" viewBox="0 0 320 44" aria-hidden="true"><path d="M4 26 C60 6 100 40 160 22 S260 6 316 26" style="fill:none;stroke:var(--leaf);stroke-width:1.6;stroke-linecap:round"/><path d="M40 22 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(-30 40 22)"/><path d="M84 30 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(20 84 30)"/><path d="M130 26 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(-20 130 26)"/><path d="M196 16 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(30 196 16)"/><path d="M240 20 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(-10 240 20)"/><path d="M286 22 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(25 286 22)"/><ellipse cx="29.3" cy="18.9" rx="4.5" ry="3.3" transform="rotate(10 29.3 18.9)" style="fill:var(--petal-2)"/><ellipse cx="24.8" cy="23.3" rx="4.5" ry="3.3" transform="rotate(82 24.8 23.3)" style="fill:var(--petal-2)"/><ellipse cx="19.1" cy="20.4" rx="4.5" ry="3.3" transform="rotate(154 19.1 20.4)" style="fill:var(--petal-2)"/><ellipse cx="20.2" cy="14.1" rx="4.5" ry="3.3" transform="rotate(226 20.2 14.1)" style="fill:var(--petal-2)"/><ellipse cx="26.5" cy="13.2" rx="4.5" ry="3.3" transform="rotate(298 26.5 13.2)" style="fill:var(--petal-2)"/><circle cx="24" cy="18" r="2.7" style="fill:var(--bloom)"/><ellipse cx="72.2" cy="27.6" rx="6.0" ry="4.4" transform="rotate(30 72.2 27.6)" style="fill:var(--petal)"/><ellipse cx="64.5" cy="31.0" rx="6.0" ry="4.4" transform="rotate(102 64.5 31.0)" style="fill:var(--petal)"/><ellipse cx="58.8" cy="24.8" rx="6.0" ry="4.4" transform="rotate(174 58.8 24.8)" style="fill:var(--petal)"/><ellipse cx="63.1" cy="17.4" rx="6.0" ry="4.4" transform="rotate(246 63.1 17.4)" style="fill:var(--petal)"/><ellipse cx="71.4" cy="19.2" rx="6.0" ry="4.4" transform="rotate(318 71.4 19.2)" style="fill:var(--petal)"/><circle cx="66" cy="24" r="3.6" style="fill:var(--bloom)"/><ellipse cx="116.5" cy="30.0" rx="3.8" ry="2.8" transform="rotate(0 116.5 30.0)" style="fill:var(--petal-2)"/><ellipse cx="113.4" cy="34.3" rx="3.8" ry="2.8" transform="rotate(72 113.4 34.3)" style="fill:var(--petal-2)"/><ellipse cx="108.4" cy="32.6" rx="3.8" ry="2.8" transform="rotate(144 108.4 32.6)" style="fill:var(--petal-2)"/><ellipse cx="108.4" cy="27.4" rx="3.8" ry="2.8" transform="rotate(216 108.4 27.4)" style="fill:var(--petal-2)"/><ellipse cx="113.4" cy="25.7" rx="3.8" ry="2.8" transform="rotate(288 113.4 25.7)" style="fill:var(--petal-2)"/><circle cx="112" cy="30" r="2.2" style="fill:var(--bloom)"/><ellipse cx="168.6" cy="24.8" rx="7.5" ry="5.5" transform="rotate(18 168.6 24.8)" style="fill:var(--petal)"/><ellipse cx="160.0" cy="31.0" rx="7.5" ry="5.5" transform="rotate(90 160.0 31.0)" style="fill:var(--petal)"/><ellipse cx="151.4" cy="24.8" rx="7.5" ry="5.5" transform="rotate(162 151.4 24.8)" style="fill:var(--petal)"/><ellipse cx="154.7" cy="14.7" rx="7.5" ry="5.5" transform="rotate(234 154.7 14.7)" style="fill:var(--petal)"/><ellipse cx="165.3" cy="14.7" rx="7.5" ry="5.5" transform="rotate(306 165.3 14.7)" style="fill:var(--petal)"/><circle cx="160" cy="22" r="4.5" style="fill:var(--bloom)"/><ellipse cx="218.1" cy="17.5" rx="4.5" ry="3.3" transform="rotate(40 218.1 17.5)" style="fill:var(--petal-2)"/><ellipse cx="212.0" cy="19.0" rx="4.5" ry="3.3" transform="rotate(112 212.0 19.0)" style="fill:var(--petal-2)"/><ellipse cx="208.6" cy="13.6" rx="4.5" ry="3.3" transform="rotate(184 208.6 13.6)" style="fill:var(--petal-2)"/><ellipse cx="212.7" cy="8.8" rx="4.5" ry="3.3" transform="rotate(256 212.7 8.8)" style="fill:var(--petal-2)"/><ellipse cx="218.6" cy="11.1" rx="4.5" ry="3.3" transform="rotate(328 218.6 11.1)" style="fill:var(--petal-2)"/><circle cx="214" cy="14" r="2.7" style="fill:var(--bloom)"/><ellipse cx="269.2" cy="18.6" rx="6.0" ry="4.4" transform="rotate(5 269.2 18.6)" style="fill:var(--petal)"/><ellipse cx="263.6" cy="25.0" rx="6.0" ry="4.4" transform="rotate(77 263.6 25.0)" style="fill:var(--petal)"/><ellipse cx="255.8" cy="21.7" rx="6.0" ry="4.4" transform="rotate(149 255.8 21.7)" style="fill:var(--petal)"/><ellipse cx="256.6" cy="13.3" rx="6.0" ry="4.4" transform="rotate(221 256.6 13.3)" style="fill:var(--petal)"/><ellipse cx="264.8" cy="11.4" rx="6.0" ry="4.4" transform="rotate(293 264.8 11.4)" style="fill:var(--petal)"/><circle cx="262" cy="18" r="3.6" style="fill:var(--bloom)"/><ellipse cx="306.2" cy="27.5" rx="3.8" ry="2.8" transform="rotate(20 306.2 27.5)" style="fill:var(--petal-2)"/><ellipse cx="301.8" cy="30.5" rx="3.8" ry="2.8" transform="rotate(92 301.8 30.5)" style="fill:var(--petal-2)"/><ellipse cx="297.7" cy="27.2" rx="3.8" ry="2.8" transform="rotate(164 297.7 27.2)" style="fill:var(--petal-2)"/><ellipse cx="299.5" cy="22.3" rx="3.8" ry="2.8" transform="rotate(236 299.5 22.3)" style="fill:var(--petal-2)"/><ellipse cx="304.8" cy="22.5" rx="3.8" ry="2.8" transform="rotate(308 304.8 22.5)" style="fill:var(--petal-2)"/><circle cx="302" cy="26" r="2.2" style="fill:var(--bloom)"/></svg>
+    <svg class="logo wn" viewBox="339 110 1745 455" role="img" aria-label="โลโก้ WN"><path style="fill:var(--fg)" d="M375.8 551.4C362.9 547.3 354.1 536.5 352.0 522.4C350.2 509.7 351.4 483.8 354.1 477.2C354.6 475.9 355.9 471.5 357.0 467.3C358.9 460.4 365.2 443.4 371.4 428.4C374.6 420.8 391.0 388.6 395.8 380.5C421.2 337.8 459.4 285.2 477.3 268.2C482.5 263.3 483.2 263.0 488.0 263.0C490.8 263.0 494.0 263.4 495.0 264.0C497.7 265.4 501.0 271.3 501.0 274.6C501.0 278.5 501.1 278.3 472.4 317.0C428.1 376.4 393.3 436.8 380.0 477.1C377.2 485.5 375.1 503.3 376.0 511.5C377.7 528.9 386.1 533.0 409.9 528.1C415.6 526.9 421.4 525.3 422.9 524.6C424.3 523.8 427.5 522.7 430.0 522.1C432.5 521.4 437.9 519.6 442.0 518.0C465.0 509.2 473.8 505.6 476.5 504.0C478.1 503.0 480.6 501.9 482.0 501.5C484.4 500.7 510.8 488.3 520.0 483.5C549.1 468.5 570.4 457.0 598.0 441.2C604.3 437.6 614.6 431.8 620.9 428.3C627.2 424.8 636.2 419.7 640.9 416.8C645.6 414.0 652.0 410.3 655.0 408.5C658.0 406.8 666.5 401.8 673.7 397.4C681.0 393.1 689.4 388.2 692.2 386.6C699.7 382.5 726.4 366.9 733.0 362.8C736.0 360.9 744.1 356.1 751.0 352.0C757.9 348.0 766.2 343.0 769.5 341.0C772.8 339.0 778.6 335.5 782.5 333.3C786.4 331.1 792.6 327.4 796.5 325.2C872.4 281.5 886.1 275.3 895.8 280.4C900.5 282.9 904.1 287.5 904.7 291.8C905.6 298.4 903.3 302.7 875.6 346.4C870.0 355.2 865.2 363.2 864.8 364.2C864.4 365.3 863.0 367.5 861.6 369.3C858.8 373.2 842.4 403.5 839.4 410.5C838.2 413.2 835.9 418.6 834.2 422.5C826.8 439.8 824.6 449.3 824.5 464.5C824.5 478.1 824.6 478.7 827.4 483.7C834.3 496.2 846.0 500.2 863.3 496.1C868.2 494.9 872.9 494.0 873.9 494.0C875.6 494.0 890.5 488.4 897.5 485.0C899.7 484.0 904.9 481.7 909.0 479.9C917.1 476.5 949.3 460.3 960.0 454.4C963.6 452.4 972.5 447.3 979.8 443.1C987.1 438.9 998.3 432.6 1004.6 429.0C1010.9 425.4 1020.4 419.8 1025.8 416.4C1031.1 413.1 1040.0 407.6 1045.5 404.3C1064.9 392.6 1088.7 377.6 1108.5 364.5C1119.5 357.2 1131.7 349.2 1135.5 346.6C1139.3 344.1 1154.3 334.0 1168.7 324.3C1201.8 301.9 1227.3 285.9 1239.7 279.7C1255.1 271.9 1268.9 273.2 1272.0 282.6C1274.2 289.1 1272.6 294.2 1260.4 318.9C1237.3 365.9 1233.0 375.4 1227.5 391.5C1211.1 440.0 1216.7 472.0 1243.4 483.0C1251.4 486.2 1251.4 486.2 1265.4 485.7C1282.6 485.2 1301.4 480.7 1326.0 471.3C1329.6 469.9 1334.3 468.1 1336.5 467.3C1341.1 465.7 1357.5 458.8 1363.5 455.9C1365.7 454.9 1375.4 450.4 1385.0 445.9C1394.6 441.5 1403.0 437.4 1403.5 437.0C1404.0 436.6 1410.1 433.4 1417.0 430.0C1427.7 424.6 1439.9 418.1 1459.0 407.3C1467.8 402.3 1503.5 381.9 1507.0 379.8C1508.9 378.7 1518.2 373.2 1527.5 367.7C1536.8 362.2 1546.3 356.5 1548.5 355.0C1550.7 353.5 1553.8 351.7 1555.5 350.8C1557.2 350.0 1564.6 345.6 1572.0 341.0C1579.4 336.4 1588.4 331.0 1592.0 329.0C1595.6 327.0 1605.7 320.9 1614.5 315.5C1633.0 304.1 1649.3 294.5 1660.1 288.4C1664.3 286.1 1672.2 281.5 1677.6 278.4C1736.6 244.0 1812.5 205.1 1860.5 184.5C1862.2 183.8 1867.5 181.4 1872.5 179.2C1877.5 177.0 1882.6 174.9 1884.0 174.5C1885.4 174.1 1887.0 173.4 1887.5 173.0C1888.9 171.9 1906.7 164.6 1917.0 160.8C1921.7 159.1 1926.0 157.3 1926.6 156.8C1927.3 156.3 1931.5 154.6 1936.1 153.0C1940.7 151.4 1949.7 148.2 1956.0 145.9C1966.9 142.0 1971.0 140.7 1992.5 134.6C1997.5 133.2 2004.5 131.1 2008.2 130.0C2029.0 123.6 2060.5 120.1 2067.0 123.5C2075.4 127.9 2074.2 140.6 2065.0 144.2C2063.6 144.7 2056.2 145.8 2048.5 146.6C2040.8 147.4 2032.4 148.7 2029.8 149.5C2027.3 150.3 2022.1 151.4 2018.3 152.0C2010.1 153.2 2000.9 155.5 1997.2 157.4C1995.7 158.1 1992.7 159.1 1990.5 159.4C1985.7 160.3 1963.6 167.5 1960.0 169.4C1958.6 170.1 1956.2 171.0 1954.5 171.4C1951.0 172.2 1940.7 176.2 1936.5 178.4C1934.8 179.3 1932.9 180.0 1932.1 180.0C1931.4 180.0 1927.4 181.6 1923.3 183.5C1919.2 185.4 1915.3 187.0 1914.7 187.0C1914.0 187.0 1912.2 187.7 1910.5 188.6C1908.8 189.5 1903.9 191.7 1899.5 193.5C1891.0 197.0 1877.9 203.1 1856.5 213.5C1849.3 217.0 1841.2 220.9 1838.5 222.2C1835.8 223.6 1832.6 225.1 1831.5 225.7C1830.4 226.3 1826.3 228.4 1822.5 230.3C1808.5 237.3 1775.6 254.6 1761.5 262.5C1758.8 264.1 1748.6 269.6 1739.0 274.8C1729.4 280.0 1720.8 284.8 1720.0 285.5C1719.2 286.2 1716.7 287.5 1714.5 288.4C1712.3 289.4 1709.6 290.9 1708.5 291.9C1707.4 292.9 1704.2 294.9 1701.5 296.2C1695.6 299.0 1664.1 317.2 1659.0 320.6C1657.1 321.9 1655.2 323.0 1654.7 323.0C1653.8 323.0 1634.8 334.2 1625.6 340.2C1622.3 342.3 1619.3 344.0 1618.8 344.0C1618.3 344.0 1616.0 345.3 1613.7 346.8C1611.4 348.4 1605.9 351.6 1601.5 354.0C1597.1 356.3 1591.9 359.3 1590.0 360.5C1588.1 361.7 1580.9 366.0 1574.0 370.0C1567.1 374.0 1559.7 378.5 1557.5 379.9C1555.3 381.3 1552.7 382.8 1551.7 383.2C1550.7 383.7 1544.4 387.3 1537.7 391.4C1524.8 399.2 1513.1 405.8 1499.7 412.8C1495.2 415.1 1487.7 419.2 1483.0 421.9C1470.9 428.8 1450.1 439.6 1424.0 452.6C1389.0 470.0 1376.0 475.9 1354.5 484.4C1328.8 494.6 1306.4 501.6 1285.5 506.0C1278.2 507.6 1248.9 508.3 1239.2 507.1C1211.6 504.0 1190.7 482.8 1187.9 455.0C1186.3 438.8 1187.6 423.7 1192.2 406.5C1194.4 398.2 1197.0 389.7 1198.0 387.5C1199.0 385.2 1202.0 378.5 1204.5 372.5C1208.7 362.5 1212.2 355.7 1225.7 330.5C1230.2 322.0 1230.9 319.0 1228.5 319.0C1227.7 319.0 1217.2 325.4 1205.2 333.1C1193.3 340.9 1182.2 348.0 1180.6 348.9C1179.1 349.8 1173.2 353.4 1167.6 357.0C1162.1 360.6 1153.9 365.7 1149.5 368.4C1140.6 373.7 1127.0 382.1 1119.6 387.0C1116.9 388.8 1099.4 399.6 1080.6 411.2C1061.9 422.8 1044.2 433.7 1041.5 435.5C1038.8 437.2 1031.5 441.5 1025.5 445.0C1019.5 448.4 1009.0 454.6 1002.4 458.6C995.7 462.7 989.1 466.4 987.7 466.9C986.3 467.5 983.4 469.0 981.3 470.3C974.2 474.8 940.2 491.9 925.3 498.6C909.1 505.9 901.2 508.8 887.5 512.7C882.5 514.1 876.2 515.9 873.5 516.8C870.2 517.8 863.2 518.5 853.0 518.8C838.1 519.2 837.1 519.1 829.5 516.5C804.3 507.8 793.5 486.2 796.9 451.0C799.9 419.7 814.1 385.1 841.6 342.0C851.0 327.2 853.7 322.4 852.8 321.5C851.9 320.6 842.3 324.8 834.2 329.9C829.6 332.7 825.5 335.0 825.0 335.0C824.6 335.0 821.6 336.7 818.4 338.9C812.2 342.9 788.2 357.5 776.9 364.1C773.3 366.1 765.4 370.9 759.4 374.6C753.4 378.3 746.7 382.3 744.5 383.5C742.3 384.7 736.7 388.1 732.0 391.0C727.3 393.9 721.8 397.2 719.8 398.4C717.7 399.6 712.1 403.0 707.3 406.1C702.4 409.2 692.9 415.0 686.0 419.0C679.1 423.1 669.2 429.0 663.9 432.2C658.5 435.4 653.4 438.3 652.4 438.7C651.3 439.1 647.6 441.2 644.0 443.5C640.4 445.8 634.4 449.3 630.5 451.5C620.6 456.9 599.0 468.9 589.4 474.3C573.4 483.3 499.1 521.0 497.5 521.0C497.1 521.0 490.7 523.7 483.2 527.1C475.7 530.4 467.5 533.8 465.0 534.5C462.5 535.3 454.0 538.2 446.0 541.0C438.0 543.8 429.5 546.5 427.0 546.9C424.5 547.4 416.0 549.2 408.0 550.9C390.5 554.6 385.8 554.7 375.8 551.4Z"/></svg>
+    <p class="eyebrow">WEDDING WN</p>
+    <h1 id="title" class="couple">PALM <span>&amp;</span> TOEY</h1>
+    <p class="wdate">12 . 12 . 2026</p>
+    <div class="sub">
+      <span id="countdown">ยังไม่ได้ตั้งวันงาน</span>
+    </div>
+  </header>
+
+  <section class="ckdash" aria-labelledby="ckTitle">
+    <div class="ckhead"><div><p class="eyebrow sm">WEDDING PLANNER &amp; CHECKLIST</p><h2 class="cktitle" id="ckTitle">ความพร้อมงานแต่ง</h2></div><button type="button" class="btn sm ghost" id="ckOpenAll">เปิด Checklist</button></div>
+    <div class="ckmain">
+      <div class="ckring"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="rt"/><circle cx="60" cy="60" r="52" class="rv" id="ckRing" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><div><b class="num" id="ckPct">0%</b><span>Overall Progress</span></div></div>
+      <div class="ckstats">
+        <div><span>Total Checklist</span><b class="num" id="ckTotal">0</b></div>
+        <div><span>Completed</span><b class="num" id="ckDone" style="color:var(--ok)">0</b></div>
+        <div><span>In Progress</span><b class="num" id="ckProg" style="color:var(--gold)">0</b></div>
+        <div><span>Pending</span><b class="num" id="ckPend" style="color:var(--rose-ink)">0</b></div>
+      </div>
+    </div>
+    <div class="ckbar" aria-hidden="true"><i class="d" id="ckBarD"></i><i class="p" id="ckBarP"></i></div>
+    <div class="ckcats" id="ckCats"><div class="empty">กำลังโหลด Checklist…</div></div>
+    <div class="ckup"><h3>Upcoming Tasks</h3><div id="ckUp" class="ledger"></div></div>
+  </section>
+
+  <section class="summary" aria-label="สรุปยอด"><svg class="corner" viewBox="0 0 90 70" aria-hidden="true"><path d="M40 40 q9.1 -13.0 20.8 0 q-11.700000000000001 13.0 -20.8 0z" style="fill:var(--leaf)" transform="rotate(-40 40 40)"/><path d="M60 28 q8.4 -12.0 19.2 0 q-10.799999999999999 12.0 -19.2 0z" style="fill:var(--leaf)" transform="rotate(200 60 28)"/><path d="M70 52 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(150 70 52)"/><ellipse cx="67.7" cy="24.1" rx="8.2" ry="6.1" transform="rotate(12 67.7 24.1)" style="fill:var(--petal)"/><ellipse cx="59.0" cy="31.8" rx="8.2" ry="6.1" transform="rotate(84 59.0 31.8)" style="fill:var(--petal)"/><ellipse cx="49.0" cy="26.0" rx="8.2" ry="6.1" transform="rotate(156 49.0 26.0)" style="fill:var(--petal)"/><ellipse cx="51.4" cy="14.6" rx="8.2" ry="6.1" transform="rotate(228 51.4 14.6)" style="fill:var(--petal)"/><ellipse cx="63.0" cy="13.4" rx="8.2" ry="6.1" transform="rotate(300 63.0 13.4)" style="fill:var(--petal)"/><circle cx="58" cy="22" r="5.0" style="fill:var(--bloom)"/><ellipse cx="83.2" cy="49.6" rx="5.2" ry="3.9" transform="rotate(35 83.2 49.6)" style="fill:var(--petal-2)"/><ellipse cx="76.2" cy="52.0" rx="5.2" ry="3.9" transform="rotate(107 76.2 52.0)" style="fill:var(--petal-2)"/><ellipse cx="71.7" cy="46.1" rx="5.2" ry="3.9" transform="rotate(179 71.7 46.1)" style="fill:var(--petal-2)"/><ellipse cx="75.9" cy="40.0" rx="5.2" ry="3.9" transform="rotate(251 75.9 40.0)" style="fill:var(--petal-2)"/><ellipse cx="83.0" cy="42.2" rx="5.2" ry="3.9" transform="rotate(323 83.0 42.2)" style="fill:var(--petal-2)"/><circle cx="78" cy="46" r="3.1" style="fill:var(--bloom)"/><ellipse cx="41.4" cy="52.0" rx="4.5" ry="3.3" transform="rotate(0 41.4 52.0)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="57.1" rx="4.5" ry="3.3" transform="rotate(72 37.7 57.1)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="55.2" rx="4.5" ry="3.3" transform="rotate(144 31.6 55.2)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="48.8" rx="4.5" ry="3.3" transform="rotate(216 31.6 48.8)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="46.9" rx="4.5" ry="3.3" transform="rotate(288 37.7 46.9)" style="fill:var(--petal-2)"/><circle cx="36" cy="52" r="2.7" style="fill:var(--bloom)"/></svg>
+    <div class="stats">
+      <div class="stat"><span>งบที่ตั้งไว้</span><b class="num" id="sBudget">–</b></div>
+      <div class="stat"><span>ค่าใช้จ่ายรวม</span><b class="num" id="sTotal">฿0</b></div>
+      <div class="stat"><span>จ่ายแล้ว</span><b class="num" id="sPaid" style="color:var(--accent)">฿0</b></div>
+      <div class="stat"><span>ยังต้องจ่าย</span><b class="num" id="sLeft" style="color:var(--gold)">฿0</b></div>
+    </div>
+    <div class="bar" aria-hidden="true"><i class="p" id="bPaid" style="width:0"></i><i class="r" id="bLeft" style="width:0"></i></div>
+    <div class="legend"><span><em style="background:var(--accent)"></em>จ่ายแล้ว</span><span><em style="background:var(--gold)"></em>ค้างจ่าย</span><span id="budgetNote"></span></div>
+    <div class="alert" id="overdue" hidden></div>
+  </section>
+
+  <button class="btn pdfbtn" id="pdfBtn" type="button" hidden>⬇ ส่งออก PDF สรุปรายจ่าย</button>
+  <div id="list"><div class="empty">กำลังโหลดรายการ…</div></div>  <p class="note" id="who"></p>
+  <button class="linkish" id="editCfg" type="button" style="align-self:center">⚙ ตั้งค่าวันงานและงบ</button>
+</div>
+
+<button class="fab" id="addBtn" type="button">+ เพิ่มรายการ</button>
+<nav class="dock" aria-label="เมนูด้านล่าง">
+  <button type="button" class="dockbtn" id="openCk"><span class="di">✓</span><span><b>Checklist</b><small id="dockCk">ความพร้อม</small></span></button>
+  <button type="button" class="dockbtn" id="openMoney"><span class="di">฿</span><span><b>รายรับรายจ่าย</b><small id="dockMoney">ดูยอดเงินเข้า-ออก</small></span></button>
+  <button type="button" class="dockbtn" id="openGuests"><span class="di">✿</span><span><b>รายชื่อแขก</b><small id="dockGuests">คนร่วมงาน</small></span></button>
+</nav>
+
+<dialog id="dlg">
+  <form class="sheet" id="form">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h3 id="dlgTitle">เพิ่มรายการ</h3><button type="button" class="x" id="close" aria-label="ปิด">✕</button></div>
+    <div class="grid2">
+      <label style="grid-column:1/-1">ชื่อรายการ<input id="fName" required placeholder="พิมพ์เองได้เลย เช่น ค่าช่างภาพ, ค่าชุดแต่งงาน, ค่าของชำร่วย"></label>
+      <label>ผู้ให้บริการ / ร้าน<input id="fVendor" placeholder="ชื่อร้านหรือทีม"></label>
+      <label>เบอร์ติดต่อ<input id="fContact" inputmode="tel"></label>
+      <label>สถานะการจอง<select id="fBook">
+        <option value="searching">ยังหาไม่ได้</option><option value="none">ยังไม่จอง</option><option value="pending">รอยืนยัน / ติดต่อแล้ว</option><option value="booked">จองแล้ว</option><option value="cancel">ยกเลิก</option></select></label>
+      <label>ราคาเต็ม (บาท)<input id="fTotal" type="number" min="0" step="1" inputmode="numeric"></label>
+      <label>กำหนดจ่ายงวดถัดไป<input id="fDue" type="date"></label>
+    </div>
+    <label>หมายเหตุ<textarea id="fNote" placeholder="เงื่อนไขมัดจำ, เมนู, เวลาเล่น ฯลฯ"></textarea></label>
+    <div class="pays">
+      <h2>ประวัติการจ่าย</h2>
+      <div id="payList"></div>
+      <div class="payadd">
+        <label>จำนวน (บาท)<input id="pAmt" type="number" min="0" inputmode="numeric"></label>
+        <label>วันที่จ่าย<input id="pDate" type="date"></label>
+        <button type="button" class="btn sm" id="pAdd">+ บันทึกการจ่าย</button>
+      </div>
+      <label>รายละเอียดการจ่าย (ไม่บังคับ)<input id="pNote" placeholder="เช่น มัดจำ 30%, โอนจากบัญชีเจ้าสาว"></label>
+      <div class="slipnew" id="slipNewWrap"><button type="button" class="btn sm" id="pSlip">📎 แนบสลิป</button><span class="note" id="pSlipState">ยังไม่ได้แนบรูป</span></div>
+      <input type="file" id="slipFile" accept="image/*,application/pdf" hidden>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn danger" id="del" hidden>ลบรายการ</button>
+      <div class="r"><button type="button" class="btn" id="cancel">ยกเลิก</button><button type="submit" class="btn pri" id="save">บันทึก</button></div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="cfgDlg">
+  <form class="sheet" id="cfgForm">
+    <h3>ตั้งค่างาน</h3>
+    <div class="grid2">
+      <label>วันงาน<input id="cDate" type="date"></label>
+      <label>งบประมาณรวม (บาท)<input id="cBudget" type="number" min="0" inputmode="numeric"></label>
+    </div>
+    <div class="actions"><div class="r"><button type="button" class="btn" id="cfgCancel">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+  </form>
+</dialog>
+<dialog id="moneyDlg" class="big"><div class="sheet">
+  <div class="dh"><h3>รายรับรายจ่าย</h3><button type="button" class="x" data-close="moneyDlg" aria-label="ปิด">✕</button></div>
+  <div class="mstats">
+    <div class="ms"><span>รายรับรวม</span><b class="num" id="mIn" style="color:var(--ok)">฿0</b><small id="mInNote"></small></div>
+    <div class="ms"><span>จ่ายออกไปแล้ว</span><b class="num" id="mOut" style="color:var(--bad)">฿0</b><small id="mOutNote"></small></div>
+    <div class="ms wide"><span>เงินคงเหลือตอนนี้ (รายรับ − จ่ายแล้ว)</span><b class="num" id="mBal">฿0</b><small id="mProj"></small></div>
+  </div>
+  <div class="rowhead"><h2>ความเคลื่อนไหว</h2><button type="button" class="btn sm" id="addIncome">+ เพิ่มรายรับ</button></div>
+  <div class="seg" role="tablist"><button type="button" class="on" data-m="all">ทั้งหมด</button><button type="button" data-m="in">รายรับ</button><button type="button" data-m="out">รายจ่าย</button></div>
+  <div id="ledger" class="ledger"></div>
+</div></dialog>
+
+<dialog id="incDlg"><form class="sheet" id="incForm">
+  <div class="dh"><h3 id="incTitle">เพิ่มรายรับ</h3><button type="button" class="x" data-close="incDlg" aria-label="ปิด">✕</button></div>
+  <label>ที่มาของเงิน<input id="iName" required placeholder="เช่น เงินสนับสนุนจากพ่อแม่, เงินเก็บร่วมกัน"></label>
+  <div class="grid2"><label>จำนวน (บาท)<input id="iAmt" type="number" min="0" inputmode="numeric" required></label><label>วันที่<input id="iDate" type="date"></label></div>
+  <label>หมายเหตุ<input id="iNote" placeholder="ไม่บังคับ"></label>
+  <div class="actions"><button type="button" class="btn danger" id="iDel" hidden>ลบ</button><div class="r"><button type="button" class="btn" data-close="incDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+</form></dialog>
+
+<dialog id="guestDlg" class="big"><div class="sheet">
+  <div class="dh"><h3>รายชื่อแขกร่วมงาน</h3><button type="button" class="x" data-close="guestDlg" aria-label="ปิด">✕</button></div>
+  <div class="mstats g4">
+    <div class="ms"><span>รายชื่อ</span><b class="num" id="gNames">0</b></div>
+    <div class="ms"><span>ยืนยันมา (คน)</span><b class="num" id="gYes" style="color:var(--ok)">0</b></div>
+    <div class="ms"><span>รอตอบ (คน)</span><b class="num" id="gWait" style="color:var(--warn)">0</b></div>
+    <div class="ms"><span>ซองรวม</span><b class="num" id="gEnv">฿0</b></div>
+  </div>
+  <div class="note" id="gSides"></div>
+  <div class="rowhead"><input id="gSearch" type="search" placeholder="ค้นหาชื่อแขก" aria-label="ค้นหาชื่อแขก"><button type="button" class="btn sm" id="addGuest">+ เพิ่มแขก</button></div>
+  <div class="seg" role="tablist"><button type="button" class="on" data-g="all">ทั้งหมด</button><button type="button" data-g="groom">ฝ่ายเจ้าบ่าว</button><button type="button" data-g="bride">ฝ่ายเจ้าสาว</button><button type="button" data-g="both">ทั้งสองฝ่าย</button></div>
+  <div class="seg sub" id="gSub" hidden></div>
+  <div id="guestList" class="ledger"></div>
+</div></dialog>
+
+<dialog id="gDlg"><form class="sheet" id="gForm">
+  <div class="dh"><h3 id="gTitle">เพิ่มแขก</h3><button type="button" class="x" data-close="gDlg" aria-label="ปิด">✕</button></div>
+  <label>ชื่อแขก / ครอบครัว<input id="gName" required placeholder="เช่น ป้าแดง และครอบครัว"></label>
+  <div class="grid2">
+    <label>ฝ่าย<select id="gSide"><option value="groom">ฝ่ายเจ้าบ่าว</option><option value="bride">ฝ่ายเจ้าสาว</option><option value="both">ทั้งสองฝ่าย</option></select></label>
+    <label>จำนวนคน<input id="gCount" type="number" min="1" value="1" inputmode="numeric"></label>
+    <label>สถานะ<select id="gStatus"><option value="wait">รอตอบ</option><option value="yes">ยืนยันมา</option><option value="no">ไม่มา</option></select></label>
+    <label>ซอง (บาท)<input id="gEnvIn" type="number" min="0" inputmode="numeric" placeholder="ใส่หลังวันงาน"></label>
+    <label>เบอร์โทร<input id="gPhone" inputmode="tel"></label>
+    <label>กลุ่ม<select id="gGroupSel"></select></label>
+    <label id="gGroupOtherWrap" hidden>ชื่อกลุ่ม<input id="gGroup" placeholder="พิมพ์ชื่อกลุ่ม"></label>
+  </div>
+  <label>หมายเหตุ<input id="gNote" placeholder="เช่น ทานมังสวิรัติ, มีเด็กเล็ก"></label>
+  <div class="actions"><button type="button" class="btn danger" id="gDel" hidden>ลบ</button><div class="r"><button type="button" class="btn" data-close="gDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+</form></dialog>
+<dialog id="ckDlg" class="big"><div class="sheet">
+  <div class="dh"><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>Wedding Checklist</h3></div><button type="button" class="x" data-close="ckDlg" aria-label="ปิด">✕</button></div>
+  <div class="seg" id="ckCatSeg" role="tablist"></div>
+  <div class="rowhead"><div class="seg" id="ckStSeg" role="tablist"><button type="button" class="on" data-st="all">ทั้งหมด</button><button type="button" data-st="pending">Pending</button><button type="button" data-st="progress">In Progress</button><button type="button" data-st="done">Completed</button></div></div>
+  <div id="ckBody" class="ckbody"></div>
+  <button type="button" class="linkish" id="ckAddCat" style="align-self:flex-start">+ เพิ่มหมวดงาน</button>
+</div></dialog>
+
+<dialog id="tkDlg"><form class="sheet" id="tkForm">
+  <div class="dh"><h3 id="tkTitle">เพิ่มงาน</h3><button type="button" class="x" data-close="tkDlg" aria-label="ปิด">✕</button></div>
+  <label>ชื่องาน<input id="tName" required placeholder="เช่น ตรวจสอบไมโครโฟน"></label>
+  <div class="grid2">
+    <label>หมวด<select id="tCat"></select></label>
+    <label>สถานะ<select id="tStatus"><option value="pending">Pending · ยังไม่เริ่ม</option><option value="progress">In Progress · กำลังทำ</option><option value="done">Completed · เสร็จแล้ว</option></select></label>
+    <label>กำหนดเสร็จ<input id="tDue" type="date"></label>
+    <label>ผู้รับผิดชอบ<select id="tOwner"><option value="">— ไม่ระบุ —</option><option>Organizer</option><option>เจ้าบ่าว</option><option>เจ้าสาว</option><option>บ่าวสาว</option></select></label>
+  </div>
+  <label>หมายเหตุ<textarea id="tNote" placeholder="รายละเอียด หรือสิ่งที่ต้องแจ้ง Organizer"></textarea></label>
+  <div class="actions"><button type="button" class="btn danger" id="tDel" hidden>ลบงาน</button><div class="r"><button type="button" class="btn" data-close="tkDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+</form></dialog>
+
+<dialog id="catDlg"><form class="sheet" id="catForm">
+  <div class="dh"><h3 id="catTitle">เพิ่มหมวดงาน</h3><button type="button" class="x" data-close="catDlg" aria-label="ปิด">✕</button></div>
+  <div class="grid2"><label>ลำดับ<input id="kCode" placeholder="เช่น 04"></label><label>ชื่อหมวด (อังกฤษ)<input id="kName" required placeholder="เช่น CEREMONY"></label></div>
+  <label>คำอธิบาย (ไทย)<input id="kTh" placeholder="เช่น ตรวจสอบพิธีการ"></label>
+  <div class="actions"><button type="button" class="btn danger" id="kDel" hidden>ลบหมวด</button><div class="r"><button type="button" class="btn" data-close="catDlg">ยกเลิก</button><button type="submit" class="btn pri">บันทึก</button></div></div>
+</form></dialog>
+<dialog id="viewDlg"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h3>สลิปการจ่าย</h3><button type="button" class="x" id="viewClose" aria-label="ปิด">✕</button></div><img id="viewImg" alt="สลิปการจ่ายเงิน" style="width:100%;border-radius:10px"></div></dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const CATS=[["organizer","ออแกไนซ์"],["food","อาหาร"],["band","วงดนตรี"],["other","อื่น ๆ"]];
+const BOOK={searching:["ยังหาไม่ได้","c-bad"],none:["ยังไม่จอง","c-none"],pending:["รอยืนยัน","c-pend"],booked:["จองแล้ว","c-ok"],cancel:["ยกเลิก","c-none"]};
+let db=null,user=null,me=null,canWrite=true,items=[],cfg={},editing=null,draftPays=[],names={},filter="all",assets=null,pendingSlip=null,slipTarget=-1;
+const $=id=>document.getElementById(id);
+const baht=n=>"฿"+Math.round(n||0).toLocaleString("th-TH");
+const sum=p=>(p||[]).reduce((a,x)=>a+(+x.amount||0),0);
+const today=()=>new Date().toISOString().slice(0,10);
+const thDate=d=>d?new Date(d+"T00:00:00").toLocaleDateString("th-TH",{day:"numeric",month:"short",year:"2-digit"}):"";
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2200)}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function render(){
+  const live=items.filter(i=>i.booking!=="cancel");
+  const total=live.reduce((a,i)=>a+(+i.total||0),0), paid=live.reduce((a,i)=>a+sum(i.payments),0), left=Math.max(0,total-paid);
+  const budget=+cfg.budget||0;
+  
+  $("sBudget").textContent=budget?baht(budget):"–";
+  $("sTotal").textContent=baht(total);$("sPaid").textContent=baht(paid);$("sLeft").textContent=baht(left);
+  const base=Math.max(total,budget,1);
+  $("bPaid").style.width=(Math.min(paid,total)/base*100)+"%";$("bLeft").style.width=(left/base*100)+"%";
+  $("budgetNote").textContent=budget?(total>budget?`เกินงบ ${baht(total-budget)}`:`เหลืองบ ${baht(budget-total)}`):"";
+  $("budgetNote").style.color=budget&&total>budget?"var(--bad)":"";
+  if(cfg.date){const d=Math.ceil((new Date(cfg.date+"T00:00:00")-new Date(today()+"T00:00:00"))/864e5);
+    $("countdown").textContent=d>0?`วันงาน ${thDate(cfg.date)} · อีก ${d} วัน`:d===0?"วันนี้คือวันงาน":`วันงาน ${thDate(cfg.date)}`}
+  else $("countdown").textContent="ยังไม่ได้ตั้งวันงาน";
+  const od=live.filter(i=>i.dueDate&&i.dueDate<today()&&sum(i.payments)<(+i.total||0));
+  $("overdue").hidden=!od.length;$("overdue").textContent=od.length?`เลยกำหนดจ่าย: ${od.map(i=>i.name).join(", ")}`:"";
+  const L=$("list");
+  if(!items.length){L.innerHTML=`<div class="empty">ยังไม่มีรายการ<br>กด “+ เพิ่มรายการ” แล้วพิมพ์ชื่อรายการเอง เช่น ค่าออแกไนซ์ ค่าอาหาร ค่าวงดนตรี</div>`;return}
+  const isOwe=i=>i.booking!=="cancel"&&(+i.total||0)>0&&sum(i.payments)<(+i.total||0);
+  const isDone=i=>(+i.total||0)>0&&sum(i.payments)>=(+i.total||0);
+  const owe=items.filter(isOwe),done=items.filter(isDone);
+  const oweAmt=owe.reduce((a,i)=>a+(+i.total||0)-sum(i.payments),0),doneAmt=done.reduce((a,i)=>a+sum(i.payments),0);
+  const F={all:["ทั้งหมด",items,null],owe:["ยังค้างจ่าย",owe,oweAmt],done:["จ่ายครบแล้ว",done,doneAmt],searching:["ยังหาไม่ได้",items.filter(i=>i.booking==="searching"),null]};
+  const shown=F[filter][1];
+  L.innerHTML=`<div class="filters" role="tablist">${Object.entries(F).map(([k,[l,a,m]])=>`<button type="button" role="tab" aria-selected="${k===filter}" class="fbtn${k===filter?" on":""}" data-f="${k}"><span>${l}</span><b class="num">${a.length} รายการ</b>${m!==null?`<small class="num">${baht(m)}</small>`:""}</button>`).join("")}</div>`+
+    `<section class="group">`+(shown.length?"":`<div class="empty">ไม่มีรายการในกลุ่มนี้</div>`)+
+    shown.map(i=>{const p=sum(i.payments),t=+i.total||0,b=BOOK[i.booking||"none"];
+      let pay= t===0?["ยังไม่ใส่ราคา","c-none"]: p>=t?["จ่ายครบ","c-ok"]: p>0?["มัดจำแล้ว","c-gold"]:["ยังไม่จ่าย","c-none"];
+      const late=i.dueDate&&p<t&&i.booking!=="cancel"&&i.dueDate<today();
+      return `<button class="row" type="button" data-id="${esc(i.id)}"><div><div class="t">${esc(i.name)}</div><div class="v">${esc(i.vendor||"ยังไม่ระบุร้าน")}${i.contact?" · "+esc(i.contact):""}</div></div>
+      <div class="amt num">${baht(t)}<small>ค้าง ${baht(Math.max(0,t-p))}</small></div>
+      <div class="chips"><span class="chip ${b[1]}">${b[0]}</span><span class="chip ${pay[1]}">${pay[0]}</span>${(i.payments||[]).some(x=>x.slip)?`<span class="chip c-none">📎 สลิป ${(i.payments||[]).filter(x=>x.slip).length}</span>`:""}${i.dueDate&&p<t?`<span class="chip ${late?"c-bad":"c-none"}">${late?"เลยกำหนด":"ครบกำหนด"} ${thDate(i.dueDate)}</span>`:""}</div>
+      <div class="mini"><i style="width:${t?Math.min(100,p/t*100):0}%"></i></div></button>`}).join("")+`</section>`;
+  L.style.display="flex";L.style.flexDirection="column";L.style.gap="20px";
+  L.querySelectorAll(".fbtn").forEach(b=>b.onclick=()=>{filter=b.dataset.f;render()});
+  L.querySelectorAll(".row").forEach(r=>r.onclick=()=>openItem(items.find(i=>i.id===r.dataset.id)));
+  showWho();
+}
+async function showWho(){
+  if(!user)return;const last=[...items].sort((a,b)=>(b.updatedAt||"").localeCompare(a.updatedAt||""))[0];
+  if(!last||!last.updatedBy){$("who").textContent="";return}
+  try{const ps=await user.profiles([last.updatedBy]);const n=(ps[last.updatedBy]&&ps[last.updatedBy].name)||"ใครบางคน";
+    $("who").textContent=`แก้ไขล่าสุด: “${last.name}” โดย ${n} · ${new Date(last.updatedAt).toLocaleString("th-TH",{dateStyle:"medium",timeStyle:"short"})}`}catch(e){}
+}
+function slipHtml(p,ix){
+  if(p.slip){const u="/_blob/"+encodeURIComponent(p.slip);
+    return p.slipType==="application/pdf"?`<a class="pdf" href="${u}" target="_blank" rel="noopener">PDF</a>`:`<img class="thumb" src="${u}" alt="สลิป" data-view="${esc(u)}" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'note',textContent:'เปิดรูปไม่ได้'}))">`}
+  return assets&&canWrite?`<button type="button" class="btn sm" data-attach="${ix}">📎 แนบสลิป</button>`:"";
+}
+function renderPays(){
+  $("payList").innerHTML=draftPays.length?draftPays.map((p,ix)=>`<div class="pay"><div><b class="num">${baht(p.amount)}</b> · ${thDate(p.date)}${p.note?" · "+esc(p.note):""}</div><div class="side">${slipHtml(p,ix)}<button type="button" class="x" data-ix="${ix}" aria-label="ลบการจ่ายนี้">✕</button></div></div>`).join(""):`<div class="note">ยังไม่มีการจ่าย</div>`;
+  $("payList").querySelectorAll("[data-ix]").forEach(b=>b.onclick=()=>{draftPays.splice(+b.dataset.ix,1);renderPays()});
+  $("payList").querySelectorAll("[data-attach]").forEach(b=>b.onclick=()=>{slipTarget=+b.dataset.attach;$("slipFile").click()});
+  $("payList").querySelectorAll("[data-view]").forEach(im=>im.onclick=()=>{$("viewImg").src=im.dataset.view;$("viewDlg").showModal()});
+  $("slipNewWrap").hidden=!(assets&&canWrite);
+  $("pSlipState").innerHTML=pendingSlip?(pendingSlip.type==="application/pdf"?"แนบ PDF แล้ว ✓":`<img class="thumb" src="/_blob/${encodeURIComponent(pendingSlip.id)}" alt="สลิปที่แนบ"> แนบแล้ว ✓`):"ยังไม่ได้แนบรูป";
+}
+async function shrink(file){
+  if(!file.type.startsWith("image/")||file.type==="image/gif"||file.size<600000)return file;
+  try{const bmp=await createImageBitmap(file);const k=Math.min(1,1800/Math.max(bmp.width,bmp.height));
+    const c=document.createElement("canvas");c.width=Math.round(bmp.width*k);c.height=Math.round(bmp.height*k);
+    c.getContext("2d").drawImage(bmp,0,0,c.width,c.height);
+    return await new Promise(r=>c.toBlob(b=>r(b||file),"image/jpeg",.85))}catch(e){return file}
+}
+$("pSlip").onclick=()=>{slipTarget=-1;$("slipFile").click()};
+$("slipFile").onchange=async()=>{const f=$("slipFile").files[0];$("slipFile").value="";if(!f||!assets)return;
+  toast("กำลังอัปโหลดสลิป…");
+  try{const blob=await shrink(f);const r=await assets.upload(blob,blob.type?undefined:{type:"image/jpeg"});
+    const s={id:r.id,type:r.contentType};
+    if(slipTarget>=0&&draftPays[slipTarget]){draftPays[slipTarget].slip=s.id;draftPays[slipTarget].slipType=s.type;toast("แนบสลิปแล้ว กด “บันทึก” เพื่อเก็บ")}
+    else{pendingSlip=s;toast("แนบสลิปแล้ว")}
+    renderPays()}
+  catch(e){toast(e.code==="too_large"?"ไฟล์ใหญ่เกิน 20MB":e.code==="unsupported_type"?"รองรับเฉพาะรูปภาพหรือ PDF":e.code==="quota_or_state"?"พื้นที่เก็บไฟล์เต็ม":"อัปโหลดไม่สำเร็จ ลองใหม่อีกครั้ง")}};
+$("viewClose").onclick=()=>$("viewDlg").close();
+function openItem(it){
+  editing=it||null;$("dlgTitle").textContent=it?"แก้ไขรายการ":"เพิ่มรายการ";
+  $("fName").value=it?.name||"";$("fVendor").value=it?.vendor||"";$("fContact").value=it?.contact||"";
+  $("fBook").value=it?.booking||"none";$("fTotal").value=it?.total||"";$("fDue").value=it?.dueDate||"";$("fNote").value=it?.note||"";
+  draftPays=JSON.parse(JSON.stringify(it?.payments||[]));$("pAmt").value="";$("pDate").value=today();$("pNote").value="";pendingSlip=null;
+  $("del").hidden=!it;$("del").textContent="ลบรายการ";$("del").dataset.armed="";renderPays();
+  [...$("form").elements].forEach(e=>{if(e.id!=="close"&&e.id!=="cancel")e.disabled=!canWrite});
+  $("dlg").showModal();
+}
+$("pAdd").onclick=()=>{const a=+$("pAmt").value;if(!a){$("pAmt").focus();return}
+  const np={amount:a,date:$("pDate").value||today(),note:$("pNote").value.trim()};
+  if(pendingSlip){np.slip=pendingSlip.id;np.slipType=pendingSlip.type;pendingSlip=null}
+  draftPays.push(np);$("pAmt").value="";$("pNote").value="";renderPays()};
+$("close").onclick=$("cancel").onclick=()=>$("dlg").close();
+$("addBtn").onclick=()=>openItem(null);
+$("form").onsubmit=async e=>{e.preventDefault();if(!db)return toast("ยังเชื่อมต่อไม่ได้ ลองใหม่อีกครั้ง");
+  if(+$("pAmt").value)$("pAdd").click();
+  const body={name:$("fName").value.trim(),vendor:$("fVendor").value.trim(),contact:$("fContact").value.trim(),
+    booking:$("fBook").value,total:+$("fTotal").value||0,dueDate:$("fDue").value,note:$("fNote").value.trim(),payments:draftPays,
+    createdAt:editing?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString(),updatedBy:me||""};
+  try{const ref=editing?db.collection("items").doc(editing.id):db.collection("items").doc();await ref.set(body);$("dlg").close();toast("บันทึกแล้ว")}
+  catch(err){toast(err.code==="invalid_argument"?"คุณมีสิทธิ์ดูอย่างเดียว แก้ไขไม่ได้":"บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง")}};
+$("del").onclick=async()=>{const b=$("del");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยันการลบ";return}
+  try{await db.collection("items").doc(editing.id).delete();$("dlg").close();toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
+$("editCfg").onclick=()=>{$("cDate").value=cfg.date||"";$("cBudget").value=cfg.budget||"";$("cfgDlg").showModal()};
+$("cfgCancel").onclick=()=>$("cfgDlg").close();
+$("cfgForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
+  try{await db.doc("config/main").set({...cfg,date:$("cDate").value,budget:+$("cBudget").value||0});$("cfgDlg").close();toast("บันทึกแล้ว")}
+  catch(err){toast("บันทึกไม่สำเร็จ")}};
+
+(async()=>{
+  [db,user,assets]=await Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]);
+  if(!db){$("list").innerHTML=`<div class="empty">เปิดข้อมูลไม่ได้ในหน้าจอนี้ ลองเข้าสู่ระบบ Claude แล้วเปิดลิงก์อีกครั้ง</div>`;$("addBtn").hidden=true;return}
+  if(user){try{me=await user.id()}catch(e){} let c=null;try{c=await user.can("data.write")}catch(e){}if(c===false){canWrite=false;$("addBtn").hidden=true;$("editCfg").hidden=true}}
+  db.collection("items").orderBy("createdAt").onSnapshot(s=>{items=s.docs.map(d=>({id:d.id,...d.data()}));render()},()=>{$("list").innerHTML=`<div class="empty">โหลดรายการไม่สำเร็จ รีเฟรชหน้าอีกครั้ง</div>`});
+  db.doc("config/main").onSnapshot(s=>{cfg=s.exists?s.data():{};render()});
+})();
+
+let downloads=null;
+function buildReport(){
+  const live=items.filter(i=>i.booking!=="cancel");
+  const total=live.reduce((a,i)=>a+(+i.total||0),0),paid=live.reduce((a,i)=>a+sum(i.payments),0),left=Math.max(0,total-paid),budget=+cfg.budget||0;
+  const done=items.filter(i=>(+i.total||0)>0&&sum(i.payments)>=(+i.total||0)).length;
+  const owe=items.filter(i=>i.booking!=="cancel"&&(+i.total||0)>0&&sum(i.payments)<(+i.total||0)).length;
+  const search=items.filter(i=>i.booking==="searching");
+  const cls={booked:"ok",searching:"bad",pending:"pend"};
+  const rows=live.filter(i=>i.booking!=="searching"||(+i.total||0)>0).map(i=>{const p=sum(i.payments),t=+i.total||0,b=BOOK[i.booking||"none"];
+    const pays=(i.payments||[]).map(x=>`${thDate(x.date)} ${baht(x.amount)}${x.note?" ("+esc(x.note)+")":""}`).join("<br>");
+    return `<tr class="rr"><td><b>${esc(i.name)}</b><small>${esc(i.vendor||"")}${i.contact?" · "+esc(i.contact):""}</small>${i.note?`<small>${esc(i.note)}</small>`:""}</td>
+    <td><span class="st ${cls[i.booking]||""}">${b[0]}</span>${i.dueDate&&p<t?`<small>กำหนดจ่าย ${thDate(i.dueDate)}</small>`:""}</td>
+    <td class="n">${baht(t)}</td><td class="n">${baht(p)}${pays?`<small>${pays}</small>`:""}</td><td class="n">${t?baht(Math.max(0,t-p)):"–"}</td></tr>`}).join("");
+  const gen=new Date().toLocaleString("th-TH",{dateStyle:"long",timeStyle:"short"});
+  const r=document.createElement("div");r.id="rpt";
+  r.innerHTML=`<div class="rr"><div class="r-band"></div><h1>Wedding WN</h1>
+  <div class="r-sub">สรุปค่าใช้จ่ายงานแต่ง${cfg.date?" · วันงาน "+new Date(cfg.date+"T00:00:00").toLocaleDateString("th-TH",{dateStyle:"long"}):""} · ข้อมูล ณ ${gen}</div>
+  <div class="r-stats"><div class="r-stat"><span>งบที่ตั้งไว้</span><b>${budget?baht(budget):"–"}</b></div><div class="r-stat"><span>ค่าใช้จ่ายรวม</span><b>${baht(total)}</b></div>
+  <div class="r-stat"><span>จ่ายแล้ว</span><b style="color:#2f6b4f">${baht(paid)}</b></div><div class="r-stat"><span>ยังต้องจ่าย</span><b style="color:#c98a12">${baht(left)}</b></div></div>
+  ${budget?`<div class="r-note" style="color:${total>budget?"#b3372e":"#2e7d4f"}">${total>budget?"เกินงบ "+baht(total-budget):"เหลืองบ "+baht(budget-total)}</div>`:""}
+  <div class="r-counts"><span>ทั้งหมด ${items.length} รายการ</span><span>จ่ายครบแล้ว ${done} รายการ</span><span>ยังค้างจ่าย ${owe} รายการ</span><span>ยังหาไม่ได้ ${search.length} รายการ</span></div>
+  <h2>รายการค่าใช้จ่าย</h2></div>
+  <table><thead><tr class="rr"><th>รายการ</th><th>สถานะ</th><th class="n">ราคาเต็ม</th><th class="n">จ่ายแล้ว</th><th class="n">คงค้าง</th></tr></thead>
+  <tbody>${rows}</tbody><tfoot><tr class="rr"><td colspan="2">รวม</td><td class="n">${baht(total)}</td><td class="n">${baht(paid)}</td><td class="n">${baht(left)}</td></tr></tfoot></table>
+  ${search.length?`<div class="rr"><h2>ยังหาไม่ได้</h2><div>${search.map(i=>esc(i.name)+(+i.total?` (${baht(+i.total)})`:"")).join(" · ")}</div></div>`:""}
+  ${items.some(i=>i.booking==="cancel")?`<div class="rr"><h2>ยกเลิกแล้ว (ไม่นับในยอดรวม)</h2><div>${items.filter(i=>i.booking==="cancel").map(i=>esc(i.name)).join(" · ")}</div></div>`:""}
+  <div class="r-foot rr">สร้างจากหน้า Wedding WN</div>`;
+  document.body.appendChild(r);return r;
+}
+async function exportPdf(){
+  const b=$("pdfBtn");b.disabled=true;b.textContent="กำลังสร้าง PDF…";let r=null;
+  try{
+    if(!window.html2canvas||!window.jspdf)throw {code:"lib"};
+    try{await document.fonts.ready}catch(e){}
+    r=buildReport();
+    const S=2,canvas=await html2canvas(r,{scale:S,backgroundColor:"#ffffff",logging:false});
+    const top=r.getBoundingClientRect().top;
+    const cuts=[...r.querySelectorAll(".rr")].map(e=>Math.round((e.getBoundingClientRect().bottom-top)*S));
+    const W=canvas.width,pageH=Math.floor(W*297/210),margin=Math.round(36*S);
+    const {jsPDF}=window.jspdf;const pdf=new jsPDF({unit:"mm",format:"a4",compress:true});
+    let y=0,first=true;
+    while(y<canvas.height-4){
+      const room=first?pageH:pageH-margin;let end=y+room;
+      if(end<canvas.height){const ok=cuts.filter(c=>c>y+40&&c<=end);if(ok.length)end=Math.max(...ok)}else end=canvas.height;
+      const pc=document.createElement("canvas");pc.width=W;pc.height=end-y;
+      const ctx=pc.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,W,pc.height);ctx.drawImage(canvas,0,y,W,end-y,0,0,W,end-y);
+      if(!first)pdf.addPage();
+      const off=first?0:margin*210/W;
+      pdf.addImage(pc.toDataURL("image/jpeg",.92),"JPEG",0,off,210,(end-y)*210/W);
+      y=end;first=false;
+    }
+    const n=pdf.getNumberOfPages();for(let i=1;i<=n;i++){pdf.setPage(i);pdf.setFontSize(8);pdf.setTextColor(140);pdf.text(`${i} / ${n}`,200,290,{align:"right"})}
+    const blob=pdf.output("blob");
+    await downloads.save({filename:`Wedding-WN-summary-${today()}.pdf`,data:blob});
+    toast("บันทึก PDF แล้ว");
+  }catch(e){
+    const c=e&&e.code;
+    toast(c==="declined"?"ยกเลิกการบันทึก":c==="lib"?"โหลดตัวสร้าง PDF ไม่สำเร็จ ลองรีเฟรชหน้า":c==="rate_limited"?"มีหน้าต่างบันทึกเปิดอยู่ ลองใหม่อีกครั้ง":c==="unavailable"||c==="not_granted"?"บันทึกไฟล์ในหน้าจอนี้ไม่ได้":"สร้าง PDF ไม่สำเร็จ ลองใหม่อีกครั้ง");
+  }finally{if(r)r.remove();b.disabled=false;b.textContent="⬇ ส่งออก PDF สรุปรายจ่าย"}
+}
+$("pdfBtn").onclick=exportPdf;
+claude.use("downloads").then(d=>{downloads=d;$("pdfBtn").hidden=!d});
+
+let incomes=[],guests=[],editInc=null,editG=null,mFilter="all",gFilter="all";
+const GROUPS={groom:["กฟผ","เพื่อนช่างกลสยาม","เพื่อนที่สุพรรณ","ญาติเจ้าบ่าว"],bride:["ญาติฝั่งแม่","เพื่อนNU","เพื่อน NU เกษตร","โอสถสภา"],both:[]};let gSub="";
+const SIDE={groom:"ฝ่ายเจ้าบ่าว",bride:"ฝ่ายเจ้าสาว",both:"ทั้งสองฝ่าย"};
+const GST={yes:["ยืนยันมา","c-ok"],wait:["รอตอบ","c-pend"],no:["ไม่มา","c-none"]};
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>$(b.dataset.close).close()));
+function envTotal(){return guests.reduce((a,g)=>a+(+g.envelope||0),0)}
+function renderMoney(){
+  const live=items.filter(i=>i.booking!=="cancel");
+  const inMan=incomes.reduce((a,x)=>a+(+x.amount||0),0),env=envTotal(),inAll=inMan+env;
+  const paid=live.reduce((a,i)=>a+sum(i.payments),0),total=live.reduce((a,i)=>a+(+i.total||0),0);
+  $("mIn").textContent=baht(inAll);$("mInNote").textContent=env?`รวมซองจากแขก ${baht(env)}`:`${incomes.length} รายการ`;
+  $("mOut").textContent=baht(paid);$("mOutNote").textContent=`ค่าใช้จ่ายทั้งหมด ${baht(total)}`;
+  const bal=inAll-paid;$("mBal").textContent=(bal<0?"−":"")+baht(Math.abs(bal));$("mBal").style.color=bal<0?"var(--bad)":"var(--fg)";
+  const proj=inAll-total;$("mProj").textContent=`หลังจ่ายครบทุกรายการ: ${proj<0?"ขาด "+baht(-proj):"เหลือ "+baht(proj)}`;
+  $("dockMoney").textContent=`คงเหลือ ${(bal<0?"−":"")+baht(Math.abs(bal))}`;
+  const rows=[];
+  incomes.forEach(x=>rows.push({t:"in",date:x.date||"",name:x.name,sub:x.note||"รายรับ",amt:+x.amount||0,id:x.id}));
+  if(env)rows.push({t:"in",date:cfg.date||"",name:"ซองจากแขก",sub:`${guests.filter(g=>+g.envelope).length} ซอง · แก้ได้ที่รายชื่อแขก`,amt:env,auto:true});
+  items.forEach(i=>(i.payments||[]).forEach(p=>rows.push({t:"out",date:p.date||"",name:i.name,sub:(i.vendor||"")+(p.note?" · "+p.note:""),amt:+p.amount||0,item:i.id})));
+  const list=rows.filter(r=>mFilter==="all"||r.t===mFilter).sort((a,b)=>b.date.localeCompare(a.date));
+  const L=$("ledger");
+  if(!list.length){L.innerHTML=`<div class="empty">${mFilter==="out"?"ยังไม่มีการจ่ายเงิน":"ยังไม่มีรายรับ กด “+ เพิ่มรายรับ” เพื่อบันทึกเงินที่เข้ามา เช่น เงินจากพ่อแม่ หรือเงินเก็บ"}</div>`;return}
+  let last=null;
+  L.innerHTML=list.map((r,ix)=>{const head=r.date!==last?`<div class="lday">${r.date?thDate(r.date):"ไม่ระบุวันที่"}</div>`:"";last=r.date;
+    const tag=r.id||r.item?"button":"div";
+    return head+`<${tag} ${tag==="button"?'type="button"':""} class="lr" data-ix="${ix}"><span class="ic ${r.t}">${r.t==="in"?"+":"−"}</span><span class="tx"><b>${esc(r.name)}</b><small>${esc(r.sub)}</small></span><span class="am num" style="color:${r.t==="in"?"var(--ok)":"var(--bad)"}">${r.t==="in"?"+":"−"}${baht(r.amt)}</span></${tag}>`}).join("");
+  L.querySelectorAll("button.lr").forEach(b=>b.onclick=()=>{const r=list[+b.dataset.ix];
+    if(r.id)openInc(incomes.find(x=>x.id===r.id));else if(r.item){$("moneyDlg").close();openItem(items.find(i=>i.id===r.item))}});
+}
+document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>{mFilter=b.dataset.m;document.querySelectorAll("[data-m]").forEach(x=>x.classList.toggle("on",x===b));renderMoney()});
+function openInc(x){editInc=x||null;$("incTitle").textContent=x?"แก้ไขรายรับ":"เพิ่มรายรับ";
+  $("iName").value=x?.name||"";$("iAmt").value=x?.amount||"";$("iDate").value=x?.date||today();$("iNote").value=x?.note||"";
+  $("iDel").hidden=!x;$("iDel").dataset.armed="";$("iDel").textContent="ลบ";
+  [...$("incForm").elements].forEach(e=>{if(!e.dataset.close&&e.className!=="x")e.disabled=!canWrite});$("incDlg").showModal()}
+$("addIncome").onclick=()=>openInc(null);
+$("incForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
+  const body={name:$("iName").value.trim(),amount:+$("iAmt").value||0,date:$("iDate").value,note:$("iNote").value.trim(),updatedAt:new Date().toISOString(),updatedBy:me||""};
+  try{await (editInc?db.collection("income").doc(editInc.id):db.collection("income").doc()).set(body);$("incDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง")}};
+$("iDel").onclick=async()=>{const b=$("iDel");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
+  try{await db.collection("income").doc(editInc.id).delete();$("incDlg").close();toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
+
+function renderGuests(){
+  const ppl=s=>guests.filter(g=>g.status===s).reduce((a,g)=>a+(+g.count||1),0);
+  $("gNames").textContent=guests.length;$("gYes").textContent=ppl("yes");$("gWait").textContent=ppl("wait");$("gEnv").textContent=baht(envTotal());
+  const side=k=>guests.filter(g=>g.side===k&&g.status!=="no").reduce((a,g)=>a+(+g.count||1),0);
+  $("gSides").textContent=guests.length?`ไม่นับคนที่ไม่มา: ฝ่ายเจ้าบ่าว ${side("groom")} คน · ฝ่ายเจ้าสาว ${side("bride")} คน · ทั้งสองฝ่าย ${side("both")} คน`:"";
+  $("dockGuests").textContent=guests.length?`ยืนยันแล้ว ${ppl("yes")} คน · ${guests.length} รายชื่อ`:"ยังไม่มีรายชื่อ";
+  const q=$("gSearch").value.trim().toLowerCase();
+  const subs=gFilter==="all"?[]:[...new Set([...(GROUPS[gFilter]||[]),...guests.filter(g=>g.side===gFilter&&g.group).map(g=>g.group)])];
+  const S=$("gSub");S.hidden=!subs.length;if(gSub&&!subs.includes(gSub))gSub="";
+  const cnt=k=>guests.filter(g=>g.side===gFilter&&(k===null||g.group===k)&&g.status!=="no").reduce((a,g)=>a+(+g.count||1),0);
+  S.innerHTML=subs.length?`<button type="button" data-sub="" class="${gSub?"":"on"}">ทุกกลุ่ม · ${cnt(null)}</button>`+subs.map(k=>`<button type="button" data-sub="${esc(k)}" class="${gSub===k?"on":""}">${esc(k)} · ${cnt(k)}</button>`).join(""):"";
+  S.querySelectorAll("[data-sub]").forEach(b=>b.onclick=()=>{gSub=b.dataset.sub;renderGuests()});
+  const list=guests.filter(g=>(gFilter==="all"||g.side===gFilter)&&(!gSub||g.group===gSub)&&(!q||(g.name+" "+(g.group||"")+" "+(g.phone||"")).toLowerCase().includes(q)));
+  const L=$("guestList");
+  if(!guests.length){L.innerHTML=`<div class="empty">ยังไม่มีรายชื่อแขก<br>กด “+ เพิ่มแขก” เพื่อเริ่มใส่รายชื่อคนร่วมงาน</div>`;return}
+  if(!list.length){L.innerHTML=`<div class="empty">ไม่พบรายชื่อที่ตรงกัน</div>`;return}
+  L.innerHTML=list.map(g=>{const st=GST[g.status||"wait"];return `<button type="button" class="lr" data-id="${esc(g.id)}"><span class="ic g">${esc(((g.name||"").match(/[ก-ฮA-Za-z0-9]/)||["?"])[0])}</span>
+   <span class="tx"><b>${esc(g.name)}</b><small>${SIDE[g.side]||""}${g.group?" · "+esc(g.group):""}${g.phone?" · "+esc(g.phone):""}${g.note?" · "+esc(g.note):""}</small>
+   <span class="chips" style="margin-top:4px"><span class="chip ${st[1]}">${st[0]}</span><span class="chip c-none">${+g.count||1} คน</span></span></span>
+   <span class="am num">${+g.envelope?baht(g.envelope):""}<small>${+g.envelope?"ซอง":""}</small></span></button>`}).join("");
+  L.querySelectorAll(".lr").forEach(b=>b.onclick=()=>openGuest(guests.find(g=>g.id===b.dataset.id)));
+}
+$("gSearch").oninput=renderGuests;
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{gFilter=b.dataset.g;gSub="";document.querySelectorAll("[data-g]").forEach(x=>x.classList.toggle("on",x===b));renderGuests()});
+function fillGroups(val){const side=$("gSide").value,opts=GROUPS[side]||[];
+  $("gGroupSel").innerHTML=`<option value="">— ไม่ระบุ —</option>`+opts.map(o=>`<option>${esc(o)}</option>`).join("")+`<option value="__other">อื่น ๆ (พิมพ์เอง)</option>`;
+  if(!val)$("gGroupSel").value="";else if(opts.includes(val))$("gGroupSel").value=val;else{$("gGroupSel").value="__other"}
+  $("gGroup").value=opts.includes(val)?"":val;$("gGroupOtherWrap").hidden=$("gGroupSel").value!=="__other"}
+$("gSide").onchange=()=>{const cur=$("gGroupSel").value==="__other"?$("gGroup").value:$("gGroupSel").value;fillGroups((GROUPS[$("gSide").value]||[]).includes(cur)?cur:"")};
+$("gGroupSel").onchange=()=>{$("gGroupOtherWrap").hidden=$("gGroupSel").value!=="__other";if(!$("gGroupOtherWrap").hidden)$("gGroup").focus()};
+function openGuest(g){editG=g||null;$("gTitle").textContent=g?"แก้ไขข้อมูลแขก":"เพิ่มแขก";
+  $("gName").value=g?.name||"";$("gSide").value=g?.side||(gFilter!=="all"?gFilter:"groom");$("gCount").value=g?.count||1;$("gStatus").value=g?.status||"wait";
+  $("gEnvIn").value=g?.envelope||"";$("gPhone").value=g?.phone||"";fillGroups(g?.group||(gSub||""));$("gNote").value=g?.note||"";
+  $("gDel").hidden=!g;$("gDel").dataset.armed="";$("gDel").textContent="ลบ";
+  [...$("gForm").elements].forEach(e=>{if(!e.dataset.close&&e.className!=="x")e.disabled=!canWrite});$("gDlg").showModal()}
+$("addGuest").onclick=()=>openGuest(null);
+$("gForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
+  const body={name:$("gName").value.trim(),side:$("gSide").value,count:Math.max(1,+$("gCount").value||1),status:$("gStatus").value,envelope:+$("gEnvIn").value||0,
+    phone:$("gPhone").value.trim(),group:$("gGroupSel").value==="__other"?$("gGroup").value.trim():$("gGroupSel").value,note:$("gNote").value.trim(),createdAt:editG?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString(),updatedBy:me||""};
+  try{await (editG?db.collection("guests").doc(editG.id):db.collection("guests").doc()).set(body);$("gDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง")}};
+$("gDel").onclick=async()=>{const b=$("gDel");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
+  try{await db.collection("guests").doc(editG.id).delete();$("gDlg").close();toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
+$("openMoney").onclick=()=>{renderMoney();$("moneyDlg").showModal()};
+$("openGuests").onclick=()=>{renderGuests();$("guestDlg").showModal()};
+const _render=render;render=function(){_render();renderMoney()};
+claude.use("db").then(d=>{if(!d)return;
+  d.collection("income").onSnapshot(s=>{incomes=s.docs.map(x=>({id:x.id,...x.data()}));renderMoney()},()=>{});
+  d.collection("guests").orderBy("createdAt").onSnapshot(s=>{guests=s.docs.map(x=>({id:x.id,...x.data()}));renderGuests();renderMoney()},()=>{});
+});
+
+// ===== Wedding Checklist =====
+let ckCats=[],tasks=[],ckCat="all",ckSt="all",editTk=null,editCat=null;
+const ST={pending:["Pending","○"],progress:["In Progress","◐"],done:["Completed","✓"]};
+const NEXT={pending:"progress",progress:"done",done:"pending"};
+const catName=c=>c?`${c.code?c.code+". ":""}${c.name}`:"ไม่มีหมวด";
+function daysTo(d){return Math.round((new Date(d+"T00:00:00")-new Date(today()+"T00:00:00"))/864e5)}
+function renderDash(){
+  const n=tasks.length,d=tasks.filter(t=>t.status==="done").length,p=tasks.filter(t=>t.status==="progress").length,pe=n-d-p;
+  const pct=n?Math.round(d/n*100):0;
+  $("ckTotal").textContent=n;$("ckDone").textContent=d;$("ckProg").textContent=p;$("ckPend").textContent=pe;$("ckPct").textContent=pct+"%";
+  $("ckRing").setAttribute("stroke-dashoffset",(326.7*(1-pct/100)).toFixed(1));
+  $("ckBarD").style.width=(n?d/n*100:0)+"%";$("ckBarP").style.width=(n?p/n*100:0)+"%";
+  $("dockCk").textContent=n?`พร้อมแล้ว ${pct}%`:"ความพร้อม";
+  const C=$("ckCats");
+  if(!ckCats.length){C.innerHTML=`<div class="empty" style="grid-column:1/-1">ยังไม่มีหมวดงาน กด “เปิด Checklist” เพื่อเริ่ม</div>`}
+  else C.innerHTML=ckCats.map(c=>{const ts=tasks.filter(t=>t.cat===c.id),dn=ts.filter(t=>t.status==="done").length;
+    return `<button type="button" class="ckcat" data-cat="${esc(c.id)}"><span class="cc">${esc(c.code||"")}</span><b>${esc(c.name)}</b><small>${esc(c.th||"")}</small>
+    <span class="mini"><i style="width:${ts.length?dn/ts.length*100:0}%"></i></span><span class="cn"><span>เสร็จ <b>${dn}</b></span><span>ยังไม่เสร็จ <b>${ts.length-dn}</b></span></span></button>`}).join("");
+  C.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>openCk(b.dataset.cat));
+  const up=tasks.filter(t=>t.status!=="done"&&t.due).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,5);
+  const U=$("ckUp");
+  U.innerHTML=up.length?up.map(t=>{const k=daysTo(t.due),c=ckCats.find(x=>x.id===t.cat);
+    const lab=k<0?`เลยกำหนด ${-k} วัน`:k===0?"วันนี้":`อีก ${k} วัน`;
+    return `<button type="button" class="lr" data-tk="${esc(t.id)}"><span class="ic ${k<0?"out":"g"}">${ST[t.status][1]}</span><span class="tx"><b>${esc(t.title)}</b><small>${esc(catName(c))}${t.owner?" · "+esc(t.owner):""}</small></span><span class="am" style="color:${k<0?"var(--bad)":k<=3?"var(--gold)":"var(--muted)"}">${thDate(t.due)}<small>${lab}</small></span></button>`}).join("")
+   :`<div class="empty">ยังไม่มีงานที่ตั้งกำหนดวัน<br>ใส่ “กำหนดเสร็จ” ในงานแต่ละรายการ แล้วงานที่ใกล้ถึงจะขึ้นที่นี่</div>`;
+  U.querySelectorAll("[data-tk]").forEach(b=>b.onclick=()=>openTk(tasks.find(t=>t.id===b.dataset.tk)));
+}
+function renderCk(){
+  const S=$("ckCatSeg");
+  S.innerHTML=`<button type="button" data-c="all" class="${ckCat==="all"?"on":""}">ทุกหมวด</button>`+ckCats.map(c=>`<button type="button" data-c="${esc(c.id)}" class="${ckCat===c.id?"on":""}">${esc(c.code||"")} ${esc(c.name)}</button>`).join("");
+  S.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{ckCat=b.dataset.c;renderCk()});
+  document.querySelectorAll("[data-st]").forEach(b=>b.classList.toggle("on",b.dataset.st===ckSt));
+  const cats=ckCat==="all"?ckCats:ckCats.filter(c=>c.id===ckCat);
+  const B=$("ckBody");
+  if(!cats.length){B.innerHTML=`<div class="empty">ยังไม่มีหมวดงาน กด “+ เพิ่มหมวดงาน”</div>`;return}
+  B.innerHTML=cats.map(c=>{const all=tasks.filter(t=>t.cat===c.id),ts=all.filter(t=>ckSt==="all"||t.status===ckSt),dn=all.filter(t=>t.status==="done").length;
+    return `<section class="cksec"><div class="sh"><h4><em>${esc(c.code||"")}</em>${esc(c.name)}</h4><small>เสร็จ ${dn}/${all.length}${canWrite?` · <button type="button" class="linkish" data-ec="${esc(c.id)}">แก้หมวด</button>`:""}</small></div>
+    ${c.th?`<div class="th">${esc(c.th)}</div>`:""}
+    ${ts.length?ts.map(t=>`<div class="tk ${t.status}"><button type="button" class="tg ${t.status}" data-cy="${esc(t.id)}" aria-label="สถานะ ${ST[t.status][0]} แตะเพื่อเปลี่ยน" ${canWrite?"":"disabled"}>${t.status==="done"?"✓":t.status==="progress"?"◐":""}</button>
+      <button type="button" class="tx" data-tk="${esc(t.id)}"><b>${esc(t.title)}</b>${(t.due||t.owner||t.note||t.status==="progress")?`<small>${[t.status==="progress"?"กำลังทำ":"",t.due?"กำหนด "+thDate(t.due):"",t.owner||"",t.note||""].filter(Boolean).map(esc).join(" · ")}</small>`:""}</button></div>`).join("")
+      :`<div class="note">${all.length?"ไม่มีงานในสถานะนี้":"ยังไม่มีงานในหมวดนี้"}</div>`}
+    ${canWrite?`<button type="button" class="linkish add" data-addc="${esc(c.id)}">+ เพิ่มงานในหมวดนี้</button>`:""}
+    <label class="cknote">หมายเหตุ<textarea data-note="${esc(c.id)}" placeholder="บันทึกเพิ่มเติมของหมวดนี้" ${canWrite?"":"disabled"}>${esc(c.note||"")}</textarea></label></section>`}).join("");
+  B.querySelectorAll("[data-cy]").forEach(b=>b.onclick=()=>cycle(b.dataset.cy));
+  B.querySelectorAll("[data-tk]").forEach(b=>b.onclick=()=>openTk(tasks.find(t=>t.id===b.dataset.tk)));
+  B.querySelectorAll("[data-addc]").forEach(b=>b.onclick=()=>openTk(null,b.dataset.addc));
+  B.querySelectorAll("[data-ec]").forEach(b=>b.onclick=()=>openCat(ckCats.find(c=>c.id===b.dataset.ec)));
+  B.querySelectorAll("[data-note]").forEach(t=>t.onchange=async()=>{const c=ckCats.find(x=>x.id===t.dataset.note);if(!c||!db)return;
+    const {id,...rest}=c;try{await db.collection("ckcats").doc(id).set({...rest,note:t.value.trim()});toast("บันทึกหมายเหตุแล้ว")}catch(e){toast("บันทึกไม่สำเร็จ")}});
+}
+async function cycle(id){const t=tasks.find(x=>x.id===id);if(!t||!db)return;const {id:_,...rest}=t;
+  try{await db.collection("tasks").doc(id).set({...rest,status:NEXT[t.status||"pending"],updatedAt:new Date().toISOString(),updatedBy:me||""})}catch(e){toast("บันทึกไม่สำเร็จ")}}
+document.querySelectorAll("[data-st]").forEach(b=>b.onclick=()=>{ckSt=b.dataset.st;renderCk()});
+function openCk(cat){ckCat=cat||"all";renderCk();if(!$("ckDlg").open)$("ckDlg").showModal()}
+$("openCk").onclick=()=>openCk("all");$("ckOpenAll").onclick=()=>openCk("all");
+function openTk(t,cat){editTk=t||null;$("tkTitle").textContent=t?"แก้ไขงาน":"เพิ่มงาน";
+  $("tCat").innerHTML=ckCats.map(c=>`<option value="${esc(c.id)}">${esc(catName(c))}</option>`).join("");
+  $("tName").value=t?.title||"";$("tCat").value=t?.cat||cat||(ckCat!=="all"?ckCat:(ckCats[0]?.id||""));$("tStatus").value=t?.status||"pending";
+  $("tDue").value=t?.due||"";$("tOwner").value=t?.owner||"";$("tNote").value=t?.note||"";
+  $("tDel").hidden=!t;$("tDel").dataset.armed="";$("tDel").textContent="ลบงาน";
+  [...$("tkForm").elements].forEach(e=>{if(!e.dataset.close&&e.className!=="x")e.disabled=!canWrite});$("tkDlg").showModal()}
+$("tkForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
+  const cat=$("tCat").value,ord=editTk?.order??(Math.max(0,...tasks.filter(t=>t.cat===cat).map(t=>+t.order||0))+1);
+  const body={title:$("tName").value.trim(),cat,status:$("tStatus").value,due:$("tDue").value,owner:$("tOwner").value,note:$("tNote").value.trim(),order:ord,
+    createdAt:editTk?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString(),updatedBy:me||""};
+  try{await (editTk?db.collection("tasks").doc(editTk.id):db.collection("tasks").doc()).set(body);$("tkDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง")}};
+$("tDel").onclick=async()=>{const b=$("tDel");if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
+  try{await db.collection("tasks").doc(editTk.id).delete();$("tkDlg").close();toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
+function openCat(c){editCat=c||null;$("catTitle").textContent=c?"แก้ไขหมวดงาน":"เพิ่มหมวดงาน";
+  $("kCode").value=c?.code||String(ckCats.length+1).padStart(2,"0");$("kName").value=c?.name||"";$("kTh").value=c?.th||"";
+  $("kDel").hidden=!c;$("kDel").dataset.armed="";$("kDel").textContent="ลบหมวด";$("catDlg").showModal()}
+$("ckAddCat").onclick=()=>openCat(null);
+$("catForm").onsubmit=async e=>{e.preventDefault();if(!db)return;
+  const body={code:$("kCode").value.trim(),name:$("kName").value.trim().toUpperCase(),th:$("kTh").value.trim(),note:editCat?.note||"",order:editCat?.order??(Math.max(0,...ckCats.map(c=>+c.order||0))+1)};
+  try{await (editCat?db.collection("ckcats").doc(editCat.id):db.collection("ckcats").doc()).set(body);$("catDlg").close();toast("บันทึกแล้ว")}catch(err){toast("บันทึกไม่สำเร็จ")}};
+$("kDel").onclick=async()=>{const b=$("kDel");const n=tasks.filter(t=>t.cat===editCat.id).length;
+  if(n){toast(`หมวดนี้ยังมี ${n} งาน ย้ายหรือลบงานก่อน`);return}
+  if(!b.dataset.armed){b.dataset.armed="1";b.textContent="กดอีกครั้งเพื่อยืนยัน";return}
+  try{await db.collection("ckcats").doc(editCat.id).delete();$("catDlg").close();if(ckCat===editCat.id)ckCat="all";toast("ลบแล้ว")}catch(e){toast("ลบไม่สำเร็จ")}};
+$("ckAddCat").hidden=false;
+claude.use("db").then(d=>{if(!d){$("ckCats").innerHTML=`<div class="empty" style="grid-column:1/-1">เปิดข้อมูลไม่ได้ในหน้าจอนี้</div>`;return}
+  const rr=()=>{renderDash();if($("ckDlg").open)renderCk()};
+  d.collection("ckcats").onSnapshot(s=>{ckCats=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
+  d.collection("tasks").onSnapshot(s=>{tasks=s.docs.map(x=>({id:x.id,...x.data()})).sort((a,b)=>(+a.order||0)-(+b.order||0));rr()},()=>{});
+});
+</script>
+
