@@ -335,7 +335,11 @@ h2.dtitle::before{content:none}
   .dcard:not(.wide) .dst{grid-template-columns:1fr;gap:2px}
   .dcard:not(.wide) .dst span{flex-direction:row;justify-content:space-between;align-items:baseline}
   .dcard:not(.wide) .dst b{font-size:.9rem}}
-.wrap{gap:18px}
+.wrap{gap:18px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px))!important}
+.glink{font:inherit;color:inherit;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)}
+.glink:hover{border-color:var(--petal)}
+.glink .gsum{margin-left:auto;font-size:.8rem;color:var(--muted);text-align:right}
+.glink .chev{font-size:1.4rem;color:var(--petal);line-height:1}
 
 .expact .pdfbtn{align-self:auto}
 dialog.big .tk{background:var(--surface);border:1px solid var(--line)}
@@ -383,11 +387,12 @@ dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
   <section class="dcards" aria-label="Category dashboard"><h2 class="dtitle">Wedding Progress</h2><div id="dashCards" class="dgrid"><div class="empty">กำลังโหลด…</div></div></section>
 
 
+  <button type="button" class="glink" id="homeGuests"><span class="dic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.3"/><path d="M15.8 14.2c2.4.1 4.2 1.7 4.7 4.8"/></svg></span><span class="dnm"><small>GUEST LIST</small><b>รายชื่อแขก</b></span><span class="gsum" id="homeGuestsSum"></span><span class="chev" aria-hidden="true">›</span></button>
   <button class="linkish" id="editCfg" type="button" style="align-self:center">⚙ ตั้งค่าวันงานและงบ</button>
   <p class="note" style="text-align:center;margin:0">ทุกคนที่มีลิงก์นี้ดูและแก้ไขข้อมูลได้<span id="whoami" hidden></span></p>
 </div>
 
-<nav class="dock" aria-label="เมนูด้านล่าง">
+<nav class="dock" aria-label="เมนูด้านล่าง" hidden>
   <button type="button" class="dockbtn" id="openCk"><span class="di">✓</span><span><b>Checklist</b><small id="dockCk">ความพร้อม</small></span></button>
   <button type="button" class="dockbtn" id="openMoney"><span class="di">฿</span><span><b>รายรับรายจ่าย</b><small id="dockMoney">ดูยอดเงินเข้า-ออก</small></span></button>
   <button type="button" class="dockbtn" id="openGuests"><span class="di">✿</span><span><b>รายชื่อแขก</b><small id="dockGuests">คนร่วมงาน</small></span></button>
@@ -919,6 +924,9 @@ $("tPhotoFile").onchange=async()=>{const fs=[...$("tPhotoFile").files];$("tPhoto
   for(const f of fs){try{const b=await shrink(f);const r=await assets.upload(b);tPhotos.push(r.id);renderTPhotos()}catch(e){toast("อัปโหลดรูปไม่สำเร็จ")}}
   toast("เพิ่มรูปแล้ว กด “บันทึก” เพื่อเก็บ")};
 {const _r3=render;render=function(){_r3();renderDash()};}
+$("homeGuests").onclick=()=>$("openGuests").click();
+{const _rg=renderGuests;renderGuests=function(){_rg();const yes=guests.filter(g=>g.status==="yes").reduce((a,g)=>a+(+g.count||1),0);
+  $("homeGuestsSum").textContent=guests.length?`${guests.length} รายชื่อ · ยืนยัน ${yes} คน`:"ยังไม่มีรายชื่อ"};}
 
 // ===== Pages: open big dialogs as full screens, phone back button returns home =====
 (function(){const BIG=["ckDlg","moneyDlg","guestDlg"];
