@@ -274,6 +274,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
 </style>
 <script src="supabase.js"></script>
 <script src="shim.js"></script>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));</script>
 </head>
 <body>
 <div id="gate" data-state="loading"><div class="card">
