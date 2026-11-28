@@ -286,6 +286,11 @@ dialog.big .dh.pg .eyebrow{margin:0}
 dialog.big .ledger .lr{background:var(--surface)}
 dialog.big .ms{background:var(--surface);border:1px solid var(--line)}
 dialog.big .ms.wide{background:var(--blush)}
+h2.pgsec{font-family:var(--serif-th);font-size:1.05rem;letter-spacing:0;text-transform:none;color:var(--fg);margin:6px 0 -4px}
+h2.pgsec::before{content:"✿ ";color:var(--champ)}
+.expact{display:flex;flex-wrap:wrap;gap:8px}
+dialog.big .sheet>*{flex-shrink:0}
+.expact .pdfbtn{align-self:auto}
 dialog.big .tk{background:var(--surface);border:1px solid var(--line)}
 dialog.big .cksec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
 dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
@@ -338,25 +343,11 @@ dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
     <div class="ckup"><h3>Upcoming Tasks</h3><div id="ckUp" class="ledger"></div></div>
   </section>
 
-  <section class="summary" aria-label="สรุปยอด"><svg class="corner" viewBox="0 0 90 70" aria-hidden="true"><path d="M40 40 q9.1 -13.0 20.8 0 q-11.700000000000001 13.0 -20.8 0z" style="fill:var(--leaf)" transform="rotate(-40 40 40)"/><path d="M60 28 q8.4 -12.0 19.2 0 q-10.799999999999999 12.0 -19.2 0z" style="fill:var(--leaf)" transform="rotate(200 60 28)"/><path d="M70 52 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(150 70 52)"/><ellipse cx="67.7" cy="24.1" rx="8.2" ry="6.1" transform="rotate(12 67.7 24.1)" style="fill:var(--petal)"/><ellipse cx="59.0" cy="31.8" rx="8.2" ry="6.1" transform="rotate(84 59.0 31.8)" style="fill:var(--petal)"/><ellipse cx="49.0" cy="26.0" rx="8.2" ry="6.1" transform="rotate(156 49.0 26.0)" style="fill:var(--petal)"/><ellipse cx="51.4" cy="14.6" rx="8.2" ry="6.1" transform="rotate(228 51.4 14.6)" style="fill:var(--petal)"/><ellipse cx="63.0" cy="13.4" rx="8.2" ry="6.1" transform="rotate(300 63.0 13.4)" style="fill:var(--petal)"/><circle cx="58" cy="22" r="5.0" style="fill:var(--bloom)"/><ellipse cx="83.2" cy="49.6" rx="5.2" ry="3.9" transform="rotate(35 83.2 49.6)" style="fill:var(--petal-2)"/><ellipse cx="76.2" cy="52.0" rx="5.2" ry="3.9" transform="rotate(107 76.2 52.0)" style="fill:var(--petal-2)"/><ellipse cx="71.7" cy="46.1" rx="5.2" ry="3.9" transform="rotate(179 71.7 46.1)" style="fill:var(--petal-2)"/><ellipse cx="75.9" cy="40.0" rx="5.2" ry="3.9" transform="rotate(251 75.9 40.0)" style="fill:var(--petal-2)"/><ellipse cx="83.0" cy="42.2" rx="5.2" ry="3.9" transform="rotate(323 83.0 42.2)" style="fill:var(--petal-2)"/><circle cx="78" cy="46" r="3.1" style="fill:var(--bloom)"/><ellipse cx="41.4" cy="52.0" rx="4.5" ry="3.3" transform="rotate(0 41.4 52.0)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="57.1" rx="4.5" ry="3.3" transform="rotate(72 37.7 57.1)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="55.2" rx="4.5" ry="3.3" transform="rotate(144 31.6 55.2)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="48.8" rx="4.5" ry="3.3" transform="rotate(216 31.6 48.8)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="46.9" rx="4.5" ry="3.3" transform="rotate(288 37.7 46.9)" style="fill:var(--petal-2)"/><circle cx="36" cy="52" r="2.7" style="fill:var(--bloom)"/></svg>
-    <div class="stats">
-      <div class="stat"><span>งบที่ตั้งไว้</span><b class="num" id="sBudget">–</b></div>
-      <div class="stat"><span>ค่าใช้จ่ายรวม</span><b class="num" id="sTotal">฿0</b></div>
-      <div class="stat"><span>จ่ายแล้ว</span><b class="num" id="sPaid" style="color:var(--accent)">฿0</b></div>
-      <div class="stat"><span>ยังต้องจ่าย</span><b class="num" id="sLeft" style="color:var(--gold)">฿0</b></div>
-    </div>
-    <div class="bar" aria-hidden="true"><i class="p" id="bPaid" style="width:0"></i><i class="r" id="bLeft" style="width:0"></i></div>
-    <div class="legend"><span><em style="background:var(--accent)"></em>จ่ายแล้ว</span><span><em style="background:var(--gold)"></em>ค้างจ่าย</span><span id="budgetNote"></span></div>
-    <div class="alert" id="overdue" hidden></div>
-  </section>
 
-  <button class="btn pdfbtn" id="pdfBtn" type="button" hidden>⬇ ส่งออก PDF สรุปรายจ่าย</button>
-  <div id="list"><div class="empty">กำลังโหลดรายการ…</div></div>  <p class="note" id="who"></p>
   <button class="linkish" id="editCfg" type="button" style="align-self:center">⚙ ตั้งค่าวันงานและงบ</button>
   <p class="note" style="text-align:center;margin:0">ทุกคนที่มีลิงก์นี้ดูและแก้ไขข้อมูลได้<span id="whoami" hidden></span></p>
 </div>
 
-<button class="fab" id="addBtn" type="button">+ เพิ่มรายการ</button>
 <nav class="dock" aria-label="เมนูด้านล่าง">
   <button type="button" class="dockbtn" id="openCk"><span class="di">✓</span><span><b>Checklist</b><small id="dockCk">ความพร้อม</small></span></button>
   <button type="button" class="dockbtn" id="openMoney"><span class="di">฿</span><span><b>รายรับรายจ่าย</b><small id="dockMoney">ดูยอดเงินเข้า-ออก</small></span></button>
@@ -407,6 +398,23 @@ dialog.big .cksec .tk{background:var(--bg);border-color:transparent}
 </dialog>
 <dialog id="moneyDlg" class="big"><div class="sheet">
   <div class="dh pg"><button type="button" class="back" data-close="moneyDlg" aria-label="กลับหน้าหลัก">‹ กลับ</button><div><p class="eyebrow sm">PALM &amp; TOEY · 12.12.2026</p><h3>รายรับรายจ่าย</h3></div></div>
+  <h2 class="pgsec">ค่าใช้จ่ายงานแต่ง</h2>
+<section class="summary" aria-label="สรุปยอด"><svg class="corner" viewBox="0 0 90 70" aria-hidden="true"><path d="M40 40 q9.1 -13.0 20.8 0 q-11.700000000000001 13.0 -20.8 0z" style="fill:var(--leaf)" transform="rotate(-40 40 40)"/><path d="M60 28 q8.4 -12.0 19.2 0 q-10.799999999999999 12.0 -19.2 0z" style="fill:var(--leaf)" transform="rotate(200 60 28)"/><path d="M70 52 q7 -10 16 0 q-9 10 -16 0z" style="fill:var(--leaf)" transform="rotate(150 70 52)"/><ellipse cx="67.7" cy="24.1" rx="8.2" ry="6.1" transform="rotate(12 67.7 24.1)" style="fill:var(--petal)"/><ellipse cx="59.0" cy="31.8" rx="8.2" ry="6.1" transform="rotate(84 59.0 31.8)" style="fill:var(--petal)"/><ellipse cx="49.0" cy="26.0" rx="8.2" ry="6.1" transform="rotate(156 49.0 26.0)" style="fill:var(--petal)"/><ellipse cx="51.4" cy="14.6" rx="8.2" ry="6.1" transform="rotate(228 51.4 14.6)" style="fill:var(--petal)"/><ellipse cx="63.0" cy="13.4" rx="8.2" ry="6.1" transform="rotate(300 63.0 13.4)" style="fill:var(--petal)"/><circle cx="58" cy="22" r="5.0" style="fill:var(--bloom)"/><ellipse cx="83.2" cy="49.6" rx="5.2" ry="3.9" transform="rotate(35 83.2 49.6)" style="fill:var(--petal-2)"/><ellipse cx="76.2" cy="52.0" rx="5.2" ry="3.9" transform="rotate(107 76.2 52.0)" style="fill:var(--petal-2)"/><ellipse cx="71.7" cy="46.1" rx="5.2" ry="3.9" transform="rotate(179 71.7 46.1)" style="fill:var(--petal-2)"/><ellipse cx="75.9" cy="40.0" rx="5.2" ry="3.9" transform="rotate(251 75.9 40.0)" style="fill:var(--petal-2)"/><ellipse cx="83.0" cy="42.2" rx="5.2" ry="3.9" transform="rotate(323 83.0 42.2)" style="fill:var(--petal-2)"/><circle cx="78" cy="46" r="3.1" style="fill:var(--bloom)"/><ellipse cx="41.4" cy="52.0" rx="4.5" ry="3.3" transform="rotate(0 41.4 52.0)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="57.1" rx="4.5" ry="3.3" transform="rotate(72 37.7 57.1)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="55.2" rx="4.5" ry="3.3" transform="rotate(144 31.6 55.2)" style="fill:var(--petal-2)"/><ellipse cx="31.6" cy="48.8" rx="4.5" ry="3.3" transform="rotate(216 31.6 48.8)" style="fill:var(--petal-2)"/><ellipse cx="37.7" cy="46.9" rx="4.5" ry="3.3" transform="rotate(288 37.7 46.9)" style="fill:var(--petal-2)"/><circle cx="36" cy="52" r="2.7" style="fill:var(--bloom)"/></svg>
+    <div class="stats">
+      <div class="stat"><span>งบที่ตั้งไว้</span><b class="num" id="sBudget">–</b></div>
+      <div class="stat"><span>ค่าใช้จ่ายรวม</span><b class="num" id="sTotal">฿0</b></div>
+      <div class="stat"><span>จ่ายแล้ว</span><b class="num" id="sPaid" style="color:var(--accent)">฿0</b></div>
+      <div class="stat"><span>ยังต้องจ่าย</span><b class="num" id="sLeft" style="color:var(--gold)">฿0</b></div>
+    </div>
+    <div class="bar" aria-hidden="true"><i class="p" id="bPaid" style="width:0"></i><i class="r" id="bLeft" style="width:0"></i></div>
+    <div class="legend"><span><em style="background:var(--accent)"></em>จ่ายแล้ว</span><span><em style="background:var(--gold)"></em>ค้างจ่าย</span><span id="budgetNote"></span></div>
+    <div class="alert" id="overdue" hidden></div>
+  </section>
+
+  
+  <div class="expact"><button class="btn pri" id="addBtn" type="button">+ เพิ่มรายการค่าใช้จ่าย</button><button class="btn pdfbtn" id="pdfBtn" type="button" hidden>⬇ ส่งออก PDF สรุปรายจ่าย</button></div>
+  <div id="list"><div class="empty">กำลังโหลดรายการ…</div></div>  <p class="note" id="who"></p>
+  <h2 class="pgsec">รายรับและเงินคงเหลือ</h2>
   <div class="mstats">
     <div class="ms"><span>รายรับรวม</span><b class="num" id="mIn" style="color:var(--ok)">฿0</b><small id="mInNote"></small></div>
     <div class="ms"><span>จ่ายออกไปแล้ว</span><b class="num" id="mOut" style="color:var(--bad)">฿0</b><small id="mOutNote"></small></div>
