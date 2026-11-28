@@ -78,7 +78,7 @@
     $g("gVerify").onclick=async()=>{const em=$g("gEmail").value.trim().toLowerCase(),tk=$g("gCode").value.trim();if(!em||!tk)return;
       const {error}=await sb.auth.verifyOtp({email:em,token:tk,type:"email"});if(error)$g("gMsg").textContent="รหัสไม่ถูกต้องหรือหมดอายุ"};
     document.querySelectorAll("[data-signout]").forEach(b=>b.onclick=async()=>{await sb.auth.signOut();location.reload()});
-    sb.auth.getSession().then(({data})=>check(data.session));
-    sb.auth.onAuthStateChange((ev,session)=>{if(ev==="SIGNED_IN"&&!email)check(session);if(ev==="SIGNED_OUT")gate("out","")});
+    // Public mode: anyone with the link can view and edit — no login needed.
+    sb.auth.getSession().then(({data})=>{email=(data.session&&data.session.user.email||"").toLowerCase();gate("in");live();resolveReady()});
   });
 })();

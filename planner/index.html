@@ -286,7 +286,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
     <button class="btn pri" id="gBtn" type="submit">ส่งลิงก์เข้าสู่ระบบ</button>
     <div class="row" id="gCodeRow" hidden><input id="gCode" inputmode="numeric" placeholder="หรือใส่รหัสจากอีเมล" aria-label="รหัสจากอีเมล"><button type="button" class="btn" id="gVerify">ยืนยัน</button></div>
   </form>
-  <p class="msg" id="gMsg">กำลังตรวจสอบการเข้าสู่ระบบ…</p>
+  <p class="msg" id="gMsg">กำลังโหลด…</p>
   <button type="button" class="btn denied" data-signout>ใช้อีเมลอื่น</button>
 </div></div>
 <div class="wrap">
@@ -332,7 +332,7 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width
   <button class="btn pdfbtn" id="pdfBtn" type="button" hidden>⬇ ส่งออก PDF สรุปรายจ่าย</button>
   <div id="list"><div class="empty">กำลังโหลดรายการ…</div></div>  <p class="note" id="who"></p>
   <button class="linkish" id="editCfg" type="button" style="align-self:center">⚙ ตั้งค่าวันงานและงบ</button>
-  <p class="note" style="text-align:center;margin:0">เข้าสู่ระบบด้วย <span id="whoami"></span> · <button type="button" class="linkish" data-signout>ออกจากระบบ</button></p>
+  <p class="note" style="text-align:center;margin:0">ทุกคนที่มีลิงก์นี้ดูและแก้ไขข้อมูลได้<span id="whoami" hidden></span></p>
 </div>
 
 <button class="fab" id="addBtn" type="button">+ เพิ่มรายการ</button>
